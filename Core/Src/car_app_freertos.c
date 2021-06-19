@@ -12,6 +12,8 @@
 #include "car_app_freertos.h"
 #include "FreeRTOS.h"
 #include "task.h"
+#include "hci.h"
+#include "hci_tl.h"
 
 
 /* Private includes ------------------------------------------------------------------------------*/
@@ -35,12 +37,15 @@
 
 /* Private variables -----------------------------------------------------------------------------*/
 	/*--- FreeRTOS Task Handles ---*/
-	static TaskHandle_t h_TaskBLEConn;
+	TaskHandle_t h_TaskBLEConn;
 	static TaskHandle_t h_TaskBLEMsg;
 	static TaskHandle_t h_TaskMcuLED;
 
+	/*--- Private variables related to BLE Connection Task ---*/
+
+
 	/*--- Variables to record remaining stack size of each tasks ---*/
-	static UBaseType_t Task1_RSS, Task2_RSS;
+	static UBaseType_t Task0_RSS, Task1_RSS, Task2_RSS;
 
 /* Private function prototypes -------------------------------------------------------------------*/
 static void Task_ManageBLEConnections(void *argument);
@@ -138,6 +143,9 @@ void FRTOS_Init_Tasks(void)
  */
 static void Task_ManageBLEConnections(void *argument)
 {
+	/* Variable declarations */
+	uint32_t NotificationValue = 0;
+
 	/* Initialize BLE Peripheral and place in advertising mode at startup to allow establishment
 	 * of connections with BLE central devices in proximity.
 	 */
@@ -146,8 +154,27 @@ static void Task_ManageBLEConnections(void *argument)
 
 	while(1)
 	{
+		/* This command is used to process BLE events */
+		hci_user_evt_proc();
 
+		/* Block indefinitely until a notification to this task was obtained/received */
+		NotificationValue = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 
+		Task0_RSS = uxTaskGetStackHighWaterMark(NULL);
+
+		if(NotificationValue & FRTOS_TASK_NOTIF_BLE_CONNECTED)
+		{
+			/* Resume or start the task that parses BLE messages */
+			vTaskResume(h_TaskBLEMsg);
+		}
+		else if(NotificationValue & FRTOS_TASK_NOTIF_BLE_DISCONNECTED)
+		{
+			/* Suspend the task that parses BLE messages */
+			vTaskSuspend(h_TaskBLEMsg);
+
+			/* Place BLE module in advertising mode to allow new connections */
+			BlueNRG_MakeDeviceDiscoverable();
+		}
 	}
 
 	/* Delete tasks automatically if somehow code reached this point */
@@ -168,9 +195,14 @@ static void Task_ParseBLEMessage(void *argument)
 
 	while(1)
 	{
-		Task1_RSS = uxTaskGetStackHighWaterMark(NULL);
+		/* This command is used to process BLE events */
+		hci_user_evt_proc();
 
 		uint32_t NotificationValue = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+
+		/* Check remaining stack size for this particular task */
+		Task1_RSS = uxTaskGetStackHighWaterMark(NULL);
+
 		if(NotificationValue & 0xFF)
 		{
 

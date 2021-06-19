@@ -57,7 +57,19 @@ Core/Src/car_app_ble.o: ../Core/Src/car_app_ble.c \
  ../Middlewares/ST/BlueNRG-2/includes/bluenrg1_hal_aci.h \
  ../Middlewares/ST/BlueNRG-2/includes/bluenrg1_gatt_aci.h \
  ../Middlewares/ST/BlueNRG-2/includes/bluenrg1_gap_aci.h \
- ../Middlewares/ST/BlueNRG-2/includes/bluenrg1_hci_le.h
+ ../Middlewares/ST/BlueNRG-2/includes/bluenrg1_hci_le.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
+ ../Core/Inc/FreeRTOSConfig.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
+ ../Core/Inc/car_app_freertos.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
 
 ../Middlewares/ST/BlueNRG-2/includes/hci.h:
 
@@ -180,3 +192,27 @@ Core/Src/car_app_ble.o: ../Core/Src/car_app_ble.c \
 ../Middlewares/ST/BlueNRG-2/includes/bluenrg1_gap_aci.h:
 
 ../Middlewares/ST/BlueNRG-2/includes/bluenrg1_hci_le.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
+
+../Core/Inc/FreeRTOSConfig.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
+
+../Core/Inc/car_app_freertos.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:

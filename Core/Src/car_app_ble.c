@@ -19,12 +19,18 @@
 #include "bluenrg1_gap_aci.h"
 #include "bluenrg1_hci_le.h"
 
+#include "FreeRTOS.h"
+#include "task.h"
+
 
 /* Private includes ------------------------------------------------------------------------------*/
 #include "bluenrg_conf.h"				/* Contains configured Bluetooth Parameters in CubeMX */
+#include "car_app_freertos.h"
 
 
 /* External variables ----------------------------------------------------------------------------*/
+	/*--- FreeRTOS Task Handles ---*/
+	extern TaskHandle_t h_TaskBLEConn;
 
 
 /* Private typedef -------------------------------------------------------------------------------*/
@@ -60,7 +66,7 @@ static uint16_t hAppearanceChar;
 	static uint16_t hFifthCharDesc;
 
 	/* DISCOVERY/CONNECTIVITY DETAILS */
-	static connectionStatus_t Conn_Details;
+	ConnectionStatus_t Conn_Details;
 
 
 /* Private macro ---------------------------------------------------------------------------------*/
@@ -374,7 +380,7 @@ static void GAP_Peripheral_ConfigService(void)
 
 /**
   * @brief	Resets/Deletes the entries of the variable holding the details of the connection with
-  *					the GATT client
+  *			the GATT client
   */
 static void Server_ResetConnectionStatus(void)
 {
@@ -392,6 +398,17 @@ static void Server_ResetConnectionStatus(void)
 
 	/* Reset 6-byte MAC address */
 	BLUENRG_memset(&Conn_Details.BLE_Client_Addr[0], 0, 6);
+
+	/* This value becomes pdTRUE if giving the notification caused a task to unblock, and the unblocked task has a
+	   higher priority than the currently running task, in which a context switch should occur */
+	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+
+	/* Notify task that manages BLE connections that a disconnection just occurred */
+	xTaskNotifyFromISR(h_TaskBLEConn, FRTOS_TASK_NOTIF_BLE_DISCONNECTED, eSetBits, &xHigherPriorityTaskWoken);
+
+	/* Force context switch if xHigherPriorityTaskWoken == pdTRUE. This does nothing if xHigherPriorityTaskWoken
+   	   is pdFALSE */
+	portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 }
 
 /**
@@ -531,6 +548,17 @@ void hci_le_connection_complete_event(uint8_t Status,
 	/* Update connection status to connected */
 	Conn_Details.ConnectionStatus = STATE_CONNECTED;
 
+	/* This value becomes pdTRUE if giving the notification caused a task to unblock, and the unblocked task has a
+	   higher priority than the currently running task, in which a context switch should occur */
+	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+
+	/* Notify task that manages BLE connections that a connection was successfully created */
+	xTaskNotifyFromISR(h_TaskBLEConn, FRTOS_TASK_NOTIF_BLE_CONNECTED, eSetBits, &xHigherPriorityTaskWoken);
+
+	/* Force context switch if xHigherPriorityTaskWoken == pdTRUE. This does nothing if xHigherPriorityTaskWoken
+   	   is pdFALSE */
+	portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+
 } /* end hci_le_connection_complete_event() */
 
 /*******************************************************************************
@@ -630,6 +658,7 @@ void aci_gatt_attribute_modified_event(uint16_t Connection_Handle,
 } /* end aci_gatt_attribute_modified_event() */
 
 /********************** User Application related functions/events/processes *****************************/
+/********************** Not used in FreeRTOS application ************************************************/
 
 /**
   * @brief 	Updates the BLE events list. This will also contain FSM for BLE communication protocol

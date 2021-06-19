@@ -46,7 +46,24 @@ Core/Src/car_app_freertos.o: ../Core/Src/car_app_freertos.c \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
- ../Core/Inc/car_app_ble.h ../BlueNRG-2/Target/bluenrg_conf.h
+ ../Middlewares/ST/BlueNRG-2/includes/hci.h \
+ ../Middlewares/ST/BlueNRG-2/includes/bluenrg1_types.h \
+ ../Middlewares/ST/BlueNRG-2/includes/compiler.h \
+ ../Middlewares/ST/BlueNRG-2/includes/ble_const.h \
+ ../Middlewares/ST/BlueNRG-2/includes/hci_const.h \
+ ../Middlewares/ST/BlueNRG-2/includes/link_layer.h \
+ ../Middlewares/ST/BlueNRG-2/includes/ble_types.h \
+ ../Middlewares/ST/BlueNRG-2/includes/ble_status.h \
+ ../Middlewares/ST/BlueNRG-2/hci/hci_tl_patterns/Basic/hci_tl.h \
+ ../Middlewares/ST/BlueNRG-2/includes/ble_types.h \
+ ../Middlewares/ST/BlueNRG-2/utils/ble_list.h \
+ ../BlueNRG-2/Target/bluenrg_conf.h \
+ ../Middlewares/ST/BlueNRG-2/includes/ble_status.h \
+ ../Middlewares/ST/BlueNRG-2/includes/bluenrg1_hal.h \
+ ../Middlewares/ST/BlueNRG-2/includes/bluenrg1_gap.h \
+ ../Middlewares/ST/BlueNRG-2/includes/link_layer.h \
+ ../Middlewares/ST/BlueNRG-2/includes/bluenrg1_gatt_server.h \
+ ../Middlewares/ST/BlueNRG-2/includes/sm.h ../Core/Inc/car_app_ble.h
 
 ../Core/Inc/car_app_freertos.h:
 
@@ -148,6 +165,40 @@ Core/Src/car_app_freertos.o: ../Core/Src/car_app_freertos.c \
 
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
 
-../Core/Inc/car_app_ble.h:
+../Middlewares/ST/BlueNRG-2/includes/hci.h:
+
+../Middlewares/ST/BlueNRG-2/includes/bluenrg1_types.h:
+
+../Middlewares/ST/BlueNRG-2/includes/compiler.h:
+
+../Middlewares/ST/BlueNRG-2/includes/ble_const.h:
+
+../Middlewares/ST/BlueNRG-2/includes/hci_const.h:
+
+../Middlewares/ST/BlueNRG-2/includes/link_layer.h:
+
+../Middlewares/ST/BlueNRG-2/includes/ble_types.h:
+
+../Middlewares/ST/BlueNRG-2/includes/ble_status.h:
+
+../Middlewares/ST/BlueNRG-2/hci/hci_tl_patterns/Basic/hci_tl.h:
+
+../Middlewares/ST/BlueNRG-2/includes/ble_types.h:
+
+../Middlewares/ST/BlueNRG-2/utils/ble_list.h:
 
 ../BlueNRG-2/Target/bluenrg_conf.h:
+
+../Middlewares/ST/BlueNRG-2/includes/ble_status.h:
+
+../Middlewares/ST/BlueNRG-2/includes/bluenrg1_hal.h:
+
+../Middlewares/ST/BlueNRG-2/includes/bluenrg1_gap.h:
+
+../Middlewares/ST/BlueNRG-2/includes/link_layer.h:
+
+../Middlewares/ST/BlueNRG-2/includes/bluenrg1_gatt_server.h:
+
+../Middlewares/ST/BlueNRG-2/includes/sm.h:
+
+../Core/Inc/car_app_ble.h:

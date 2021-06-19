@@ -26,36 +26,38 @@ extern "C" {
 
 
 /* Exported defines ------------------------------------------------------------------------------*/
-#define DEVICE_TYPE_GAP_PERIPHERAL
-#define TEXTSIZE											50
-#define UART_TIMEOUT										1000
+	/*--- General BLE Layer Defines ---*/
+	#define DEVICE_TYPE_GAP_PERIPHERAL
+	#define TEXTSIZE											50
+	#define UART_TIMEOUT										1000
 
-/**
-  * @brief GAP Roles
+   /**
+    * @brief GAP Roles
 	*
 	* Use Peripheral for slave devices to allow master to connect to it, and central for master
 	* devices to allow connecting to slave devices. For this project, the Car BLE is the peripheral
 	* devices, and the smartphone possessing BLE Scanner apps are central devices.
 	*/
-#define GAP_ROLE_PERIPHERAL								((uint8_t)0x01)
-#define GAP_ROLE_BROADCASTER							((uint8_t)0x02)
-#define GAP_ROLE_CENTRAL								((uint8_t)0x04)
-#define GAP_ROLE_OBSERVER								((uint8_t)0x08)
+	#define GAP_ROLE_PERIPHERAL								((uint8_t)0x01)
+	#define GAP_ROLE_BROADCASTER							((uint8_t)0x02)
+	#define GAP_ROLE_CENTRAL								((uint8_t)0x04)
+	#define GAP_ROLE_OBSERVER								((uint8_t)0x08)
 
-/**
-  * @brief GAP Privacy/Security
+   /**
+	* @brief GAP Privacy/Security
 	*
 	* Use Peripheral for slave devices to allow master to connect to it, and central for master
 	* devices to allow connecting to slave devices. For this project, the Car BLE is peripheral
 	* devices, and the smartphone possessing BLE Scanner apps are central devices.
 	*/
-#define GAP_PRIVACY_DISABLED							((uint8_t)0x00)
-#define GAP_PRIVACY_HOST_ENABLED						((uint8_t)0x01)
-#define GAP_PRIVACY_CONTROLLER_ENABLED					((uint8_t)0x02)
+	#define GAP_PRIVACY_DISABLED							((uint8_t)0x00)
+	#define GAP_PRIVACY_HOST_ENABLED						((uint8_t)0x01)
+	#define GAP_PRIVACY_CONTROLLER_ENABLED					((uint8_t)0x02)
 
 
-/* Exported variables ----------------------------------------------------------------------------*/
-extern char pText[TEXTSIZE];
+	/*--- FreeRTOS Task Notification Values ---*/
+	#define FRTOS_TASK_NOTIF_BLE_DISCONNECTED				((uint16_t)0x0001)
+	#define FRTOS_TASK_NOTIF_BLE_CONNECTED					((uint16_t)0x0002)
 
 
 /* Exported types --------------------------------------------------------------------------------*/
@@ -79,7 +81,12 @@ typedef struct
 	uint16_t BLE_ConnLatency;			/* Timing parameters of BLE */
 	uint16_t BLE_SupervisionTimeout;	/* Timing parameters of BLE */
 	BLE_State_t ConnectionStatus;		/* Connection status, will be used in FSM */
-} connectionStatus_t;
+} ConnectionStatus_t;
+
+
+/* Exported variables ----------------------------------------------------------------------------*/
+extern char pText[TEXTSIZE];
+extern ConnectionStatus_t Conn_Details;
 
 
 /* Exported constants ----------------------------------------------------------------------------*/
