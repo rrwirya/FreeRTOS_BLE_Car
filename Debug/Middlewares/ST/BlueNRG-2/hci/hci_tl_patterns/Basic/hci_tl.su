@@ -1,0 +1,9 @@
+hci_tl.c:83:12:verify_packet	24	static
+hci_tl.c:105:13:send_cmd	160	static
+hci_tl.c:131:13:move_list	24	static
+hci_tl.c:148:13:free_event_list	16	static
+hci_tl.c:160:6:hci_init	24	static
+hci_tl.c:187:6:hci_register_io_bus	16	static
+hci_tl.c:197:5:hci_send_req	64	static
+hci_tl.c:337:6:hci_user_evt_proc	16	static
+hci_tl.c:355:9:hci_notify_asynch_evt	32	static

@@ -1,0 +1,11 @@
+car_app_ble.c:81:6:BlueNRG_Init	24	static
+car_app_ble.c:144:13:Setup_DeviceAddress	32	static
+car_app_ble.c:192:13:GAP_Peripheral_ConfigService	232	static
+car_app_ble.c:379:13:Server_ResetConnectionStatus	8	static
+car_app_ble.c:402:6:BlueNRG_MakeDeviceDiscoverable	88	static
+car_app_ble.c:454:6:APP_UserEvtRx	40	static
+car_app_ble.c:508:6:hci_le_connection_complete_event	16	static
+car_app_ble.c:543:6:hci_disconnection_complete_event	16	static
+car_app_ble.c:560:6:aci_gatt_notification_event	24	static
+car_app_ble.c:576:6:aci_gatt_attribute_modified_event	64	static
+car_app_ble.c:641:6:BlueNRG_Loop	8	static
