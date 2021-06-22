@@ -44,7 +44,25 @@ Core/Src/freertos.o: ../Core/Src/freertos.c \
  ../BlueNRG-2/Target/hci_tl_interface.h ../Core/Inc/custom_bus.h \
  ../Core/Inc/custom_conf.h ../Core/Inc/custom_errno.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
+ ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
+ ../Middlewares/ST/BlueNRG-2/includes/hci.h \
+ ../Middlewares/ST/BlueNRG-2/includes/bluenrg1_types.h \
+ ../Middlewares/ST/BlueNRG-2/includes/compiler.h \
+ ../Middlewares/ST/BlueNRG-2/includes/ble_const.h \
+ ../Middlewares/ST/BlueNRG-2/includes/hci_const.h \
+ ../Middlewares/ST/BlueNRG-2/includes/link_layer.h \
+ ../Middlewares/ST/BlueNRG-2/includes/ble_types.h \
+ ../Middlewares/ST/BlueNRG-2/includes/ble_status.h \
+ ../Middlewares/ST/BlueNRG-2/hci/hci_tl_patterns/Basic/hci_tl.h \
+ ../Middlewares/ST/BlueNRG-2/includes/ble_types.h \
+ ../Middlewares/ST/BlueNRG-2/utils/ble_list.h \
+ ../BlueNRG-2/Target/bluenrg_conf.h \
+ ../Middlewares/ST/BlueNRG-2/includes/ble_status.h \
+ ../Middlewares/ST/BlueNRG-2/includes/bluenrg1_hal.h \
+ ../Middlewares/ST/BlueNRG-2/includes/bluenrg1_gap.h \
+ ../Middlewares/ST/BlueNRG-2/includes/link_layer.h \
+ ../Middlewares/ST/BlueNRG-2/includes/bluenrg1_gatt_server.h \
+ ../Middlewares/ST/BlueNRG-2/includes/sm.h
 
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 
@@ -143,3 +161,39 @@ Core/Src/freertos.o: ../Core/Src/freertos.c \
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h:
 
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
+
+../Middlewares/ST/BlueNRG-2/includes/hci.h:
+
+../Middlewares/ST/BlueNRG-2/includes/bluenrg1_types.h:
+
+../Middlewares/ST/BlueNRG-2/includes/compiler.h:
+
+../Middlewares/ST/BlueNRG-2/includes/ble_const.h:
+
+../Middlewares/ST/BlueNRG-2/includes/hci_const.h:
+
+../Middlewares/ST/BlueNRG-2/includes/link_layer.h:
+
+../Middlewares/ST/BlueNRG-2/includes/ble_types.h:
+
+../Middlewares/ST/BlueNRG-2/includes/ble_status.h:
+
+../Middlewares/ST/BlueNRG-2/hci/hci_tl_patterns/Basic/hci_tl.h:
+
+../Middlewares/ST/BlueNRG-2/includes/ble_types.h:
+
+../Middlewares/ST/BlueNRG-2/utils/ble_list.h:
+
+../BlueNRG-2/Target/bluenrg_conf.h:
+
+../Middlewares/ST/BlueNRG-2/includes/ble_status.h:
+
+../Middlewares/ST/BlueNRG-2/includes/bluenrg1_hal.h:
+
+../Middlewares/ST/BlueNRG-2/includes/bluenrg1_gap.h:
+
+../Middlewares/ST/BlueNRG-2/includes/link_layer.h:
+
+../Middlewares/ST/BlueNRG-2/includes/bluenrg1_gatt_server.h:
+
+../Middlewares/ST/BlueNRG-2/includes/sm.h:

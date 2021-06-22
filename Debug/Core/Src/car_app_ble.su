@@ -1,8 +1,8 @@
-car_app_ble.c:471:6:APP_UserEvtRx	32	static
-car_app_ble.c:87:6:BlueNRG_Init	264	static,ignoring_inline_asm
-car_app_ble.c:419:6:BlueNRG_MakeDeviceDiscoverable	80	static
-car_app_ble.c:525:6:hci_le_connection_complete_event	32	static,ignoring_inline_asm
-car_app_ble.c:571:6:hci_disconnection_complete_event	32	static,ignoring_inline_asm
-car_app_ble.c:588:6:aci_gatt_notification_event	0	static
-car_app_ble.c:604:6:aci_gatt_attribute_modified_event	24	static
-car_app_ble.c:670:6:BlueNRG_Loop	8	static
+car_app_ble.c:479:6:APP_UserEvtRx	32	static
+car_app_ble.c:87:6:BlueNRG_Init	256	static,ignoring_inline_asm
+car_app_ble.c:427:6:BlueNRG_MakeDeviceDiscoverable	80	static
+car_app_ble.c:533:6:hci_le_connection_complete_event	32	static,ignoring_inline_asm
+car_app_ble.c:586:6:hci_disconnection_complete_event	32	static,ignoring_inline_asm
+car_app_ble.c:603:6:aci_gatt_notification_event	0	static
+car_app_ble.c:619:6:aci_gatt_attribute_modified_event	24	static
+car_app_ble.c:679:6:BlueNRG_Loop	8	static

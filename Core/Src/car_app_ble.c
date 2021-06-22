@@ -119,9 +119,9 @@ void BlueNRG_Init(void)
 	/** Initialize BLE GAP layer with the following characteristics:
 	 * 		+ role = 0x01 -> BLE-FreeRTOS Car is Peripheral device
 	 *		+ privacy_enabled = 0x00 -> Privacy disabled
-	 *		+ device_name_char_len = 8
+	 *		+ device_name_char_len = 8 -> Length of device name characteristic values
 	 */
-	aci_gap_init(GAP_PERIPHERAL_ROLE, GAP_PRIVACY_DISABLED, 0x08, &hGAPService, &hDevNameChar, &hAppearanceChar);
+	aci_gap_init(GAP_PERIPHERAL_ROLE, GAP_PRIVACY_DISABLED, 0x17, &hGAPService, &hDevNameChar, &hAppearanceChar);
 
 	/* Configure further the services and characteristics to be included in the GATT database */
 	GAP_Peripheral_ConfigService();
@@ -143,9 +143,9 @@ void BlueNRG_Init(void)
 
 /**
   * @brief 	Sets up the device MAC address (first 3 bytes are fixed, while the last 3 bytes are randomized).
-  * @note		This MAC address will only be used to connect with other (Central devices). Central devices
-  *					will see this MAC address and use it to connect with this peripheral device. Peripheral will
-  *					include the MAC address in the advertisement data.
+  * @note	This MAC address will only be used to connect with other (Central devices). Central devices
+  *			will see this MAC address and use it to connect with this peripheral device. Peripheral will
+  *			include the MAC address in the advertisement data.
   */
 static void Setup_DeviceAddress(void)
 {
@@ -197,7 +197,7 @@ static void Setup_DeviceAddress(void)
   */
 static void GAP_Peripheral_ConfigService(void)
 {
-	/* 128-bit UUID Declarations for 1 Service and the 4 Characteristics underneath that Service */
+	/* 128-bit UUID Declarations for 1 Service and the 5 Characteristics underneath that Service */
 
 	/* Configure 128-bit Service UUID since Sciton does not have dedicated 16-bit Service
 	   UUID with Bluetooth SIG. Service UUID obtained through UUID generator.
@@ -384,6 +384,8 @@ static void GAP_Peripheral_ConfigService(void)
   */
 static void Server_ResetConnectionStatus(void)
 {
+	static FlagStatus FunctionAlreadyCalled = RESET;
+
 	/* Set to unknown/unregistered device role */
 	Conn_Details.deviceRole = 0xFF;
 
@@ -399,16 +401,22 @@ static void Server_ResetConnectionStatus(void)
 	/* Reset 6-byte MAC address */
 	BLUENRG_memset(&Conn_Details.BLE_Client_Addr[0], 0, 6);
 
-	/* This value becomes pdTRUE if giving the notification caused a task to unblock, and the unblocked task has a
-	   higher priority than the currently running task, in which a context switch should occur */
-	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+	if(FunctionAlreadyCalled == SET)
+	{
+		/* This value becomes pdTRUE if giving the notification caused a task to unblock, and the unblocked task has a
+		   higher priority than the currently running task, in which a context switch should occur */
+		BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 
-	/* Notify task that manages BLE connections that a disconnection just occurred */
-	xTaskNotifyFromISR(h_TaskBLEConn, FRTOS_TASK_NOTIF_BLE_DISCONNECTED, eSetBits, &xHigherPriorityTaskWoken);
+		/* Notify task that manages BLE connections that a disconnection just occurred */
+		xTaskNotifyFromISR(h_TaskBLEConn, FRTOS_TASK_NOTIF_BLE_DISCONNECTED, eSetBits, &xHigherPriorityTaskWoken);
 
-	/* Force context switch if xHigherPriorityTaskWoken == pdTRUE. This does nothing if xHigherPriorityTaskWoken
-   	   is pdFALSE */
-	portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+		/* Force context switch if xHigherPriorityTaskWoken == pdTRUE. This does nothing if xHigherPriorityTaskWoken
+		   is pdFALSE */
+		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+	}
+
+	/* Indication that function already executed once, and is allowed to send notifications to FreeRTOS tasks after first call */
+	FunctionAlreadyCalled = SET;
 }
 
 /**
@@ -533,6 +541,8 @@ void hci_le_connection_complete_event(uint8_t Status,
                                       uint8_t Master_Clock_Accuracy)
 
 {
+	static FlagStatus FunctionAlreadyCalled = RESET;
+
 	/* This callback function/event only saves connection handle */
 	Conn_Details.connectionhandle = Connection_Handle;
 
@@ -548,17 +558,22 @@ void hci_le_connection_complete_event(uint8_t Status,
 	/* Update connection status to connected */
 	Conn_Details.ConnectionStatus = STATE_CONNECTED;
 
-	/* This value becomes pdTRUE if giving the notification caused a task to unblock, and the unblocked task has a
-	   higher priority than the currently running task, in which a context switch should occur */
-	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+	if(FunctionAlreadyCalled == SET)
+	{
+		/* This value becomes pdTRUE if giving the notification caused a task to unblock, and the unblocked task has a
+		   higher priority than the currently running task, in which a context switch should occur */
+		BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 
-	/* Notify task that manages BLE connections that a connection was successfully created */
-	xTaskNotifyFromISR(h_TaskBLEConn, FRTOS_TASK_NOTIF_BLE_CONNECTED, eSetBits, &xHigherPriorityTaskWoken);
+		/* Notify task that manages BLE connections that a connection was successfully created */
+		xTaskNotifyFromISR(h_TaskBLEConn, FRTOS_TASK_NOTIF_BLE_CONNECTED, eSetBits, &xHigherPriorityTaskWoken);
 
-	/* Force context switch if xHigherPriorityTaskWoken == pdTRUE. This does nothing if xHigherPriorityTaskWoken
-   	   is pdFALSE */
-	portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+		/* Force context switch if xHigherPriorityTaskWoken == pdTRUE. This does nothing if xHigherPriorityTaskWoken
+		   is pdFALSE */
+		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+	}
 
+	/* Indication that function is called already, and can send notifications to FreeRTOS tasks next time it is executed */
+	FunctionAlreadyCalled = SET;
 } /* end hci_le_connection_complete_event() */
 
 /*******************************************************************************
@@ -612,7 +627,7 @@ void aci_gatt_attribute_modified_event(uint16_t Connection_Handle,
 	   are modified by Client only if Client acknowledges these features on Server) */
 	if(Attr_Handle == hClientWrite_Direction+1)
 	{
-		if(Attr_Data_Length == 1)
+		if(Attr_Data_Length >= 1)
 		{
 			if((Attr_Data[0] == 0x4E)||((Attr_Data[0] == 0x6E)))
 			{
@@ -646,12 +661,6 @@ void aci_gatt_attribute_modified_event(uint16_t Connection_Handle,
 				uint8_t buff[6] = {0x57, 0x45, 0x53, 0x54, 0x00, 0x00};
 				aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
 			}
-		}
-		else if(Attr_Data_Length == 2)
-		{
-
-
-
 		}
 	}
 
