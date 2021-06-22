@@ -82,7 +82,7 @@ static void Server_ResetConnectionStatus(void);
 
 /**
   * @brief	Main initialization function. To be called at system startup
-  * @note		Initializes BlueNRG-2 SPI Interface, HCI application, GAP and GATT layers
+  * @note	Initializes BlueNRG-2 SPI Interface, HCI application, GAP and GATT layers
   */
 void BlueNRG_Init(void)
 {
@@ -421,7 +421,7 @@ void BlueNRG_MakeDeviceDiscoverable(void)
 	uint8_t ret;
 
 	/* Name that will be broadcasted to Central Devices scanning */
-	const char local_name[] = {AD_TYPE_COMPLETE_LOCAL_NAME, 'F','R','T','S','-','B','L','E','-','C','a','r'};
+	const char local_name[] = {AD_TYPE_COMPLETE_LOCAL_NAME, 'F','R','T','S','B','L','E','-','C','a','r'};
 
 	/* Disable scan response: passive scan */
 	hci_le_set_scan_response_data(0, NULL);

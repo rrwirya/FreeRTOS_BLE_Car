@@ -33,45 +33,45 @@ extern "C" {
 #include <string.h>
 
 /*---------- Print messages from BLE2 files at user level -----------*/
-#define BLE2_DEBUG      0
+#define BLE2_DEBUG      				0
 /*---------- Print the data travelling over the SPI in the .csv format compatible with the ST BlueNRG GUI -----------*/
-#define PRINT_CSV_FORMAT      0
+#define PRINT_CSV_FORMAT      			0
 /*---------- Print messages from BLE2 files at middleware level -----------*/
-#define BLUENRG2_DEBUG      0
+#define BLUENRG2_DEBUG      			0
 /*---------- Number of Bytes reserved for HCI Read Packet -----------*/
-#define HCI_READ_PACKET_SIZE      128
+#define HCI_READ_PACKET_SIZE      		128
 /*---------- Number of Bytes reserved for HCI Max Payload -----------*/
-#define HCI_MAX_PAYLOAD_SIZE      128
+#define HCI_MAX_PAYLOAD_SIZE      		128
 /*---------- Number of incoming packets added to the list of packets to read -----------*/
-#define HCI_READ_PACKET_NUM_MAX      10
+#define HCI_READ_PACKET_NUM_MAX      	10
 /*---------- Scan Interval: time interval from when the Controller started its last scan until it begins the subsequent scan (for a number N, Time = N x 0.625 msec) -----------*/
-#define SCAN_P      16384
+#define SCAN_P      					16384
 /*---------- Scan Window: amount of time for the duration of the LE scan (for a number N, Time = N x 0.625 msec) -----------*/
-#define SCAN_L      16384
+#define SCAN_L      					16384
 /*---------- Supervision Timeout for the LE Link (for a number N, Time = N x 10 msec) -----------*/
-#define SUPERV_TIMEOUT      60
+#define SUPERV_TIMEOUT      			60
 /*---------- Minimum Connection Period (for a number N, Time = N x 1.25 msec) -----------*/
-#define CONN_P1      40
+#define CONN_P1      					40
 /*---------- Maximum Connection Period (for a number N, Time = N x 1.25 msec) -----------*/
-#define CONN_P2      40
+#define CONN_P2      					40
 /*---------- Minimum Connection Length (for a number N, Time = N x 0.625 msec) -----------*/
-#define CONN_L1      2000
+#define CONN_L1      					2000
 /*---------- Maximum Connection Length (for a number N, Time = N x 0.625 msec) -----------*/
-#define CONN_L2      2000
+#define CONN_L2      					2000
 /*---------- Advertising Type -----------*/
-#define ADV_DATA_TYPE      ADV_IND
+#define ADV_DATA_TYPE     	 			ADV_IND
 /*---------- Minimum Advertising Interval (for a number N, Time = N x 0.625 msec) -----------*/
-#define ADV_INTERV_MIN      2048
+#define ADV_INTERV_MIN      			160
 /*---------- Maximum Advertising Interval (for a number N, Time = N x 0.625 msec) -----------*/
-#define ADV_INTERV_MAX      4096
+#define ADV_INTERV_MAX      			320
 /*---------- Minimum Connection Event Interval (for a number N, Time = N x 1.25 msec) -----------*/
-#define L2CAP_INTERV_MIN      9
+#define L2CAP_INTERV_MIN     			9
 /*---------- Maximum Connection Event Interval (for a number N, Time = N x 1.25 msec) -----------*/
-#define L2CAP_INTERV_MAX      20
+#define L2CAP_INTERV_MAX      			20
 /*---------- Timeout Multiplier (for a number N, Time = N x 10 msec) -----------*/
-#define L2CAP_TIMEOUT_MULTIPLIER      600
+#define L2CAP_TIMEOUT_MULTIPLIER      	600
 /*---------- HCI Default Timeout -----------*/
-#define HCI_DEFAULT_TIMEOUT_MS        1000
+#define HCI_DEFAULT_TIMEOUT_MS        	1000
 
 #define BLUENRG_memcpy                memcpy
 #define BLUENRG_memset                memset

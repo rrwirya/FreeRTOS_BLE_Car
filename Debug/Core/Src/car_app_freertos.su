@@ -1,8 +1,8 @@
-car_app_freertos.c:64:6:FRTOS_Init_Mutex	4	static
-car_app_freertos.c:72:6:FRTOS_Init_Semaphores	4	static
-car_app_freertos.c:79:6:FRTOS_Init_SWTimers	4	static
-car_app_freertos.c:86:6:FRTOS_Init_Queues	4	static
-car_app_freertos.c:93:6:FRTOS_Init_Tasks	24	static
-car_app_freertos.c:144:13:Task_ManageBLEConnections	24	static
-car_app_freertos.c:190:13:Task_ParseBLEMessage	24	static
-car_app_freertos.c:223:13:Task_BlinkLEDIndicator	24	static
+car_app_freertos.c:223:13:Task_BlinkLEDIndicator	16	static
+car_app_freertos.c:190:13:Task_ParseBLEMessage	8	static
+car_app_freertos.c:144:13:Task_ManageBLEConnections	16	static
+car_app_freertos.c:64:6:FRTOS_Init_Mutex	0	static
+car_app_freertos.c:72:6:FRTOS_Init_Semaphores	0	static
+car_app_freertos.c:79:6:FRTOS_Init_SWTimers	0	static
+car_app_freertos.c:86:6:FRTOS_Init_Queues	0	static
+car_app_freertos.c:93:6:FRTOS_Init_Tasks	16	static

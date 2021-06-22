@@ -46,7 +46,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
  ../Core/Inc/adc.h ../Core/Inc/main.h ../Core/Inc/dma.h ../Core/Inc/i2c.h \
- ../Core/Inc/tim.h ../Core/Inc/gpio.h ../Core/Inc/car_app_freertos.h
+ ../Core/Inc/tim.h ../Core/Inc/gpio.h ../Core/Inc/car_app_freertos.h \
+ ../Core/Inc/car_app_ble.h ../BlueNRG-2/Target/bluenrg_conf.h
 
 ../Core/Inc/main.h:
 
@@ -159,3 +160,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/gpio.h:
 
 ../Core/Inc/car_app_freertos.h:
+
+../Core/Inc/car_app_ble.h:
+
+../BlueNRG-2/Target/bluenrg_conf.h:
