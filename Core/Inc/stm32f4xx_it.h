@@ -23,28 +23,44 @@
 #define __STM32F4xx_IT_H
 
 #ifdef __cplusplus
- extern "C" {
+	extern "C" {
 #endif
 
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
 
-/* USER CODE END Includes */
+/* Private includes ----------------------------------------------------------*/
+
+
+/* Exported defines ----------------------------------------------------------*/
+#define USE_MODIFIED_HARDFAULT_HANDLER						1
+
 
 /* Exported types ------------------------------------------------------------*/
-/* USER CODE BEGIN ET */
 
-/* USER CODE END ET */
+
+/* Exported variables --------------------------------------------------------*/
+
+#if USE_MODIFIED_HARDFAULT_HANDLER
+
+	/*--- Variables to observe ARM CPU registers */
+	extern unsigned long stacked_r0;
+	extern unsigned long stacked_r1;
+	extern unsigned long stacked_r2;
+	extern unsigned long stacked_r3;
+	extern unsigned long stacked_r12;
+	extern unsigned long stacked_lr;
+	extern unsigned long stacked_pc;
+	extern unsigned long stacked_psr;
+	extern unsigned long cfsr;
+	extern unsigned long bus_fault_address;
+	extern unsigned long memmanage_fault_address;
+
+#endif
 
 /* Exported constants --------------------------------------------------------*/
-/* USER CODE BEGIN EC */
 
-/* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
-/* USER CODE BEGIN EM */
 
-/* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
 void NMI_Handler(void);
@@ -60,9 +76,8 @@ void I2C1_EV_IRQHandler(void);
 void EXTI15_10_IRQHandler(void);
 void TIM5_IRQHandler(void);
 void DMA2_Stream0_IRQHandler(void);
-/* USER CODE BEGIN EFP */
 
-/* USER CODE END EFP */
+
 
 #ifdef __cplusplus
 }

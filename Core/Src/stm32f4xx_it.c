@@ -31,10 +31,29 @@
 
 
 /* Private define ------------------------------------------------------------*/
-#define USE_MODIFIED_HARDFAULT_HANDLER						1
 
 
 /* Private macro -------------------------------------------------------------*/
+
+
+/* Exported/Global variables -------------------------------------------------*/
+
+#if USE_MODIFIED_HARDFAULT_HANDLER
+
+	/*--- Variables to observe ARM CPU registers */
+	unsigned long stacked_r0;
+	unsigned long stacked_r1;
+	unsigned long stacked_r2;
+	unsigned long stacked_r3;
+	unsigned long stacked_r12;
+	unsigned long stacked_lr;
+	unsigned long stacked_pc;
+	unsigned long stacked_psr;
+	unsigned long cfsr;
+	unsigned long bus_fault_address;
+	unsigned long memmanage_fault_address;
+
+#endif
 
 
 /* Private variables ---------------------------------------------------------*/
@@ -106,18 +125,6 @@ void HardFault_Handler(void)
  */
 void HardFault_Handler_C(unsigned long * hardfault_args, unsigned int lr_value)
 {
-	unsigned long stacked_r0;
-	unsigned long stacked_r1;
-	unsigned long stacked_r2;
-	unsigned long stacked_r3;
-	unsigned long stacked_r12;
-	unsigned long stacked_lr;
-	unsigned long stacked_pc;
-	unsigned long stacked_psr;
-	unsigned long cfsr;
-	unsigned long bus_fault_address;
-	unsigned long memmanage_fault_address;
-
 	bus_fault_address       = SCB->BFAR;
 	memmanage_fault_address = SCB->MMFAR;
 	cfsr                    = SCB->CFSR;

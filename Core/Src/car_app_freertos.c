@@ -40,17 +40,20 @@
 	TaskHandle_t h_TaskBLEConn;
 	static TaskHandle_t h_TaskBLEMsg;
 	static TaskHandle_t h_TaskMcuLED;
+	static TaskHandle_t h_TaskBLEEvents;
 
 	/*--- Private variables related to BLE Connection Task ---*/
 
 
 	/*--- Variables to record remaining stack size of each tasks ---*/
-	static UBaseType_t Task0_RSS, Task1_RSS, Task2_RSS;
+	UBaseType_t Task0_RSS, Task1_RSS, Task2_RSS, Task3_RSS;
+
 
 /* Private function prototypes -------------------------------------------------------------------*/
 static void Task_ManageBLEConnections(void *argument);
 static void Task_ParseBLEMessage(void *argument);
 static void Task_BlinkLEDIndicator(void *argument);
+static void Task_ManageBLEEvents(void *argument);
 
 
 /* Private user code -----------------------------------------------------------------------------*/
@@ -116,12 +119,24 @@ void FRTOS_Init_Tasks(void)
 	/* Ensure task creation succeeds */
 	assert_param(TaskCreationStatus == pdPASS);
 
+	/* Create task that will blink MCU LED periodically */
 	TaskCreationStatus = xTaskCreate( Task_BlinkLEDIndicator,
 										"Task2 - MCULED",
 										TASK_STACKSIZE_MIN,
 										NULL,
 										TASK_PRIO_MCULED,
 										&h_TaskMcuLED);
+
+	/* Ensure task creation succeeds */
+	assert_param(TaskCreationStatus == pdPASS);
+
+	/* Create task that will continuously check for pending BLE events */
+	TaskCreationStatus = xTaskCreate( Task_ManageBLEEvents,
+										"Task3 - BLE Events",
+										TASK_STACKSIZE_DEFAULT,
+										NULL,
+										TASK_PRIO_BLE_EVENTS,
+										&h_TaskBLEEvents);
 
 	/* Ensure task creation succeeds */
 	assert_param(TaskCreationStatus == pdPASS);
@@ -154,9 +169,6 @@ static void Task_ManageBLEConnections(void *argument)
 
 	while(1)
 	{
-		/* This command is used to process BLE events */
-		// hci_user_evt_proc();
-
 		/* Block indefinitely until a notification to this task was obtained/received */
 		NotificationValue = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 
@@ -195,9 +207,6 @@ static void Task_ParseBLEMessage(void *argument)
 
 	while(1)
 	{
-		/* This command is used to process BLE events */
-		hci_user_evt_proc();
-
 		uint32_t NotificationValue = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 
 		/* Check remaining stack size for this particular task */
@@ -214,6 +223,29 @@ static void Task_ParseBLEMessage(void *argument)
 }
 
 
+static void Task_ManageBLEEvents(void *argument)
+{
+	/* Configure periodic BLE updates of 15ms */
+	const TickType_t DelayFrequency = pdMS_TO_TICKS(15);
+	TickType_t LastActiveTime;
+
+	while(1)
+	{
+		/* Check amount of unused stack. If returned value is 0, stack overflow has occurred */
+		Task3_RSS = uxTaskGetStackHighWaterMark(NULL);
+
+		/* Perform accurate blocking delay */
+		LastActiveTime = xTaskGetTickCount();
+		vTaskDelayUntil(&LastActiveTime, DelayFrequency);
+
+		/* Need to continuously call this function to process BLE events and connections */
+		hci_user_evt_proc();
+	}
+
+	/* Delete tasks automatically if somehow code reached this point */
+	vTaskDelete(NULL);
+}
+
 /**
  * @brief
  * @param
@@ -222,12 +254,13 @@ static void Task_ParseBLEMessage(void *argument)
  */
 static void Task_BlinkLEDIndicator(void *argument)
 {
+	/* Configure periodic delay */
 	const TickType_t DelayFrequency = pdMS_TO_TICKS(1000);
 	TickType_t LastActiveTime;
 
 	while(1)
 	{
-		/* Check ammount of unused stack. If returned value is 0, stack overflow has occurred */
+		/* Check amount of unused stack. If returned value is 0, stack overflow has occurred */
 		Task2_RSS = uxTaskGetStackHighWaterMark(NULL);
 
 		/* Perform accurate blocking delay */

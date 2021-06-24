@@ -88,8 +88,6 @@ void vApplicationIdleHook( void )
 	memory allocated by the kernel to any task that has since been deleted. */
 
 
-	hci_user_evt_proc();
-
 }
 /* USER CODE END 2 */
 

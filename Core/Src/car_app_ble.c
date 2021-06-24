@@ -627,38 +627,67 @@ void aci_gatt_attribute_modified_event(uint16_t Connection_Handle,
 	   are modified by Client only if Client acknowledges these features on Server) */
 	if(Attr_Handle == hClientWrite_Direction+1)
 	{
-		if((Attr_Data[0] == 0x4E)||((Attr_Data[0] == 0x6E)))
+		switch(Attr_Data[0])
 		{
-			/* If input character is 'N' or 'n' representing North or forward */
+			case BLEMOT_CMD_N:
+			case BLEMOT_CMD_N_LOWER:
+			{
+				/* If input character is 'N' or 'n' representing North or forward */
 
-			/* Notify ACK to master through fifth characteristic (verify direction) printing 'NORTH'*/
-			uint8_t buff[6] = {0x4E, 0x4F, 0x52, 0x54, 0x48, 0x00};
-			aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
-		}
-		else if((Attr_Data[0] == 0x45)||((Attr_Data[0] == 0x65)))
-		{
-			/* If input character is 'E' or 'e' representing East or right */
+				/* Notify ACK to master through fifth characteristic (verify direction) printing 'NORTH'*/
+				uint8_t buff[6] = {0x4E, 0x4F, 0x52, 0x54, 0x48, 0x00};
+				aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
+				break;
+			}
+			case BLEMOT_CMD_E:
+			case BLEMOT_CMD_E_LOWER:
+			{
+				/* If input character is 'E' or 'e' representing East or right */
 
-			/* Notify ACK to master through fifth characteristic (verify direction) printing 'EAST' */
-			uint8_t buff[6] = {0x45, 0x41, 0x53, 0x54, 0x00, 0x00};
-			aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
-		}
-		else if((Attr_Data[0] == 0x53)||((Attr_Data[0] == 0x73)))
-		{
-			/* If input character is 'S' or 's' representing South or backwards */
+				/* Notify ACK to master through fifth characteristic (verify direction) printing 'EAST' */
+				uint8_t buff[6] = {0x45, 0x41, 0x53, 0x54, 0x00, 0x00};
+				aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
+				break;
+			}
+			case BLEMOT_CMD_S:
+			case BLEMOT_CMD_S_LOWER:
+			{
+				/* If input character is 'S' or 's' representing South or backwards */
 
-			/* Notify ACK to master through fifth characteristic (verify direction) printing 'SOUTH' */
-			uint8_t buff[6] = {0x53, 0x4F, 0x55, 0x54, 0x48, 0x00};
-			aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
-		}
-		else if((Attr_Data[0] == 0x57)||(Attr_Data[0] == 0x77))
-		{
-			/* If input character is 'W' or 'w' representing West or left */
+				/* Notify ACK to master through fifth characteristic (verify direction) printing 'SOUTH' */
+				uint8_t buff[6] = {0x53, 0x4F, 0x55, 0x54, 0x48, 0x00};
+				aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
+				break;
+			}
+			case BLEMOT_CMD_W:
+			case BLEMOT_CMD_W_LOWER:
+			{
+				/* If input character is 'W' or 'w' representing West or left */
 
-			/* Notify ACK to master through fifth characteristic (verify direction) printing 'WEST' */
-			uint8_t buff[6] = {0x57, 0x45, 0x53, 0x54, 0x00, 0x00};
- 			aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
+				/* Notify ACK to master through fifth characteristic (verify direction) printing 'WEST' */
+				uint8_t buff[6] = {0x57, 0x45, 0x53, 0x54, 0x00, 0x00};
+				aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
+				break;
+			}
+			case BLEMOT_CMD_X:
+			case BLEMOT_CMD_X_LOWER:
+			{
+				/* If input character is 'X' or 'x' representing hard brake */
+
+				/* Notify ACK to master through fifth characteristic (verify direction) printing 'BRAKES' */
+				uint8_t buff[6] = {0x42, 0x52, 0x41, 0x4B, 0x45, 0x53};
+				aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
+				break;
+			}
+			default:
+			{
+				/* Print out 'WRONG' on read characteristic upon receiving unregistered command */
+				uint8_t buff[6] = {0x57, 0x52, 0x4F, 0x4E, 0x47, 0x00};
+				aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
+				break;
+			}
 		}
+
 	}
 
 } /* end aci_gatt_attribute_modified_event() */

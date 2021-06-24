@@ -26,6 +26,9 @@
 #include "tim.h"
 #include "gpio.h"
 
+#include "FreeRTOS.h"
+#include "task.h"
+
 
 /* Private includes ----------------------------------------------------------*/
 #include "car_app_freertos.h"
@@ -39,6 +42,10 @@
 
 
 /* Private macro -------------------------------------------------------------*/
+
+
+/* External variables --------------------------------------------------------*/
+extern UBaseType_t Task0_RSS, Task1_RSS, Task2_RSS, Task3_RSS;
 
 
 /* Private variables ---------------------------------------------------------*/

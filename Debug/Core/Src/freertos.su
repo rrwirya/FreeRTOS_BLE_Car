@@ -1,6 +1,6 @@
 freertos.c:66:13:configureTimerForRunTimeStats	0	static
 freertos.c:71:22:getRunTimeCounterValue	0	static
 freertos.c:78:6:vApplicationIdleHook	0	static
-freertos.c:97:6:vApplicationMallocFailedHook	0	static
-freertos.c:117:6:MX_FREERTOS_Init	0	static
-freertos.c:157:6:StartDefaultTask	8	static
+freertos.c:95:6:vApplicationMallocFailedHook	0	static
+freertos.c:115:6:MX_FREERTOS_Init	0	static
+freertos.c:155:6:StartDefaultTask	8	static

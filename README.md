@@ -1,6 +1,6 @@
 # WIP FreeRTOS-BLE-Car Project #
 
-**uC**  : STM32F411RE Nucleo-64 Board <br>
+**uC **  : STM32F411RE Nucleo-64 Board <br>
 **BLE** : X-NUCLEO-BNRG2A1 <br>
 **IDE** : STM32CubeIDE <br>
 
@@ -9,11 +9,15 @@
 	* Fix BLE initialization
 	* Test FreeRTOS tasks
 	* Status: Fixed - SPI clock speed too fast for BlueNRG-2 module, fixed by increasing APB1 Prescaler
-* June 24, 2021:
+* June 23, 2021:
 	* Fix BLE FreeRTOS HardFault crash
+	* Status: Fixed - FreeRTOS task that calls hci_user_evt_proc() did not have sufficient FreeRTOS heap
 
 ### Done:
-
+* June 24, 2021:
+	* Fixed SPI1 Bus Speed communication issue errors
+	* Fixed FreeRTOS and BLE insufficient task stack size by allocating a new task with larger stack size
+	* Implemented and tested 'N', 'E', 'S', 'W', 'X' commands on BLE Scanner App
 
 ### Errors:
 * BLE FreeRTOS HardFault crash:

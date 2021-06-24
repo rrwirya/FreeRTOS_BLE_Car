@@ -33,6 +33,20 @@ extern "C" {
  	#define MAX_DATA_EXCHANGE_BYTES								4
 	#define DATA_EXCHANGE_6_BYTES								6
 
+	/*--- BLE Motor Direction Commands ---*/
+	#define BLEMOT_CMD_N							((uint8_t)0x4E)
+	#define BLEMOT_CMD_N_LOWER						((uint8_t)0x6E)
+	#define BLEMOT_CMD_E							((uint8_t)0x45)
+	#define BLEMOT_CMD_E_LOWER						((uint8_t)0x65)
+	#define BLEMOT_CMD_S							((uint8_t)0x53)
+	#define BLEMOT_CMD_S_LOWER						((uint8_t)0x73)
+	#define BLEMOT_CMD_W							((uint8_t)0x57)
+	#define BLEMOT_CMD_W_LOWER						((uint8_t)0x77)
+	#define BLEMOT_CMD_X							((uint8_t)0x58)
+	#define BLEMOT_CMD_X_LOWER						((uint8_t)0x78)
+	#define BLEMOT_CMD_R							((uint8_t)0x52)		/* Might be unused since 'SOUTH' is reverse direction */
+	#define BLEMOT_CMD_R_LOWER						((uint8_t)0x72)		/* Might be unused since 'SOUTH' is reverse direction */
+
    /**
     * @brief GAP Roles
 	*
