@@ -312,27 +312,27 @@ static void GAP_Peripheral_ConfigService(void)
 
 	/* Configure the four characteristic defined above for the GATT server (peripheral) */\
 	/* Characteristic will be used to notify if car went above speed limit */
-	aci_gatt_add_char(hService, UUID_TYPE_128, &char_obj_1, 20, CHAR_PROP_NOTIFY,
+	aci_gatt_add_char(hService, UUID_TYPE_128, &char_obj_1, MAX_DATA_EXCHANGE_BYTES, CHAR_PROP_NOTIFY,
 											ATTR_PERMISSION_NONE, GATT_DONT_NOTIFY_EVENTS,
 											0x07, CHAR_VALUE_LEN_CONSTANT, &hClientNotify_OverSpeed);
 
 	/* Characteristic will be used to notify if car almost crashed */
-	aci_gatt_add_char(hService, UUID_TYPE_128, &char_obj_2, 20, CHAR_PROP_NOTIFY,
+	aci_gatt_add_char(hService, UUID_TYPE_128, &char_obj_2, MAX_DATA_EXCHANGE_BYTES, CHAR_PROP_NOTIFY,
 											ATTR_PERMISSION_NONE, GATT_DONT_NOTIFY_EVENTS,
 											0x07, CHAR_VALUE_LEN_CONSTANT, &hClientNotify_Crash);
 
 	/* Characteristic will be used to read velocity */
-	aci_gatt_add_char(hService, UUID_TYPE_128, &char_obj_3, 20, CHAR_PROP_READ,
+	aci_gatt_add_char(hService, UUID_TYPE_128, &char_obj_3, MAX_DATA_EXCHANGE_BYTES, CHAR_PROP_READ,
 											ATTR_PERMISSION_NONE, GATT_DONT_NOTIFY_EVENTS,
 											0x07, CHAR_VALUE_LEN_CONSTANT, &hClientRead_Velocity);
 
 	/* Characteristic will be used to receive input: N(orth), E(ast), S(outh), W(est), or SS (Stop) */
-	aci_gatt_add_char(hService, UUID_TYPE_128, &char_obj_4, 20, CHAR_PROP_WRITE|CHAR_PROP_WRITE_WITHOUT_RESP,
+	aci_gatt_add_char(hService, UUID_TYPE_128, &char_obj_4, MAX_DATA_EXCHANGE_BYTES, CHAR_PROP_WRITE|CHAR_PROP_WRITE_WITHOUT_RESP,
 											ATTR_PERMISSION_NONE, GATT_NOTIFY_ATTRIBUTE_WRITE,
 											0x07, CHAR_VALUE_LEN_CONSTANT, &hClientWrite_Direction);
 
 	/* Characteristic will be used to read the direction previously set/configured */
-	aci_gatt_add_char(hService, UUID_TYPE_128, &char_obj_5, 20, CHAR_PROP_READ,
+	aci_gatt_add_char(hService, UUID_TYPE_128, &char_obj_5, BLE_DATA_BYTES(6), CHAR_PROP_READ,
 											ATTR_PERMISSION_NONE, GATT_DONT_NOTIFY_EVENTS,
 											0x07, CHAR_VALUE_LEN_CONSTANT, &hClientRead_VerifyDirection);
 
@@ -352,19 +352,19 @@ static void GAP_Peripheral_ConfigService(void)
      characteristics.	*/
 
 	aci_gatt_add_char_desc(hService, hClientNotify_OverSpeed, UUID_TYPE_16, &DescriptorProperty,
-														128, 9, (uint8_t*)char1name, ATTR_PERMISSION_NONE, ATTR_ACCESS_READ_ONLY,
+														30, 9, (uint8_t*)char1name, ATTR_PERMISSION_NONE, ATTR_ACCESS_READ_ONLY,
 														GATT_DONT_NOTIFY_EVENTS, 7, CHAR_VALUE_LEN_CONSTANT, &hFirstCharDesc);
 	aci_gatt_add_char_desc(hService, hClientNotify_Crash, UUID_TYPE_16, &DescriptorProperty,
-														128, 9, (uint8_t*)char2name, ATTR_PERMISSION_NONE, ATTR_ACCESS_READ_ONLY,
+														30, 9, (uint8_t*)char2name, ATTR_PERMISSION_NONE, ATTR_ACCESS_READ_ONLY,
 														GATT_DONT_NOTIFY_EVENTS, 7, CHAR_VALUE_LEN_CONSTANT, &hSecondCharDesc);
 	aci_gatt_add_char_desc(hService, hClientRead_Velocity, UUID_TYPE_16, &DescriptorProperty,
-														128, 11, (uint8_t*)char3name, ATTR_PERMISSION_NONE, ATTR_ACCESS_READ_ONLY,
+														30, 11, (uint8_t*)char3name, ATTR_PERMISSION_NONE, ATTR_ACCESS_READ_ONLY,
 														GATT_DONT_NOTIFY_EVENTS, 7, CHAR_VALUE_LEN_CONSTANT, &hThirdCharDesc);
 	aci_gatt_add_char_desc(hService, hClientWrite_Direction, UUID_TYPE_16, &DescriptorProperty,
-														128, 10, (uint8_t*)char4name, ATTR_PERMISSION_NONE, ATTR_ACCESS_READ_WRITE,
+														30, 10, (uint8_t*)char4name, ATTR_PERMISSION_NONE, ATTR_ACCESS_READ_WRITE,
 														GATT_DONT_NOTIFY_EVENTS, 7, CHAR_VALUE_LEN_CONSTANT, &hFourthCharDesc);
 	aci_gatt_add_char_desc(hService, hClientRead_VerifyDirection, UUID_TYPE_16, &DescriptorProperty,
-															128, 11, (uint8_t*)char5name, ATTR_PERMISSION_NONE, ATTR_ACCESS_READ_ONLY,
+															30, 11, (uint8_t*)char5name, ATTR_PERMISSION_NONE, ATTR_ACCESS_READ_ONLY,
 															GATT_DONT_NOTIFY_EVENTS, 7, CHAR_VALUE_LEN_CONSTANT, &hFifthCharDesc);
 
 	/*
@@ -627,40 +627,37 @@ void aci_gatt_attribute_modified_event(uint16_t Connection_Handle,
 	   are modified by Client only if Client acknowledges these features on Server) */
 	if(Attr_Handle == hClientWrite_Direction+1)
 	{
-		if(Attr_Data_Length >= 1)
+		if((Attr_Data[0] == 0x4E)||((Attr_Data[0] == 0x6E)))
 		{
-			if((Attr_Data[0] == 0x4E)||((Attr_Data[0] == 0x6E)))
-			{
-				/* If input character is 'N' or 'n' representing North or forward */
+			/* If input character is 'N' or 'n' representing North or forward */
 
-				/* Notify ACK to master through fifth characteristic (verify direction) printing 'NORTH'*/
-				uint8_t buff[6] = {0x4E, 0x4F, 0x52, 0x54, 0x48, 0x00};
-				aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
-			}
-			else if((Attr_Data[0] == 0x45)||((Attr_Data[0] == 0x65)))
-			{
-				/* If input character is 'E' or 'e' representing East or right */
+			/* Notify ACK to master through fifth characteristic (verify direction) printing 'NORTH'*/
+			uint8_t buff[6] = {0x4E, 0x4F, 0x52, 0x54, 0x48, 0x00};
+			aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
+		}
+		else if((Attr_Data[0] == 0x45)||((Attr_Data[0] == 0x65)))
+		{
+			/* If input character is 'E' or 'e' representing East or right */
 
-				/* Notify ACK to master through fifth characteristic (verify direction) printing 'EAST' */
-				uint8_t buff[6] = {0x45, 0x41, 0x53, 0x54, 0x00, 0x00};
-				aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
-			}
-			else if((Attr_Data[0] == 0x53)||((Attr_Data[0] == 0x73)))
-			{
-				/* If input character is 'S' or 's' representing South or backwards */
+			/* Notify ACK to master through fifth characteristic (verify direction) printing 'EAST' */
+			uint8_t buff[6] = {0x45, 0x41, 0x53, 0x54, 0x00, 0x00};
+			aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
+		}
+		else if((Attr_Data[0] == 0x53)||((Attr_Data[0] == 0x73)))
+		{
+			/* If input character is 'S' or 's' representing South or backwards */
 
-				/* Notify ACK to master through fifth characteristic (verify direction) printing 'SOUTH' */
-				uint8_t buff[6] = {0x53, 0x4F, 0x55, 0x54, 0x48, 0x00};
-				aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
-			}
-			else if((Attr_Data[0] == 0x57)||(Attr_Data[0] == 0x77))
-			{
-				/* If input character is 'W' or 'w' representing West or left */
+			/* Notify ACK to master through fifth characteristic (verify direction) printing 'SOUTH' */
+			uint8_t buff[6] = {0x53, 0x4F, 0x55, 0x54, 0x48, 0x00};
+			aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
+		}
+		else if((Attr_Data[0] == 0x57)||(Attr_Data[0] == 0x77))
+		{
+			/* If input character is 'W' or 'w' representing West or left */
 
-				/* Notify ACK to master through fifth characteristic (verify direction) printing 'WEST' */
-				uint8_t buff[6] = {0x57, 0x45, 0x53, 0x54, 0x00, 0x00};
-				aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
-			}
+			/* Notify ACK to master through fifth characteristic (verify direction) printing 'WEST' */
+			uint8_t buff[6] = {0x57, 0x45, 0x53, 0x54, 0x00, 0x00};
+ 			aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
 		}
 	}
 

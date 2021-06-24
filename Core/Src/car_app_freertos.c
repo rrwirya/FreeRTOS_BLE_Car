@@ -155,7 +155,7 @@ static void Task_ManageBLEConnections(void *argument)
 	while(1)
 	{
 		/* This command is used to process BLE events */
-		hci_user_evt_proc();
+		// hci_user_evt_proc();
 
 		/* Block indefinitely until a notification to this task was obtained/received */
 		NotificationValue = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);

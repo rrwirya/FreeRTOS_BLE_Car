@@ -30,6 +30,8 @@ extern "C" {
 	#define DEVICE_TYPE_GAP_PERIPHERAL
 	#define TEXTSIZE											50
 	#define UART_TIMEOUT										1000
+ 	#define MAX_DATA_EXCHANGE_BYTES								4
+	#define DATA_EXCHANGE_6_BYTES								6
 
    /**
     * @brief GAP Roles
@@ -93,6 +95,7 @@ extern ConnectionStatus_t Conn_Details;
 
 
 /* Exported macro --------------------------------------------------------------------------------*/
+	#define BLE_DATA_BYTES(x)							(x)
 
 
 /* Exported Functions ----------------------------------------------------------------------------*/

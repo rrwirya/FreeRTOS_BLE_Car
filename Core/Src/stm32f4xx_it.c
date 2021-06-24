@@ -19,6 +19,7 @@
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
+#include <stdlib.h>
 #include "main.h"
 #include "stm32f4xx_it.h"
 
@@ -30,6 +31,7 @@
 
 
 /* Private define ------------------------------------------------------------*/
+#define USE_MODIFIED_HARDFAULT_HANDLER						1
 
 
 /* Private macro -------------------------------------------------------------*/
@@ -70,6 +72,90 @@ void NMI_Handler(void)
   /* USER CODE END NonMaskableInt_IRQn 1 */
 }
 
+#if USE_MODIFIED_HARDFAULT_HANDLER
+
+/**
+ * Code provided by Arm through: https://www.keil.com/appnotes/docs/apnt_209.asp
+ * App Note 209 that has a detailed description of HardFault_Handler can be found in the link
+ */
+
+/* Private Function Prototype */
+void HardFault_Handler_C(unsigned long * svc_args, unsigned int lr_value);
+
+
+/**
+ * HardFault handler wrapper in assembly language.
+ * It extracts the location of stack frame and passes it to the handler written
+ * in C as a pointer. We also extract the LR value as second parameter.
+ */
+void HardFault_Handler(void)
+{
+	asm(
+		"TST    LR, #4\n\t"
+		"ITE    EQ\n\t"
+		"MRSEQ  R0, MSP\n\t"
+		"MRSNE  R0, PSP\n\t"
+		"MOV    R1, LR\n\t"
+		"B      (HardFault_Handler_C)\n\t"
+	);
+}
+
+/**
+ * HardFault handler in C, with stack frame location and LR value extracted
+ * from the assembly wrapper as input parameters
+ */
+void HardFault_Handler_C(unsigned long * hardfault_args, unsigned int lr_value)
+{
+	unsigned long stacked_r0;
+	unsigned long stacked_r1;
+	unsigned long stacked_r2;
+	unsigned long stacked_r3;
+	unsigned long stacked_r12;
+	unsigned long stacked_lr;
+	unsigned long stacked_pc;
+	unsigned long stacked_psr;
+	unsigned long cfsr;
+	unsigned long bus_fault_address;
+	unsigned long memmanage_fault_address;
+
+	bus_fault_address       = SCB->BFAR;
+	memmanage_fault_address = SCB->MMFAR;
+	cfsr                    = SCB->CFSR;
+
+	stacked_r0  = ((unsigned long) hardfault_args[0]);
+	stacked_r1  = ((unsigned long) hardfault_args[1]);
+	stacked_r2  = ((unsigned long) hardfault_args[2]);
+	stacked_r3  = ((unsigned long) hardfault_args[3]);
+	stacked_r12 = ((unsigned long) hardfault_args[4]);
+	stacked_lr  = ((unsigned long) hardfault_args[5]);
+	stacked_pc  = ((unsigned long) hardfault_args[6]);
+	stacked_psr = ((unsigned long) hardfault_args[7]);
+
+	printf ("[HardFault]\n");
+	printf ("- Stack frame:\n");
+	printf (" R0  = %lx\n", stacked_r0);
+	printf (" R1  = %lx\n", stacked_r1);
+	printf (" R2  = %lx\n", stacked_r2);
+	printf (" R3  = %lx\n", stacked_r3);
+	printf (" R12 = %lx\n", stacked_r12);
+	printf (" LR  = %lx\n", stacked_lr);
+	printf (" PC  = %lx\n", stacked_pc);
+	printf (" PSR = %lx\n", stacked_psr);
+	printf ("- FSR/FAR:\n");
+	printf (" CFSR = %lx\n", cfsr);
+	printf (" HFSR = 0x%08X\n", (unsigned int)(SCB->HFSR));
+	printf (" DFSR = 0x%08X\n", (unsigned int)(SCB->DFSR));
+	printf (" AFSR = 0x%08X\n", (unsigned int)(SCB->AFSR));
+	if (cfsr & 0x0080) printf (" MMFAR = %lx\n", memmanage_fault_address);
+	if (cfsr & 0x8000) printf (" BFAR = %lx\n", bus_fault_address);
+	printf ("- Misc\n");
+	printf (" LR/EXC_RETURN= %x\n", lr_value);
+
+	while(1); // endless loop
+}
+
+#else
+
 /**
   * @brief This function handles Hard fault interrupt.
   */
@@ -84,6 +170,8 @@ void HardFault_Handler(void)
     /* USER CODE END W1_HardFault_IRQn 0 */
   }
 }
+
+#endif
 
 /**
   * @brief This function handles Memory management fault.

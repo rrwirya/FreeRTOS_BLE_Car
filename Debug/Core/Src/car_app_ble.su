@@ -5,4 +5,4 @@ car_app_ble.c:533:6:hci_le_connection_complete_event	32	static,ignoring_inline_a
 car_app_ble.c:586:6:hci_disconnection_complete_event	32	static,ignoring_inline_asm
 car_app_ble.c:603:6:aci_gatt_notification_event	0	static
 car_app_ble.c:619:6:aci_gatt_attribute_modified_event	24	static
-car_app_ble.c:679:6:BlueNRG_Loop	8	static
+car_app_ble.c:676:6:BlueNRG_Loop	8	static

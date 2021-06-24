@@ -51,6 +51,14 @@ void MX_FREERTOS_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 
+int _write(int file, char *ptr, int len)
+{
+	/* Implement your write code here, this is used by puts and printf for example */
+	for(uint16_t i=0 ; i<len ; i++)
+		ITM_SendChar((*ptr++));
+
+	return len;
+}
 
 /**
   * @brief  The application entry point.
@@ -72,6 +80,9 @@ int main(void)
   MX_I2C1_Init();
   MX_TIM5_Init();
   MX_TIM9_Init();
+
+  printf("STM32F411RE Nucleo-64 Board\n");
+  printf("FreeRTOS-BLE-Car\n\n");
 
   /* Init scheduler */
   osKernelInitialize();  /* Call init function for freertos objects (in freertos.c) */

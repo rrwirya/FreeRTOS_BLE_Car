@@ -27,37 +27,30 @@
 extern "C" {
 #endif
 
+
 /* Includes ------------------------------------------------------------------*/
 #include <stdio.h>
 #include "stm32f4xx_hal.h"
 
 #include "hci_tl_interface.h"
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
 
-/* USER CODE END Includes */
+
+/* Private includes ----------------------------------------------------------*/
+
 
 /* Exported types ------------------------------------------------------------*/
-/* USER CODE BEGIN ET */
 
-/* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
-/* USER CODE BEGIN EC */
 
-/* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
-/* USER CODE BEGIN EM */
 
-/* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
+int _write(int file, char *ptr, int len);
 void Error_Handler(void);
 
-/* USER CODE BEGIN EFP */
-
-/* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
 #define NUCLEO_PB_Pin GPIO_PIN_13
@@ -78,9 +71,9 @@ void Error_Handler(void);
 #define HCI_TL_RST_GPIO_Port GPIOA
 #define BLE_SCK_Pin GPIO_PIN_3
 #define BLE_SCK_GPIO_Port GPIOB
-/* USER CODE BEGIN Private defines */
 
-/* USER CODE END Private defines */
+
+
 
 #ifdef __cplusplus
 }
