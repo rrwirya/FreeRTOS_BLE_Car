@@ -1,7 +1,7 @@
 # WIP FreeRTOS-BLE-Car Project #
 
-**uC**  : STM32F411RE Nucleo-64 Board [Datasheet link](https://www.st.com/resource/en/datasheet/stm32f411re.pdf)<br>
-**BLE** : X-NUCLEO-BNRG2A1 [User Manual link](https://www.st.com/resource/en/user_manual/dm00673688-getting-started-with-the-xnucleobnrg2a1-ble-expansion-board-based-on-bluenrgm2sp-module-for-stm32-nucleo-stmicroelectronics.pdf)<br>
+**uC**  : [STM32F411RE Nucleo-64 Board](https://www.st.com/resource/en/datasheet/stm32f411re.pdf) <br>
+**BLE** : [X-NUCLEO-BNRG2A1](https://www.st.com/resource/en/user_manual/dm00673688-getting-started-with-the-xnucleobnrg2a1-ble-expansion-board-based-on-bluenrgm2sp-module-for-stm32-nucleo-stmicroelectronics.pdf) <br>
 **IDE** : STM32CubeIDE <br>
 
 ### TODO:
