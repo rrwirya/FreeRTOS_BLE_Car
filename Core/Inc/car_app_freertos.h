@@ -28,6 +28,12 @@ extern "C" {
 
 
 /* Exported variables ----------------------------------------------------------------------------*/
+	/*--- Variables related to Received BLE Message Task ---*/
+	extern __IO uint32_t g_CountDirForward;
+	extern __IO uint32_t g_CountDirLeft;
+	extern __IO uint32_t g_CountDirRight;
+	extern __IO uint32_t g_CountDirBack;
+	extern __IO uint32_t g_CountDirForceStop;
 
 
 /* Exported defines ------------------------------------------------------------------------------*/

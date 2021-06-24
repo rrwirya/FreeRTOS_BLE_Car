@@ -45,7 +45,7 @@
 
 
 /* External variables --------------------------------------------------------*/
-extern UBaseType_t Task0_RSS, Task1_RSS, Task2_RSS, Task3_RSS;
+extern UBaseType_t g_Task0_RSS, g_Task1_RSS, g_Task2_RSS, g_Task3_RSS;
 
 
 /* Private variables ---------------------------------------------------------*/

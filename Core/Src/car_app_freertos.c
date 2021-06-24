@@ -30,6 +30,15 @@
 
 
 /* Exported/Global variables ---------------------------------------------------------------------*/
+	/*--- Variables related to Received BLE Message Task ---*/
+	__IO uint32_t g_CountDirForward = 0;
+	__IO uint32_t g_CountDirLeft = 0;
+	__IO uint32_t g_CountDirRight = 0;
+	__IO uint32_t g_CountDirBack = 0;
+	__IO uint32_t g_CountDirForceStop = 0;
+
+	/*--- Variables to record remaining stack size of each tasks ---*/
+	UBaseType_t g_Task0_RSS, g_Task1_RSS, g_Task2_RSS, g_Task3_RSS;
 
 
 /* External variables ----------------------------------------------------------------------------*/
@@ -38,15 +47,17 @@
 /* Private variables -----------------------------------------------------------------------------*/
 	/*--- FreeRTOS Task Handles ---*/
 	TaskHandle_t h_TaskBLEConn;
-	static TaskHandle_t h_TaskBLEMsg;
-	static TaskHandle_t h_TaskMcuLED;
-	static TaskHandle_t h_TaskBLEEvents;
+	TaskHandle_t h_TaskBLEMsg;
+	static TaskHandle_t sh_TaskMcuLED;
+	static TaskHandle_t sh_TaskBLEEvents;
 
 	/*--- Private variables related to BLE Connection Task ---*/
 
 
-	/*--- Variables to record remaining stack size of each tasks ---*/
-	UBaseType_t Task0_RSS, Task1_RSS, Task2_RSS, Task3_RSS;
+	/*--- Private variables related to Received BLE Message Task ---*/
+
+
+
 
 
 /* Private function prototypes -------------------------------------------------------------------*/
@@ -64,6 +75,9 @@ static void Task_ManageBLEEvents(void *argument);
   **************************************************************************************************
   */
 
+/**
+ * @brief	Initializes all relevant FreeRTOS Mutexes
+ */
 void FRTOS_Init_Mutex(void)
 {
 
@@ -71,7 +85,9 @@ void FRTOS_Init_Mutex(void)
 
 }
 
-
+/**
+ * @brief	Initializes all relevant FreeRTOS Semaphores (binary/counting)
+ */
 void FRTOS_Init_Semaphores(void)
 {
 
@@ -79,6 +95,9 @@ void FRTOS_Init_Semaphores(void)
 
 }
 
+/**
+ * @brief 	Initializes all relevant FreeRTOS Software Timers
+ */
 void FRTOS_Init_SWTimers(void)
 {
 
@@ -86,6 +105,9 @@ void FRTOS_Init_SWTimers(void)
 
 }
 
+/**
+ * @brief	Initializes all relevant FreeRTOS Queues
+ */
 void FRTOS_Init_Queues(void)
 {
 
@@ -93,6 +115,9 @@ void FRTOS_Init_Queues(void)
 
 }
 
+/**
+ * @brief	Initializes all relevant FreeRTOS Tasks
+ */
 void FRTOS_Init_Tasks(void)
 {
 	BaseType_t TaskCreationStatus;
@@ -125,7 +150,7 @@ void FRTOS_Init_Tasks(void)
 										TASK_STACKSIZE_MIN,
 										NULL,
 										TASK_PRIO_MCULED,
-										&h_TaskMcuLED);
+										&sh_TaskMcuLED);
 
 	/* Ensure task creation succeeds */
 	assert_param(TaskCreationStatus == pdPASS);
@@ -136,7 +161,7 @@ void FRTOS_Init_Tasks(void)
 										TASK_STACKSIZE_DEFAULT,
 										NULL,
 										TASK_PRIO_BLE_EVENTS,
-										&h_TaskBLEEvents);
+										&sh_TaskBLEEvents);
 
 	/* Ensure task creation succeeds */
 	assert_param(TaskCreationStatus == pdPASS);
@@ -151,9 +176,8 @@ void FRTOS_Init_Tasks(void)
   */
 
 /**
- * @brief
- * @param
- * @retval
+ * @brief	FreeRTOS Task responsible for maintaining connection with GAP Central devices. If BLE device
+ *  		is not connected to any GAP Centrals, it will re-advertise itself.
  * @note
  */
 static void Task_ManageBLEConnections(void *argument)
@@ -172,7 +196,7 @@ static void Task_ManageBLEConnections(void *argument)
 		/* Block indefinitely until a notification to this task was obtained/received */
 		NotificationValue = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 
-		Task0_RSS = uxTaskGetStackHighWaterMark(NULL);
+		g_Task0_RSS = uxTaskGetStackHighWaterMark(NULL);
 
 		if(NotificationValue & FRTOS_TASK_NOTIF_BLE_CONNECTED)
 		{
@@ -194,9 +218,8 @@ static void Task_ManageBLEConnections(void *argument)
 }
 
 /**
- * @brief
- * @param
- * @retval
+ * @brief	FreeRTOS Task responsible for performing particular sets of actions based on received
+ * 			BLE messages/commands on the fourth characteristic
  * @note
  */
 static void Task_ParseBLEMessage(void *argument)
@@ -210,11 +233,28 @@ static void Task_ParseBLEMessage(void *argument)
 		uint32_t NotificationValue = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 
 		/* Check remaining stack size for this particular task */
-		Task1_RSS = uxTaskGetStackHighWaterMark(NULL);
+		g_Task1_RSS = uxTaskGetStackHighWaterMark(NULL);
 
-		if(NotificationValue & 0xFF)
+		if(NotificationValue & FRTOS_TASK_NOTIF_DIR_FORCESTOP)
 		{
-
+			/* Forcing car to stop moving is top priority */
+			g_CountDirForceStop++;
+		}
+		else if(NotificationValue & FRTOS_TASK_NOTIF_DIR_NORTH)
+		{
+			g_CountDirForward++;
+		}
+		else if(NotificationValue & FRTOS_TASK_NOTIF_DIR_EAST)
+		{
+			g_CountDirRight++;
+		}
+		else if(NotificationValue & FRTOS_TASK_NOTIF_DIR_SOUTH)
+		{
+			g_CountDirBack++;
+		}
+		else if(NotificationValue & FRTOS_TASK_NOTIF_DIR_WEST)
+		{
+			g_CountDirLeft++;
 		}
 	}
 
@@ -222,7 +262,11 @@ static void Task_ParseBLEMessage(void *argument)
 	vTaskDelete(NULL);
 }
 
-
+/**
+ * @brief	FreeRTOS Task responsible for managing BLE events. hci_user_evt_proc() needs to be called
+ * 			continuously to manage BLE connections and incoming/outgoing messages.
+ * @note
+ */
 static void Task_ManageBLEEvents(void *argument)
 {
 	/* Configure periodic BLE updates of 15ms */
@@ -232,7 +276,7 @@ static void Task_ManageBLEEvents(void *argument)
 	while(1)
 	{
 		/* Check amount of unused stack. If returned value is 0, stack overflow has occurred */
-		Task3_RSS = uxTaskGetStackHighWaterMark(NULL);
+		g_Task3_RSS = uxTaskGetStackHighWaterMark(NULL);
 
 		/* Perform accurate blocking delay */
 		LastActiveTime = xTaskGetTickCount();
@@ -247,9 +291,7 @@ static void Task_ManageBLEEvents(void *argument)
 }
 
 /**
- * @brief
- * @param
- * @retval
+ * @brief	FreeRTOS Task responsible for blinking on-board microcontroller LED every second
  * @note
  */
 static void Task_BlinkLEDIndicator(void *argument)
@@ -261,7 +303,7 @@ static void Task_BlinkLEDIndicator(void *argument)
 	while(1)
 	{
 		/* Check amount of unused stack. If returned value is 0, stack overflow has occurred */
-		Task2_RSS = uxTaskGetStackHighWaterMark(NULL);
+		g_Task2_RSS = uxTaskGetStackHighWaterMark(NULL);
 
 		/* Perform accurate blocking delay */
 		LastActiveTime = xTaskGetTickCount();

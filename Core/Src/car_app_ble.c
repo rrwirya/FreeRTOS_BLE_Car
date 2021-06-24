@@ -29,8 +29,9 @@
 
 
 /* External variables ----------------------------------------------------------------------------*/
-	/*--- FreeRTOS Task Handles ---*/
+	/*--- FreeRTOS Task Handles that will be notified from this file ---*/
 	extern TaskHandle_t h_TaskBLEConn;
+	extern TaskHandle_t h_TaskBLEMsg;
 
 
 /* Private typedef -------------------------------------------------------------------------------*/
@@ -42,9 +43,10 @@
 /* Private variables -----------------------------------------------------------------------------*/
 uint16_t discovery_time 			= 0;
 
-static uint16_t hGAPService;
-static uint16_t hDevNameChar;
-static uint16_t hAppearanceChar;
+	/*--- Variables that will store general BLE information ---*/
+	static uint16_t hGAPService;
+	static uint16_t hDevNameChar;
+	static uint16_t hAppearanceChar;
 
 	/*--- Variables that will hold service and characteristic UUIDs ---*/
 	Service_UUID_t suuid_object;
@@ -65,8 +67,17 @@ static uint16_t hAppearanceChar;
 	static uint16_t hFourthCharDesc;
 	static uint16_t hFifthCharDesc;
 
-	/* DISCOVERY/CONNECTIVITY DETAILS */
+	/*--- Discovery/Connectivity/Connection Details ---*/
 	ConnectionStatus_t Conn_Details;
+
+	/*--- Buffers containing text/char responses to BLE Scanner App ---*/
+	static const uint8_t s_BLEVerifyMessageLength			= 6;
+	static const uint8_t s_pTxNorthDirCharBuffer[6]			= {0x4E, 0x4F, 0x52, 0x54, 0x48, 0x00};
+	static const uint8_t s_pTxEastDirCharBuffer[6]			= {0x45, 0x41, 0x53, 0x54, 0x00, 0x00};
+	static const uint8_t s_pTxSouthDirCharBuffer[6]			= {0x53, 0x4F, 0x55, 0x54, 0x48, 0x00};
+	static const uint8_t s_pTxWestDirCharBuffer[6]			= {0x57, 0x45, 0x53, 0x54, 0x00, 0x00};
+	static const uint8_t s_pTxForceStopMovingCharBuffer[6]	= {0x42, 0x52, 0x41, 0x4B, 0x45, 0x53};
+	static const uint8_t s_pTxIncorrectMsgCharBuffer[6]		= {0x57, 0x52, 0x4F, 0x4E, 0x47, 0x00};
 
 
 /* Private macro ---------------------------------------------------------------------------------*/
@@ -633,57 +644,61 @@ void aci_gatt_attribute_modified_event(uint16_t Connection_Handle,
 			case BLEMOT_CMD_N_LOWER:
 			{
 				/* If input character is 'N' or 'n' representing North or forward */
-
 				/* Notify ACK to master through fifth characteristic (verify direction) printing 'NORTH'*/
-				uint8_t buff[6] = {0x4E, 0x4F, 0x52, 0x54, 0x48, 0x00};
-				aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
+				aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, s_BLEVerifyMessageLength, s_pTxNorthDirCharBuffer);
+
+				/* Notify appropriate FreeRTOS task that user wishes to move car forward */
+				xTaskNotify(h_TaskBLEMsg, FRTOS_TASK_NOTIF_DIR_NORTH, eSetBits);
 				break;
 			}
 			case BLEMOT_CMD_E:
 			case BLEMOT_CMD_E_LOWER:
 			{
 				/* If input character is 'E' or 'e' representing East or right */
-
 				/* Notify ACK to master through fifth characteristic (verify direction) printing 'EAST' */
-				uint8_t buff[6] = {0x45, 0x41, 0x53, 0x54, 0x00, 0x00};
-				aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
+				aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, s_BLEVerifyMessageLength, s_pTxEastDirCharBuffer);
+
+				/* Notify appropriate FreeRTOS task that user wishes to move car right */
+				xTaskNotify(h_TaskBLEMsg, FRTOS_TASK_NOTIF_DIR_EAST, eSetBits);
 				break;
 			}
 			case BLEMOT_CMD_S:
 			case BLEMOT_CMD_S_LOWER:
 			{
 				/* If input character is 'S' or 's' representing South or backwards */
-
 				/* Notify ACK to master through fifth characteristic (verify direction) printing 'SOUTH' */
-				uint8_t buff[6] = {0x53, 0x4F, 0x55, 0x54, 0x48, 0x00};
-				aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
+				aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, s_BLEVerifyMessageLength, s_pTxSouthDirCharBuffer);
+
+				/* Notify appropriate FreeRTOS task that user wishes to move car backwards */
+				xTaskNotify(h_TaskBLEMsg, FRTOS_TASK_NOTIF_DIR_SOUTH, eSetBits);
 				break;
 			}
 			case BLEMOT_CMD_W:
 			case BLEMOT_CMD_W_LOWER:
 			{
 				/* If input character is 'W' or 'w' representing West or left */
-
 				/* Notify ACK to master through fifth characteristic (verify direction) printing 'WEST' */
-				uint8_t buff[6] = {0x57, 0x45, 0x53, 0x54, 0x00, 0x00};
-				aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
+				aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, s_BLEVerifyMessageLength, s_pTxWestDirCharBuffer);
+
+				/* Notify appropriate FreeRTOS task that user wishes to move car left */
+				xTaskNotify(h_TaskBLEMsg, FRTOS_TASK_NOTIF_DIR_WEST, eSetBits);
 				break;
 			}
 			case BLEMOT_CMD_X:
 			case BLEMOT_CMD_X_LOWER:
 			{
 				/* If input character is 'X' or 'x' representing hard brake */
-
 				/* Notify ACK to master through fifth characteristic (verify direction) printing 'BRAKES' */
-				uint8_t buff[6] = {0x42, 0x52, 0x41, 0x4B, 0x45, 0x53};
-				aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
+				aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, s_BLEVerifyMessageLength, s_pTxForceStopMovingCharBuffer);
+
+				/* Notify appropriate FreeRTOS task that user wishes to instantly stop moving the car */
+				xTaskNotify(h_TaskBLEMsg, FRTOS_TASK_NOTIF_DIR_FORCESTOP, eSetBits);
 				break;
 			}
 			default:
 			{
 				/* Print out 'WRONG' on read characteristic upon receiving unregistered command */
-				uint8_t buff[6] = {0x57, 0x52, 0x4F, 0x4E, 0x47, 0x00};
-				aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, 6, buff);
+				aci_gatt_update_char_value(hService, hClientRead_VerifyDirection, 0, s_BLEVerifyMessageLength, s_pTxIncorrectMsgCharBuffer);
 				break;
 			}
 		}

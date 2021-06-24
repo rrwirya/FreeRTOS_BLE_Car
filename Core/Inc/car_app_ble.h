@@ -72,8 +72,17 @@ extern "C" {
 
 
 	/*--- FreeRTOS Task Notification Values ---*/
+
+	/* Notification values related to BLE connectivity */
 	#define FRTOS_TASK_NOTIF_BLE_DISCONNECTED				((uint16_t)0x0001)
 	#define FRTOS_TASK_NOTIF_BLE_CONNECTED					((uint16_t)0x0002)
+
+	/* Notification values related to Motor directions */
+	#define FRTOS_TASK_NOTIF_DIR_NORTH						((uint16_t)0x0001)
+	#define FRTOS_TASK_NOTIF_DIR_EAST						((uint16_t)0x0002)
+	#define FRTOS_TASK_NOTIF_DIR_SOUTH						((uint16_t)0x0004)
+	#define FRTOS_TASK_NOTIF_DIR_WEST						((uint16_t)0x0008)
+	#define FRTOS_TASK_NOTIF_DIR_FORCESTOP					((uint16_t)0x8000)
 
 
 /* Exported types --------------------------------------------------------------------------------*/
