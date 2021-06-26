@@ -53,25 +53,29 @@ void Error_Handler(void);
 
 
 /* Private defines -----------------------------------------------------------*/
-#define NUCLEO_PB_Pin GPIO_PIN_13
-#define NUCLEO_PB_GPIO_Port GPIOC
-#define NUCLEO_PB_EXTI_IRQn EXTI15_10_IRQn
-#define HCI_TL_SPI_EXTI_Pin GPIO_PIN_0
-#define HCI_TL_SPI_EXTI_GPIO_Port GPIOA
-#define HCI_TL_SPI_EXTI_EXTI_IRQn EXTI0_IRQn
-#define BLE_CS_Pin GPIO_PIN_1
-#define BLE_CS_GPIO_Port GPIOA
-#define NUCLEO_LED_Pin GPIO_PIN_5
-#define NUCLEO_LED_GPIO_Port GPIOA
-#define BLE_MISO_Pin GPIO_PIN_6
-#define BLE_MISO_GPIO_Port GPIOA
-#define BLE_MOSI_Pin GPIO_PIN_7
-#define BLE_MOSI_GPIO_Port GPIOA
-#define HCI_TL_RST_Pin GPIO_PIN_8
-#define HCI_TL_RST_GPIO_Port GPIOA
-#define BLE_SCK_Pin GPIO_PIN_3
-#define BLE_SCK_GPIO_Port GPIOB
+	/*--- Nucleo-64 Board Pins ---*/
+	#define NUCLEO_PB_Pin GPIO_PIN_13
+	#define NUCLEO_PB_GPIO_Port GPIOC
+	#define NUCLEO_PB_EXTI_IRQn EXTI15_10_IRQn
+	#define NUCLEO_LED_Pin 			GPIO_PIN_5
+	#define NUCLEO_LED_GPIO_Port 	GPIOA
 
+	/*--- X-NUCLEO-BNRG2A1 Pins ---*/
+	#define BLE_SCK_Pin 				GPIO_PIN_3
+	#define BLE_SCK_GPIO_Port 			GPIOB
+	#define BLE_MISO_Pin 				GPIO_PIN_6
+	#define BLE_MISO_GPIO_Port 			GPIOA
+	#define BLE_MOSI_Pin 				GPIO_PIN_7
+	#define BLE_MOSI_GPIO_Port 			GPIOA
+	#define BLE_CS_Pin 					GPIO_PIN_1
+	#define BLE_CS_GPIO_Port 			GPIOA
+	#define HCI_TL_RST_Pin 				GPIO_PIN_8
+	#define HCI_TL_RST_GPIO_Port 		GPIOA
+	#define HCI_TL_SPI_EXTI_Pin 		GPIO_PIN_0
+	#define HCI_TL_SPI_EXTI_GPIO_Port 	GPIOA
+	#define HCI_TL_SPI_EXTI_EXTI_IRQn 	EXTI0_IRQn
+
+	/*--- PWM Pins ---*/
 
 
 

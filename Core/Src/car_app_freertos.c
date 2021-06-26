@@ -124,7 +124,7 @@ void FRTOS_Init_Tasks(void)
 
 	/* Create task that will maintain BLE Connection */
 	TaskCreationStatus = xTaskCreate( Task_ManageBLEConnections,
-										"Task1 - BLE Connection",
+										"Task0 - BLE Connection",
 										TASK_STACKSIZE_DEFAULT,
 										NULL,
 										TASK_PRIO_BLE_CONN,
