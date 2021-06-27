@@ -2,8 +2,10 @@
 /**
   **************************************************************************************************
   * @file           : car_app_freertos.c
-  * @brief          :
-  * @author			:
+  * @brief          : This file contains all the FreeRTOS tasks running and controlling the STM32F411RE
+  *  				  and other features pertaining the car. Also contains all FreeRTOS object
+  *  				  initializations and Timer routines.
+  * @author			: Reggie W
   **************************************************************************************************
   */
 
@@ -18,6 +20,7 @@
 
 /* Private includes ------------------------------------------------------------------------------*/
 #include "car_app_ble.h"
+#include "motordriver.h"
 
 
 /* Private typedef -------------------------------------------------------------------------------*/

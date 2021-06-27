@@ -63,7 +63,10 @@ Core/Src/car_app_freertos.o: ../Core/Src/car_app_freertos.c \
  ../Middlewares/ST/BlueNRG-2/includes/bluenrg1_gap.h \
  ../Middlewares/ST/BlueNRG-2/includes/link_layer.h \
  ../Middlewares/ST/BlueNRG-2/includes/bluenrg1_gatt_server.h \
- ../Middlewares/ST/BlueNRG-2/includes/sm.h ../Core/Inc/car_app_ble.h
+ ../Middlewares/ST/BlueNRG-2/includes/sm.h ../Core/Inc/car_app_ble.h \
+ D:/Reggie/Projects/FreeRTOS-BLE-Car/F411RE_Car_FW/ApplicationDrivers/Inc/motordriver.h \
+ D:/Reggie/Projects/FreeRTOS-BLE-Car/F411RE_Car_FW/ApplicationDrivers/Inc/motordriver_io.h \
+ ../Core/Inc/main.h
 
 ../Core/Inc/car_app_freertos.h:
 
@@ -202,3 +205,9 @@ Core/Src/car_app_freertos.o: ../Core/Src/car_app_freertos.c \
 ../Middlewares/ST/BlueNRG-2/includes/sm.h:
 
 ../Core/Inc/car_app_ble.h:
+
+D:/Reggie/Projects/FreeRTOS-BLE-Car/F411RE_Car_FW/ApplicationDrivers/Inc/motordriver.h:
+
+D:/Reggie/Projects/FreeRTOS-BLE-Car/F411RE_Car_FW/ApplicationDrivers/Inc/motordriver_io.h:
+
+../Core/Inc/main.h:

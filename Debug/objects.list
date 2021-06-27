@@ -1,3 +1,5 @@
+"ApplicationDrivers/Src/motordriver.o"
+"ApplicationDrivers/Src/motordriver_io.o"
 "BlueNRG-2/Target/hci_tl_interface.o"
 "Core/Src/adc.o"
 "Core/Src/car_app_ble.o"

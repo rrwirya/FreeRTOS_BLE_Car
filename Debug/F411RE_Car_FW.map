@@ -161,6 +161,197 @@ Discarded input sections
  .ARM.exidx     0x0000000000000000       0x10 c:/st/stm32cubeide_1.6.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
  .ARM.attributes
                 0x0000000000000000       0x1c c:/st/stm32cubeide_1.6.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver.o
+ .text          0x0000000000000000        0x0 ApplicationDrivers/Src/motordriver.o
+ .data          0x0000000000000000        0x0 ApplicationDrivers/Src/motordriver.o
+ .bss           0x0000000000000000        0x0 ApplicationDrivers/Src/motordriver.o
+ .debug_info    0x0000000000000000       0x21 ApplicationDrivers/Src/motordriver.o
+ .debug_abbrev  0x0000000000000000       0x13 ApplicationDrivers/Src/motordriver.o
+ .debug_aranges
+                0x0000000000000000       0x18 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x11 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0xaa8 ApplicationDrivers/Src/motordriver.o
+ .debug_line    0x0000000000000000       0x48 ApplicationDrivers/Src/motordriver.o
+ .debug_str     0x0000000000000000     0x2dc5 ApplicationDrivers/Src/motordriver.o
+ .comment       0x0000000000000000       0x54 ApplicationDrivers/Src/motordriver.o
+ .ARM.attributes
+                0x0000000000000000       0x39 ApplicationDrivers/Src/motordriver.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
+ .text          0x0000000000000000        0x0 ApplicationDrivers/Src/motordriver_io.o
+ .data          0x0000000000000000        0x0 ApplicationDrivers/Src/motordriver_io.o
+ .bss           0x0000000000000000        0x0 ApplicationDrivers/Src/motordriver_io.o
+ .text.__MOTOR_ConfigureSpeed
+                0x0000000000000000       0x44 ApplicationDrivers/Src/motordriver_io.o
+ .debug_info    0x0000000000000000     0x113b ApplicationDrivers/Src/motordriver_io.o
+ .debug_abbrev  0x0000000000000000      0x1ff ApplicationDrivers/Src/motordriver_io.o
+ .debug_loc     0x0000000000000000       0x48 ApplicationDrivers/Src/motordriver_io.o
+ .debug_aranges
+                0x0000000000000000       0x20 ApplicationDrivers/Src/motordriver_io.o
+ .debug_ranges  0x0000000000000000       0x10 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x3b6 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0xaa8 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x22 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x4c ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x18 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x94 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x3c ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x34 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x16 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x57 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x97 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x339 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0xfd ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x10 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x16 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x43 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x34 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x10 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x58 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x71 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x1c ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x12a ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x10 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x6a ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x1c ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x52 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x22 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x10 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x40 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0xd5 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x1c ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x3d ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x16 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x145 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x2ae ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x2e ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x28 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x103 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x1df ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x1c ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x22 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0xd9 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000     0x102d ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x11f ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000     0xb937 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x43 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000     0x3659 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x56 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x447 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x9fe ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x117 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x11b ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x82 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x15f ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x287 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x5f ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x236 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x9e1 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x38b ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x17d ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0xf9 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x132 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x264 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x2e ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x1b5 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x22 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0xd6 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x11a ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x85 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x89 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x225 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x8d1 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x47 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000      0x126 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x2e ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x82 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x6a ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x40 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x70 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0x1c ApplicationDrivers/Src/motordriver_io.o
+ .debug_line    0x0000000000000000      0xa2e ApplicationDrivers/Src/motordriver_io.o
+ .debug_str     0x0000000000000000    0x97c9d ApplicationDrivers/Src/motordriver_io.o
+ .comment       0x0000000000000000       0x54 ApplicationDrivers/Src/motordriver_io.o
+ .debug_frame   0x0000000000000000       0x20 ApplicationDrivers/Src/motordriver_io.o
+ .ARM.attributes
+                0x0000000000000000       0x34 ApplicationDrivers/Src/motordriver_io.o
  .group         0x0000000000000000        0xc BlueNRG-2/Target/hci_tl_interface.o
  .group         0x0000000000000000        0xc BlueNRG-2/Target/hci_tl_interface.o
  .group         0x0000000000000000        0xc BlueNRG-2/Target/hci_tl_interface.o
@@ -233,6 +424,61 @@ Discarded input sections
  .text          0x0000000000000000        0x0 BlueNRG-2/Target/hci_tl_interface.o
  .data          0x0000000000000000        0x0 BlueNRG-2/Target/hci_tl_interface.o
  .bss           0x0000000000000000        0x0 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000      0xaa8 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000      0x2ae BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x2e BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x28 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x22 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000      0x103 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x6a BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000      0x1df BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x1c BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x22 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000     0x102d BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000      0x11f BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000     0xb937 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x43 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000     0x3659 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000      0x447 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000      0x9fe BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000      0x117 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000      0x11b BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x82 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000      0x15f BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000      0x287 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x5f BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000      0x236 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000      0x9e1 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000      0x38b BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000      0x17d BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0xf9 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000      0x132 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000      0x264 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x2e BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000      0x1b5 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x22 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0xd6 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000      0x11a BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x85 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x89 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000      0x225 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000      0x8d1 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x47 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000      0x126 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x82 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x6a BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x40 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x18 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x3c BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x34 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x16 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x43 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x34 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x10 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x58 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x71 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000       0x1c BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000000      0x12a BlueNRG-2/Target/hci_tl_interface.o
  .group         0x0000000000000000        0xc Core/Src/adc.o
  .group         0x0000000000000000        0xc Core/Src/adc.o
  .group         0x0000000000000000        0xc Core/Src/adc.o
@@ -318,9 +564,17 @@ Discarded input sections
                 0x0000000000000000       0x38 Core/Src/adc.o
  .debug_macro   0x0000000000000000      0xaa8 Core/Src/adc.o
  .debug_macro   0x0000000000000000       0x22 Core/Src/adc.o
+ .debug_macro   0x0000000000000000       0x4c Core/Src/adc.o
  .debug_macro   0x0000000000000000       0x18 Core/Src/adc.o
+ .debug_macro   0x0000000000000000       0x94 Core/Src/adc.o
  .debug_macro   0x0000000000000000       0x3c Core/Src/adc.o
  .debug_macro   0x0000000000000000       0x34 Core/Src/adc.o
+ .debug_macro   0x0000000000000000       0x16 Core/Src/adc.o
+ .debug_macro   0x0000000000000000       0x57 Core/Src/adc.o
+ .debug_macro   0x0000000000000000       0x97 Core/Src/adc.o
+ .debug_macro   0x0000000000000000      0x339 Core/Src/adc.o
+ .debug_macro   0x0000000000000000       0xfd Core/Src/adc.o
+ .debug_macro   0x0000000000000000       0x10 Core/Src/adc.o
  .debug_macro   0x0000000000000000       0x16 Core/Src/adc.o
  .debug_macro   0x0000000000000000       0x43 Core/Src/adc.o
  .debug_macro   0x0000000000000000       0x34 Core/Src/adc.o
@@ -329,7 +583,18 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x71 Core/Src/adc.o
  .debug_macro   0x0000000000000000       0x1c Core/Src/adc.o
  .debug_macro   0x0000000000000000      0x12a Core/Src/adc.o
+ .debug_macro   0x0000000000000000       0x10 Core/Src/adc.o
  .debug_macro   0x0000000000000000       0x6a Core/Src/adc.o
+ .debug_macro   0x0000000000000000       0x1c Core/Src/adc.o
+ .debug_macro   0x0000000000000000       0x52 Core/Src/adc.o
+ .debug_macro   0x0000000000000000       0x22 Core/Src/adc.o
+ .debug_macro   0x0000000000000000       0x10 Core/Src/adc.o
+ .debug_macro   0x0000000000000000       0x40 Core/Src/adc.o
+ .debug_macro   0x0000000000000000       0xd5 Core/Src/adc.o
+ .debug_macro   0x0000000000000000       0x1c Core/Src/adc.o
+ .debug_macro   0x0000000000000000       0x3d Core/Src/adc.o
+ .debug_macro   0x0000000000000000       0x16 Core/Src/adc.o
+ .debug_macro   0x0000000000000000      0x145 Core/Src/adc.o
  .debug_macro   0x0000000000000000      0x2ae Core/Src/adc.o
  .debug_macro   0x0000000000000000       0x2e Core/Src/adc.o
  .debug_macro   0x0000000000000000       0x28 Core/Src/adc.o
@@ -337,11 +602,13 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x1df Core/Src/adc.o
  .debug_macro   0x0000000000000000       0x1c Core/Src/adc.o
  .debug_macro   0x0000000000000000       0x22 Core/Src/adc.o
+ .debug_macro   0x0000000000000000       0xd9 Core/Src/adc.o
  .debug_macro   0x0000000000000000     0x102d Core/Src/adc.o
  .debug_macro   0x0000000000000000      0x11f Core/Src/adc.o
  .debug_macro   0x0000000000000000     0xb937 Core/Src/adc.o
  .debug_macro   0x0000000000000000       0x43 Core/Src/adc.o
  .debug_macro   0x0000000000000000     0x3659 Core/Src/adc.o
+ .debug_macro   0x0000000000000000       0x56 Core/Src/adc.o
  .debug_macro   0x0000000000000000      0x447 Core/Src/adc.o
  .debug_macro   0x0000000000000000      0x9fe Core/Src/adc.o
  .debug_macro   0x0000000000000000      0x117 Core/Src/adc.o
@@ -368,9 +635,11 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x8d1 Core/Src/adc.o
  .debug_macro   0x0000000000000000       0x47 Core/Src/adc.o
  .debug_macro   0x0000000000000000      0x126 Core/Src/adc.o
+ .debug_macro   0x0000000000000000       0x2e Core/Src/adc.o
  .debug_macro   0x0000000000000000       0x82 Core/Src/adc.o
  .debug_macro   0x0000000000000000       0x6a Core/Src/adc.o
  .debug_macro   0x0000000000000000       0x40 Core/Src/adc.o
+ .debug_macro   0x0000000000000000       0x70 Core/Src/adc.o
  .group         0x0000000000000000        0xc Core/Src/car_app_ble.o
  .group         0x0000000000000000        0xc Core/Src/car_app_ble.o
  .group         0x0000000000000000        0xc Core/Src/car_app_ble.o
@@ -662,6 +931,7 @@ Discarded input sections
  .group         0x0000000000000000        0xc Core/Src/car_app_freertos.o
  .group         0x0000000000000000        0xc Core/Src/car_app_freertos.o
  .group         0x0000000000000000        0xc Core/Src/car_app_freertos.o
+ .group         0x0000000000000000        0xc Core/Src/car_app_freertos.o
  .text          0x0000000000000000        0x0 Core/Src/car_app_freertos.o
  .data          0x0000000000000000        0x0 Core/Src/car_app_freertos.o
  .bss           0x0000000000000000        0x0 Core/Src/car_app_freertos.o
@@ -774,6 +1044,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x19b Core/Src/car_app_freertos.o
  .debug_macro   0x0000000000000000      0x166 Core/Src/car_app_freertos.o
  .debug_macro   0x0000000000000000      0x103 Core/Src/car_app_freertos.o
+ .debug_macro   0x0000000000000000       0x1c Core/Src/car_app_freertos.o
  .group         0x0000000000000000        0xc Core/Src/custom_bus.o
  .group         0x0000000000000000        0xc Core/Src/custom_bus.o
  .group         0x0000000000000000        0xc Core/Src/custom_bus.o
@@ -8598,6 +8869,8 @@ Linker script and memory map
 LOAD c:/st/stm32cubeide_1.6.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
 LOAD c:/st/stm32cubeide_1.6.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 LOAD c:/st/stm32cubeide_1.6.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
+LOAD ApplicationDrivers/Src/motordriver.o
+LOAD ApplicationDrivers/Src/motordriver_io.o
 LOAD BlueNRG-2/Target/hci_tl_interface.o
 LOAD Core/Src/adc.o
 LOAD Core/Src/car_app_ble.o
@@ -10751,335 +11024,257 @@ LOAD c:/st/stm32cubeide_1.6.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_ranges  0x0000000000005870       0xb8 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
  .debug_ranges  0x0000000000005928       0x80 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
 
-.debug_macro    0x0000000000000000    0x212be
+.debug_macro    0x0000000000000000     0xb442
  .debug_macro   0x0000000000000000      0x35a BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x000000000000035a      0xaa8 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000000e02       0x16 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000000e18      0x2ae BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000010c6       0x2e BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000010f4       0x28 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x000000000000111c       0x22 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x000000000000113e       0x8e BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000011cc       0x51 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x000000000000121d      0x103 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000001320       0x6a BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x000000000000138a      0x1df BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000001569       0x1c BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000001585       0x22 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000015a7       0xdf BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000001686     0x102d BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000026b3      0x11f BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000027d2     0xb937 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x000000000000e109       0x43 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x000000000000e14c     0x3659 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000117a5      0x174 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000011919       0x5c BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000011975      0x447 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000011dbc      0x9fe BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000127ba      0x117 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000128d1      0x11b BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000129ec       0x82 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000012a6e      0x15f BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000012bcd      0x287 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000012e54       0x5f BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000012eb3      0x236 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000130e9      0x9e1 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000013aca      0x38b BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000013e55      0x17d BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000013fd2       0xf9 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000140cb      0x132 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000141fd      0x264 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000014461       0x2e BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x000000000001448f      0x1b5 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000014644       0x22 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000014666       0xd6 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x000000000001473c      0x11a BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000014856       0x85 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000148db       0x89 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000014964      0x225 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000014b89      0x8d1 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x000000000001545a       0x47 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000154a1      0x126 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000155c7       0x28 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000155ef       0x82 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000015671       0x6a BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000156db       0x40 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x000000000001571b       0x46 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000015761       0x52 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000157b3       0x18 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000157cb       0x3c BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000015807       0x34 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x000000000001583b       0x16 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000015851       0x43 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000015894       0x34 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000158c8       0x10 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000158d8       0x58 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000015930       0x71 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000159a1       0x1c BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000159bd      0x12a BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000015ae7      0x333 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000015e1a       0x10 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000015e2a       0x35 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000015e5f       0x20 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000015e7f       0xa0 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000015f1f      0x3b1 Core/Src/adc.o
- .debug_macro   0x00000000000162d0       0x4c Core/Src/adc.o
- .debug_macro   0x000000000001631c       0x94 Core/Src/adc.o
- .debug_macro   0x00000000000163b0       0x16 Core/Src/adc.o
- .debug_macro   0x00000000000163c6       0x57 Core/Src/adc.o
- .debug_macro   0x000000000001641d       0x97 Core/Src/adc.o
- .debug_macro   0x00000000000164b4      0x339 Core/Src/adc.o
- .debug_macro   0x00000000000167ed       0xfd Core/Src/adc.o
- .debug_macro   0x00000000000168ea       0x10 Core/Src/adc.o
- .debug_macro   0x00000000000168fa       0x10 Core/Src/adc.o
- .debug_macro   0x000000000001690a       0x1c Core/Src/adc.o
- .debug_macro   0x0000000000016926       0x52 Core/Src/adc.o
- .debug_macro   0x0000000000016978       0x22 Core/Src/adc.o
- .debug_macro   0x000000000001699a       0x10 Core/Src/adc.o
- .debug_macro   0x00000000000169aa       0x40 Core/Src/adc.o
- .debug_macro   0x00000000000169ea       0xd5 Core/Src/adc.o
- .debug_macro   0x0000000000016abf       0x1c Core/Src/adc.o
- .debug_macro   0x0000000000016adb       0x3d Core/Src/adc.o
- .debug_macro   0x0000000000016b18       0x16 Core/Src/adc.o
- .debug_macro   0x0000000000016b2e      0x145 Core/Src/adc.o
- .debug_macro   0x0000000000016c73       0xd9 Core/Src/adc.o
- .debug_macro   0x0000000000016d4c       0x56 Core/Src/adc.o
- .debug_macro   0x0000000000016da2       0x2e Core/Src/adc.o
- .debug_macro   0x0000000000016dd0       0x70 Core/Src/adc.o
- .debug_macro   0x0000000000016e40      0x563 Core/Src/car_app_ble.o
- .debug_macro   0x00000000000173a3       0x55 Core/Src/car_app_ble.o
- .debug_macro   0x00000000000173f8       0x46 Core/Src/car_app_ble.o
- .debug_macro   0x000000000001743e      0x17e Core/Src/car_app_ble.o
- .debug_macro   0x00000000000175bc       0x9c Core/Src/car_app_ble.o
- .debug_macro   0x0000000000017658      0x387 Core/Src/car_app_ble.o
- .debug_macro   0x00000000000179df       0x52 Core/Src/car_app_ble.o
- .debug_macro   0x0000000000017a31      0x19b Core/Src/car_app_ble.o
- .debug_macro   0x0000000000017bcc      0x166 Core/Src/car_app_ble.o
- .debug_macro   0x0000000000017d32      0x103 Core/Src/car_app_ble.o
- .debug_macro   0x0000000000017e35       0x1c Core/Src/car_app_ble.o
- .debug_macro   0x0000000000017e51       0x76 Core/Src/car_app_ble.o
- .debug_macro   0x0000000000017ec7       0xc4 Core/Src/car_app_ble.o
- .debug_macro   0x0000000000017f8b      0x1b9 Core/Src/car_app_ble.o
- .debug_macro   0x0000000000018144      0x15a Core/Src/car_app_ble.o
- .debug_macro   0x000000000001829e       0xc9 Core/Src/car_app_ble.o
- .debug_macro   0x0000000000018367       0x1c Core/Src/car_app_ble.o
- .debug_macro   0x0000000000018383       0x26 Core/Src/car_app_ble.o
- .debug_macro   0x00000000000183a9      0x486 Core/Src/car_app_ble.o
- .debug_macro   0x000000000001882f       0xb5 Core/Src/car_app_ble.o
- .debug_macro   0x00000000000188e4       0xaa Core/Src/car_app_ble.o
- .debug_macro   0x000000000001898e       0x6c Core/Src/car_app_ble.o
- .debug_macro   0x00000000000189fa       0x74 Core/Src/car_app_ble.o
- .debug_macro   0x0000000000018a6e       0xdd Core/Src/car_app_ble.o
- .debug_macro   0x0000000000018b4b       0x2e Core/Src/car_app_ble.o
- .debug_macro   0x0000000000018b79      0x52f Core/Src/car_app_freertos.o
- .debug_macro   0x00000000000190a8       0x66 Core/Src/car_app_freertos.o
- .debug_macro   0x000000000001910e       0x16 Core/Src/car_app_freertos.o
- .debug_macro   0x0000000000019124       0xca Core/Src/car_app_freertos.o
- .debug_macro   0x00000000000191ee      0x236 Core/Src/custom_bus.o
- .debug_macro   0x0000000000019424      0x3b1 Core/Src/dma.o
- .debug_macro   0x00000000000197d5      0x517 Core/Src/freertos.o
- .debug_macro   0x0000000000019cec      0x1b9 Core/Src/freertos.o
- .debug_macro   0x0000000000019ea5      0x3b1 Core/Src/gpio.o
- .debug_macro   0x000000000001a256      0x3b1 Core/Src/i2c.o
- .debug_macro   0x000000000001a607      0x4be Core/Src/main.o
- .debug_macro   0x000000000001aac5       0x34 Core/Src/main.o
- .debug_macro   0x000000000001aaf9       0xa6 Core/Src/main.o
- .debug_macro   0x000000000001ab9f      0x3a7 Core/Src/stm32f4xx_hal_msp.o
- .debug_macro   0x000000000001af46      0x20f Core/Src/stm32f4xx_hal_timebase_tim.o
- .debug_macro   0x000000000001b155      0x3de Core/Src/stm32f4xx_it.o
- .debug_macro   0x000000000001b533       0x16 Core/Src/stm32f4xx_it.o
- .debug_macro   0x000000000001b549      0x10e Core/Src/stm32f4xx_it.o
- .debug_macro   0x000000000001b657       0x8d Core/Src/stm32f4xx_it.o
- .debug_macro   0x000000000001b6e4       0x16 Core/Src/stm32f4xx_it.o
- .debug_macro   0x000000000001b6fa       0x29 Core/Src/stm32f4xx_it.o
- .debug_macro   0x000000000001b723       0x10 Core/Src/stm32f4xx_it.o
- .debug_macro   0x000000000001b733      0x24c Core/Src/syscalls.o
- .debug_macro   0x000000000001b97f       0x10 Core/Src/syscalls.o
- .debug_macro   0x000000000001b98f       0x10 Core/Src/syscalls.o
- .debug_macro   0x000000000001b99f       0x10 Core/Src/syscalls.o
- .debug_macro   0x000000000001b9af       0x35 Core/Src/syscalls.o
- .debug_macro   0x000000000001b9e4      0x12c Core/Src/syscalls.o
- .debug_macro   0x000000000001bb10       0x10 Core/Src/syscalls.o
- .debug_macro   0x000000000001bb20      0x241 Core/Src/syscalls.o
- .debug_macro   0x000000000001bd61       0x10 Core/Src/syscalls.o
- .debug_macro   0x000000000001bd71      0x189 Core/Src/syscalls.o
- .debug_macro   0x000000000001befa       0x16 Core/Src/syscalls.o
- .debug_macro   0x000000000001bf10       0xce Core/Src/syscalls.o
- .debug_macro   0x000000000001bfde       0xff Core/Src/sysmem.o
- .debug_macro   0x000000000001c0dd      0x23b Core/Src/sysmem.o
- .debug_macro   0x000000000001c318      0x20f Core/Src/system_stm32f4xx.o
- .debug_macro   0x000000000001c527      0x3b1 Core/Src/tim.o
- .debug_macro   0x000000000001c8d8      0x26f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_macro   0x000000000001cb47      0x210 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
- .debug_macro   0x000000000001cd57      0x20f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_macro   0x000000000001cf66      0x215 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
- .debug_macro   0x000000000001d17b      0x20f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o
- .debug_macro   0x000000000001d38a      0x215 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_macro   0x000000000001d59f      0x256 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
- .debug_macro   0x000000000001d7f5      0x233 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_macro   0x000000000001da28      0x21e Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
- .debug_macro   0x000000000001dc46      0x210 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_macro   0x000000000001de56      0x20f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_macro   0x000000000001e065      0x3c3 Middlewares/ST/BlueNRG-2/hci/bluenrg1_events.o
- .debug_macro   0x000000000001e428       0x4c Middlewares/ST/BlueNRG-2/hci/bluenrg1_events.o
- .debug_macro   0x000000000001e474      0x3c7 Middlewares/ST/BlueNRG-2/hci/bluenrg1_events_cb.o
- .debug_macro   0x000000000001e83b      0x3c9 Middlewares/ST/BlueNRG-2/hci/bluenrg1_hci_le.o
- .debug_macro   0x000000000001ec04      0x3c9 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_gap_aci.o
- .debug_macro   0x000000000001efcd      0x3c9 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_gatt_aci.o
- .debug_macro   0x000000000001f396      0x3c9 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_hal_aci.o
- .debug_macro   0x000000000001f75f      0x3ef Middlewares/ST/BlueNRG-2/hci/hci_tl_patterns/Basic/hci_tl.o
- .debug_macro   0x000000000001fb4e      0x382 Middlewares/ST/BlueNRG-2/utils/ble_list.o
- .debug_macro   0x000000000001fed0      0x406 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x00000000000202d6       0x10 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x00000000000202e6       0xd3 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x00000000000203b9       0x91 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x000000000002044a       0x8d Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x00000000000204d7       0x9a Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x0000000000020571       0x22 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x0000000000020593      0x187 Middlewares/Third_Party/FreeRTOS/Source/list.o
- .debug_macro   0x000000000002071a      0x216 Middlewares/Third_Party/FreeRTOS/Source/queue.o
- .debug_macro   0x0000000000020930       0x87 Middlewares/Third_Party/FreeRTOS/Source/queue.o
- .debug_macro   0x00000000000209b7      0x340 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .debug_macro   0x0000000000020cf7       0x10 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .debug_macro   0x0000000000020d07      0x1dc Middlewares/Third_Party/FreeRTOS/Source/timers.o
- .debug_macro   0x0000000000020ee3       0x97 Middlewares/Third_Party/FreeRTOS/Source/timers.o
- .debug_macro   0x0000000000020f7a      0x196 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
- .debug_macro   0x0000000000021110      0x1ae Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+ .debug_macro   0x000000000000035a       0x16 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000370       0x8e BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x00000000000003fe       0x51 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x000000000000044f       0xdf BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x000000000000052e      0x174 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x00000000000006a2       0x5c BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x00000000000006fe       0x28 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000726       0x46 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x000000000000076c       0x52 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x00000000000007be      0x333 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000af1       0x10 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000b01       0x35 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000b36       0x20 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000b56       0xa0 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000000bf6      0x3b1 Core/Src/adc.o
+ .debug_macro   0x0000000000000fa7      0x563 Core/Src/car_app_ble.o
+ .debug_macro   0x000000000000150a       0x55 Core/Src/car_app_ble.o
+ .debug_macro   0x000000000000155f       0x46 Core/Src/car_app_ble.o
+ .debug_macro   0x00000000000015a5      0x17e Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000001723       0x9c Core/Src/car_app_ble.o
+ .debug_macro   0x00000000000017bf      0x387 Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000001b46       0x52 Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000001b98      0x19b Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000001d33      0x166 Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000001e99      0x103 Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000001f9c       0x1c Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000001fb8       0x76 Core/Src/car_app_ble.o
+ .debug_macro   0x000000000000202e       0xc4 Core/Src/car_app_ble.o
+ .debug_macro   0x00000000000020f2      0x1b9 Core/Src/car_app_ble.o
+ .debug_macro   0x00000000000022ab      0x15a Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000002405       0xc9 Core/Src/car_app_ble.o
+ .debug_macro   0x00000000000024ce       0x1c Core/Src/car_app_ble.o
+ .debug_macro   0x00000000000024ea       0x26 Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000002510      0x486 Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000002996       0xb5 Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000002a4b       0xaa Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000002af5       0x6c Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000002b61       0x74 Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000002bd5       0xdd Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000002cb2       0x2e Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000002ce0      0x54c Core/Src/car_app_freertos.o
+ .debug_macro   0x000000000000322c       0x66 Core/Src/car_app_freertos.o
+ .debug_macro   0x0000000000003292       0x16 Core/Src/car_app_freertos.o
+ .debug_macro   0x00000000000032a8       0xca Core/Src/car_app_freertos.o
+ .debug_macro   0x0000000000003372      0x236 Core/Src/custom_bus.o
+ .debug_macro   0x00000000000035a8      0x3b1 Core/Src/dma.o
+ .debug_macro   0x0000000000003959      0x517 Core/Src/freertos.o
+ .debug_macro   0x0000000000003e70      0x1b9 Core/Src/freertos.o
+ .debug_macro   0x0000000000004029      0x3b1 Core/Src/gpio.o
+ .debug_macro   0x00000000000043da      0x3b1 Core/Src/i2c.o
+ .debug_macro   0x000000000000478b      0x4be Core/Src/main.o
+ .debug_macro   0x0000000000004c49       0x34 Core/Src/main.o
+ .debug_macro   0x0000000000004c7d       0xa6 Core/Src/main.o
+ .debug_macro   0x0000000000004d23      0x3a7 Core/Src/stm32f4xx_hal_msp.o
+ .debug_macro   0x00000000000050ca      0x20f Core/Src/stm32f4xx_hal_timebase_tim.o
+ .debug_macro   0x00000000000052d9      0x3de Core/Src/stm32f4xx_it.o
+ .debug_macro   0x00000000000056b7       0x16 Core/Src/stm32f4xx_it.o
+ .debug_macro   0x00000000000056cd      0x10e Core/Src/stm32f4xx_it.o
+ .debug_macro   0x00000000000057db       0x8d Core/Src/stm32f4xx_it.o
+ .debug_macro   0x0000000000005868       0x16 Core/Src/stm32f4xx_it.o
+ .debug_macro   0x000000000000587e       0x29 Core/Src/stm32f4xx_it.o
+ .debug_macro   0x00000000000058a7       0x10 Core/Src/stm32f4xx_it.o
+ .debug_macro   0x00000000000058b7      0x24c Core/Src/syscalls.o
+ .debug_macro   0x0000000000005b03       0x10 Core/Src/syscalls.o
+ .debug_macro   0x0000000000005b13       0x10 Core/Src/syscalls.o
+ .debug_macro   0x0000000000005b23       0x10 Core/Src/syscalls.o
+ .debug_macro   0x0000000000005b33       0x35 Core/Src/syscalls.o
+ .debug_macro   0x0000000000005b68      0x12c Core/Src/syscalls.o
+ .debug_macro   0x0000000000005c94       0x10 Core/Src/syscalls.o
+ .debug_macro   0x0000000000005ca4      0x241 Core/Src/syscalls.o
+ .debug_macro   0x0000000000005ee5       0x10 Core/Src/syscalls.o
+ .debug_macro   0x0000000000005ef5      0x189 Core/Src/syscalls.o
+ .debug_macro   0x000000000000607e       0x16 Core/Src/syscalls.o
+ .debug_macro   0x0000000000006094       0xce Core/Src/syscalls.o
+ .debug_macro   0x0000000000006162       0xff Core/Src/sysmem.o
+ .debug_macro   0x0000000000006261      0x23b Core/Src/sysmem.o
+ .debug_macro   0x000000000000649c      0x20f Core/Src/system_stm32f4xx.o
+ .debug_macro   0x00000000000066ab      0x3b1 Core/Src/tim.o
+ .debug_macro   0x0000000000006a5c      0x26f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_macro   0x0000000000006ccb      0x210 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
+ .debug_macro   0x0000000000006edb      0x20f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_macro   0x00000000000070ea      0x215 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_macro   0x00000000000072ff      0x20f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o
+ .debug_macro   0x000000000000750e      0x215 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_macro   0x0000000000007723      0x256 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
+ .debug_macro   0x0000000000007979      0x233 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_macro   0x0000000000007bac      0x21e Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
+ .debug_macro   0x0000000000007dca      0x210 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_macro   0x0000000000007fda      0x20f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_macro   0x00000000000081e9      0x3c3 Middlewares/ST/BlueNRG-2/hci/bluenrg1_events.o
+ .debug_macro   0x00000000000085ac       0x4c Middlewares/ST/BlueNRG-2/hci/bluenrg1_events.o
+ .debug_macro   0x00000000000085f8      0x3c7 Middlewares/ST/BlueNRG-2/hci/bluenrg1_events_cb.o
+ .debug_macro   0x00000000000089bf      0x3c9 Middlewares/ST/BlueNRG-2/hci/bluenrg1_hci_le.o
+ .debug_macro   0x0000000000008d88      0x3c9 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_gap_aci.o
+ .debug_macro   0x0000000000009151      0x3c9 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_gatt_aci.o
+ .debug_macro   0x000000000000951a      0x3c9 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_hal_aci.o
+ .debug_macro   0x00000000000098e3      0x3ef Middlewares/ST/BlueNRG-2/hci/hci_tl_patterns/Basic/hci_tl.o
+ .debug_macro   0x0000000000009cd2      0x382 Middlewares/ST/BlueNRG-2/utils/ble_list.o
+ .debug_macro   0x000000000000a054      0x406 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x000000000000a45a       0x10 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x000000000000a46a       0xd3 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x000000000000a53d       0x91 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x000000000000a5ce       0x8d Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x000000000000a65b       0x9a Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x000000000000a6f5       0x22 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x000000000000a717      0x187 Middlewares/Third_Party/FreeRTOS/Source/list.o
+ .debug_macro   0x000000000000a89e      0x216 Middlewares/Third_Party/FreeRTOS/Source/queue.o
+ .debug_macro   0x000000000000aab4       0x87 Middlewares/Third_Party/FreeRTOS/Source/queue.o
+ .debug_macro   0x000000000000ab3b      0x340 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_macro   0x000000000000ae7b       0x10 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_macro   0x000000000000ae8b      0x1dc Middlewares/Third_Party/FreeRTOS/Source/timers.o
+ .debug_macro   0x000000000000b067       0x97 Middlewares/Third_Party/FreeRTOS/Source/timers.o
+ .debug_macro   0x000000000000b0fe      0x196 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
+ .debug_macro   0x000000000000b294      0x1ae Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
 
-.debug_line     0x0000000000000000    0x44124
+.debug_line     0x0000000000000000    0x44192
  .debug_line    0x0000000000000000      0xcc5 BlueNRG-2/Target/hci_tl_interface.o
  .debug_line    0x0000000000000cc5      0xb13 Core/Src/adc.o
  .debug_line    0x00000000000017d8     0x1362 Core/Src/car_app_ble.o
- .debug_line    0x0000000000002b3a      0xedf Core/Src/car_app_freertos.o
- .debug_line    0x0000000000003a19      0x99d Core/Src/custom_bus.o
- .debug_line    0x00000000000043b6      0x98c Core/Src/dma.o
- .debug_line    0x0000000000004d42      0xcb5 Core/Src/freertos.o
- .debug_line    0x00000000000059f7      0xa73 Core/Src/gpio.o
- .debug_line    0x000000000000646a      0xa64 Core/Src/i2c.o
- .debug_line    0x0000000000006ece      0xe02 Core/Src/main.o
- .debug_line    0x0000000000007cd0      0x993 Core/Src/stm32f4xx_hal_msp.o
- .debug_line    0x0000000000008663      0x7ec Core/Src/stm32f4xx_hal_timebase_tim.o
- .debug_line    0x0000000000008e4f      0xc1e Core/Src/stm32f4xx_it.o
- .debug_line    0x0000000000009a6d      0x8ac Core/Src/syscalls.o
- .debug_line    0x000000000000a319      0x530 Core/Src/sysmem.o
- .debug_line    0x000000000000a849      0x7d0 Core/Src/system_stm32f4xx.o
- .debug_line    0x000000000000b019      0xe9b Core/Src/tim.o
- .debug_line    0x000000000000beb4       0x88 Core/Startup/startup_stm32f411retx.o
- .debug_line    0x000000000000bf3c      0xae7 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_line    0x000000000000ca23     0x18be Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
- .debug_line    0x000000000000e2e1      0xecb Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_line    0x000000000000f1ac     0x1667 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
- .debug_line    0x0000000000010813      0xda7 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o
- .debug_line    0x00000000000115ba      0xe5f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_line    0x0000000000012419     0x6850 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
- .debug_line    0x0000000000018c69     0x1276 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_line    0x0000000000019edf     0x3532 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
- .debug_line    0x000000000001d411     0x8cc6 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_line    0x00000000000260d7     0x2c58 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_line    0x0000000000028d2f     0x160f Middlewares/ST/BlueNRG-2/hci/bluenrg1_events.o
- .debug_line    0x000000000002a33e      0xd80 Middlewares/ST/BlueNRG-2/hci/bluenrg1_events_cb.o
- .debug_line    0x000000000002b0be     0x2500 Middlewares/ST/BlueNRG-2/hci/bluenrg1_hci_le.o
- .debug_line    0x000000000002d5be     0x23f9 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_gap_aci.o
- .debug_line    0x000000000002f9b7     0x2685 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_gatt_aci.o
- .debug_line    0x000000000003203c     0x1629 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_hal_aci.o
- .debug_line    0x0000000000033665      0xe94 Middlewares/ST/BlueNRG-2/hci/hci_tl_patterns/Basic/hci_tl.o
- .debug_line    0x00000000000344f9      0xec2 Middlewares/ST/BlueNRG-2/utils/ble_list.o
- .debug_line    0x00000000000353bb     0x321a Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_line    0x00000000000385d5      0x7c2 Middlewares/Third_Party/FreeRTOS/Source/list.o
- .debug_line    0x0000000000038d97     0x3ab6 Middlewares/Third_Party/FreeRTOS/Source/queue.o
- .debug_line    0x000000000003c84d     0x4ac6 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .debug_line    0x0000000000041313     0x16a7 Middlewares/Third_Party/FreeRTOS/Source/timers.o
- .debug_line    0x00000000000429ba      0xb8b Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
- .debug_line    0x0000000000043545      0xbdf Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+ .debug_line    0x0000000000002b3a      0xf4d Core/Src/car_app_freertos.o
+ .debug_line    0x0000000000003a87      0x99d Core/Src/custom_bus.o
+ .debug_line    0x0000000000004424      0x98c Core/Src/dma.o
+ .debug_line    0x0000000000004db0      0xcb5 Core/Src/freertos.o
+ .debug_line    0x0000000000005a65      0xa73 Core/Src/gpio.o
+ .debug_line    0x00000000000064d8      0xa64 Core/Src/i2c.o
+ .debug_line    0x0000000000006f3c      0xe02 Core/Src/main.o
+ .debug_line    0x0000000000007d3e      0x993 Core/Src/stm32f4xx_hal_msp.o
+ .debug_line    0x00000000000086d1      0x7ec Core/Src/stm32f4xx_hal_timebase_tim.o
+ .debug_line    0x0000000000008ebd      0xc1e Core/Src/stm32f4xx_it.o
+ .debug_line    0x0000000000009adb      0x8ac Core/Src/syscalls.o
+ .debug_line    0x000000000000a387      0x530 Core/Src/sysmem.o
+ .debug_line    0x000000000000a8b7      0x7d0 Core/Src/system_stm32f4xx.o
+ .debug_line    0x000000000000b087      0xe9b Core/Src/tim.o
+ .debug_line    0x000000000000bf22       0x88 Core/Startup/startup_stm32f411retx.o
+ .debug_line    0x000000000000bfaa      0xae7 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_line    0x000000000000ca91     0x18be Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
+ .debug_line    0x000000000000e34f      0xecb Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_line    0x000000000000f21a     0x1667 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_line    0x0000000000010881      0xda7 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o
+ .debug_line    0x0000000000011628      0xe5f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_line    0x0000000000012487     0x6850 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
+ .debug_line    0x0000000000018cd7     0x1276 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_line    0x0000000000019f4d     0x3532 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
+ .debug_line    0x000000000001d47f     0x8cc6 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_line    0x0000000000026145     0x2c58 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_line    0x0000000000028d9d     0x160f Middlewares/ST/BlueNRG-2/hci/bluenrg1_events.o
+ .debug_line    0x000000000002a3ac      0xd80 Middlewares/ST/BlueNRG-2/hci/bluenrg1_events_cb.o
+ .debug_line    0x000000000002b12c     0x2500 Middlewares/ST/BlueNRG-2/hci/bluenrg1_hci_le.o
+ .debug_line    0x000000000002d62c     0x23f9 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_gap_aci.o
+ .debug_line    0x000000000002fa25     0x2685 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_gatt_aci.o
+ .debug_line    0x00000000000320aa     0x1629 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_hal_aci.o
+ .debug_line    0x00000000000336d3      0xe94 Middlewares/ST/BlueNRG-2/hci/hci_tl_patterns/Basic/hci_tl.o
+ .debug_line    0x0000000000034567      0xec2 Middlewares/ST/BlueNRG-2/utils/ble_list.o
+ .debug_line    0x0000000000035429     0x321a Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_line    0x0000000000038643      0x7c2 Middlewares/Third_Party/FreeRTOS/Source/list.o
+ .debug_line    0x0000000000038e05     0x3ab6 Middlewares/Third_Party/FreeRTOS/Source/queue.o
+ .debug_line    0x000000000003c8bb     0x4ac6 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_line    0x0000000000041381     0x16a7 Middlewares/Third_Party/FreeRTOS/Source/timers.o
+ .debug_line    0x0000000000042a28      0xb8b Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
+ .debug_line    0x00000000000435b3      0xbdf Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
 
-.debug_str      0x0000000000000000    0xb441a
+.debug_str      0x0000000000000000    0xb44b6
  .debug_str     0x0000000000000000    0x97155 BlueNRG-2/Target/hci_tl_interface.o
                                       0x97571 (size before relaxing)
  .debug_str     0x0000000000097155     0x138c Core/Src/adc.o
                                       0x97f41 (size before relaxing)
  .debug_str     0x00000000000984e1     0x8ab0 Core/Src/car_app_ble.o
                                       0xa0a65 (size before relaxing)
- .debug_str     0x00000000000a0f91      0x591 Core/Src/car_app_freertos.o
-                                      0xa0871 (size before relaxing)
- .debug_str     0x00000000000a1522      0x121 Core/Src/custom_bus.o
+ .debug_str     0x00000000000a0f91      0x62d Core/Src/car_app_freertos.o
+                                      0xa090d (size before relaxing)
+ .debug_str     0x00000000000a15be      0x121 Core/Src/custom_bus.o
                                       0x93a31 (size before relaxing)
- .debug_str     0x00000000000a1643       0x29 Core/Src/dma.o
+ .debug_str     0x00000000000a16df       0x29 Core/Src/dma.o
                                       0x9800b (size before relaxing)
- .debug_str     0x00000000000a166c      0x115 Core/Src/freertos.o
+ .debug_str     0x00000000000a1708      0x115 Core/Src/freertos.o
                                       0xa0048 (size before relaxing)
- .debug_str     0x00000000000a1781       0x2c Core/Src/gpio.o
+ .debug_str     0x00000000000a181d       0x2c Core/Src/gpio.o
                                       0x980b2 (size before relaxing)
- .debug_str     0x00000000000a17ad      0x2c0 Core/Src/i2c.o
+ .debug_str     0x00000000000a1849      0x2c0 Core/Src/i2c.o
                                       0x9838f (size before relaxing)
- .debug_str     0x00000000000a1a6d      0x4a8 Core/Src/main.o
+ .debug_str     0x00000000000a1b09      0x4a8 Core/Src/main.o
                                       0x9d98d (size before relaxing)
- .debug_str     0x00000000000a1f15       0x2c Core/Src/stm32f4xx_hal_msp.o
+ .debug_str     0x00000000000a1fb1       0x2c Core/Src/stm32f4xx_hal_msp.o
                                       0x97ffb (size before relaxing)
- .debug_str     0x00000000000a1f41       0xec Core/Src/stm32f4xx_hal_timebase_tim.o
+ .debug_str     0x00000000000a1fdd       0xec Core/Src/stm32f4xx_hal_timebase_tim.o
                                       0x93866 (size before relaxing)
- .debug_str     0x00000000000a202d      0x3ca Core/Src/stm32f4xx_it.o
+ .debug_str     0x00000000000a20c9      0x3ca Core/Src/stm32f4xx_it.o
                                       0x9846b (size before relaxing)
- .debug_str     0x00000000000a23f7     0x14ed Core/Src/syscalls.o
+ .debug_str     0x00000000000a2493     0x14ed Core/Src/syscalls.o
                                        0x8eeb (size before relaxing)
- .debug_str     0x00000000000a38e4       0x6b Core/Src/sysmem.o
+ .debug_str     0x00000000000a3980       0x6b Core/Src/sysmem.o
                                        0x62a4 (size before relaxing)
- .debug_str     0x00000000000a394f       0x5b Core/Src/system_stm32f4xx.o
+ .debug_str     0x00000000000a39eb       0x5b Core/Src/system_stm32f4xx.o
                                       0x92eb5 (size before relaxing)
- .debug_str     0x00000000000a39aa      0x2a6 Core/Src/tim.o
+ .debug_str     0x00000000000a3a46      0x2a6 Core/Src/tim.o
                                       0x98695 (size before relaxing)
- .debug_str     0x00000000000a3c50       0x36 Core/Startup/startup_stm32f411retx.o
+ .debug_str     0x00000000000a3cec       0x36 Core/Startup/startup_stm32f411retx.o
                                          0x6e (size before relaxing)
- .debug_str     0x00000000000a3c86      0x538 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_str     0x00000000000a3d22      0x538 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
                                       0x93892 (size before relaxing)
- .debug_str     0x00000000000a41be      0x2bb Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
+ .debug_str     0x00000000000a425a      0x2bb Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
                                       0x934ab (size before relaxing)
- .debug_str     0x00000000000a4479      0x31d Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_str     0x00000000000a4515      0x31d Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
                                       0x9363e (size before relaxing)
- .debug_str     0x00000000000a4796      0x2c7 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_str     0x00000000000a4832      0x2c7 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
                                       0x932e7 (size before relaxing)
- .debug_str     0x00000000000a4a5d      0x171 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o
+ .debug_str     0x00000000000a4af9      0x171 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o
                                       0x92f5b (size before relaxing)
- .debug_str     0x00000000000a4bce       0xb2 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_str     0x00000000000a4c6a       0xb2 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
                                       0x9306a (size before relaxing)
- .debug_str     0x00000000000a4c80      0xa78 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
+ .debug_str     0x00000000000a4d1c      0xa78 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
                                       0x93e9d (size before relaxing)
- .debug_str     0x00000000000a56f8      0x1f2 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_str     0x00000000000a5794      0x1f2 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
                                       0x932df (size before relaxing)
- .debug_str     0x00000000000a58ea      0x50b Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
+ .debug_str     0x00000000000a5986      0x50b Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
                                       0x93791 (size before relaxing)
- .debug_str     0x00000000000a5df5      0xcf2 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_str     0x00000000000a5e91      0xcf2 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
                                       0x9422c (size before relaxing)
- .debug_str     0x00000000000a6ae7      0x3fe Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_str     0x00000000000a6b83      0x3fe Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
                                       0x93a2d (size before relaxing)
- .debug_str     0x00000000000a6ee5     0x277f Middlewares/ST/BlueNRG-2/hci/bluenrg1_events.o
+ .debug_str     0x00000000000a6f81     0x277f Middlewares/ST/BlueNRG-2/hci/bluenrg1_events.o
                                       0x9cade (size before relaxing)
- .debug_str     0x00000000000a9664       0x35 Middlewares/ST/BlueNRG-2/hci/bluenrg1_events_cb.o
+ .debug_str     0x00000000000a9700       0x35 Middlewares/ST/BlueNRG-2/hci/bluenrg1_events_cb.o
                                       0x9ae9f (size before relaxing)
- .debug_str     0x00000000000a9699     0x1a34 Middlewares/ST/BlueNRG-2/hci/bluenrg1_hci_le.o
+ .debug_str     0x00000000000a9735     0x1a34 Middlewares/ST/BlueNRG-2/hci/bluenrg1_hci_le.o
                                       0x9bbfc (size before relaxing)
- .debug_str     0x00000000000ab0cd     0x15e2 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_gap_aci.o
+ .debug_str     0x00000000000ab169     0x15e2 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_gap_aci.o
                                       0x9b96c (size before relaxing)
- .debug_str     0x00000000000ac6af     0x14f8 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_gatt_aci.o
+ .debug_str     0x00000000000ac74b     0x14f8 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_gatt_aci.o
                                       0x9b7db (size before relaxing)
- .debug_str     0x00000000000adba7      0x99d Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_hal_aci.o
+ .debug_str     0x00000000000adc43      0x99d Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_hal_aci.o
                                       0x9ab37 (size before relaxing)
- .debug_str     0x00000000000ae544      0x299 Middlewares/ST/BlueNRG-2/hci/hci_tl_patterns/Basic/hci_tl.o
+ .debug_str     0x00000000000ae5e0      0x299 Middlewares/ST/BlueNRG-2/hci/hci_tl_patterns/Basic/hci_tl.o
                                       0x9a4c6 (size before relaxing)
- .debug_str     0x00000000000ae7dd       0xf8 Middlewares/ST/BlueNRG-2/utils/ble_list.o
+ .debug_str     0x00000000000ae879       0xf8 Middlewares/ST/BlueNRG-2/utils/ble_list.o
                                       0x96f72 (size before relaxing)
- .debug_str     0x00000000000ae8d5     0x2f17 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_str     0x00000000000ae971     0x2f17 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
                                       0x9da8a (size before relaxing)
- .debug_str     0x00000000000b17ec      0x12d Middlewares/Third_Party/FreeRTOS/Source/list.o
+ .debug_str     0x00000000000b1888      0x12d Middlewares/Third_Party/FreeRTOS/Source/list.o
                                        0xabbd (size before relaxing)
- .debug_str     0x00000000000b1919      0x889 Middlewares/Third_Party/FreeRTOS/Source/queue.o
+ .debug_str     0x00000000000b19b5      0x889 Middlewares/Third_Party/FreeRTOS/Source/queue.o
                                        0xc70e (size before relaxing)
- .debug_str     0x00000000000b21a2     0x1222 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_str     0x00000000000b223e     0x1222 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
                                        0xe36e (size before relaxing)
- .debug_str     0x00000000000b33c4      0x5af Middlewares/Third_Party/FreeRTOS/Source/timers.o
+ .debug_str     0x00000000000b3460      0x5af Middlewares/Third_Party/FreeRTOS/Source/timers.o
                                        0xcc4d (size before relaxing)
- .debug_str     0x00000000000b3973      0x783 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
+ .debug_str     0x00000000000b3a0f      0x783 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
                                        0x8726 (size before relaxing)
- .debug_str     0x00000000000b40f6      0x324 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+ .debug_str     0x00000000000b4192      0x324 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
                                        0xb511 (size before relaxing)
 
 .comment        0x0000000000000000       0x53
