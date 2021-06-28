@@ -61,6 +61,17 @@ typedef enum
 	#define TIM_PWM_MAX_CCR_VALUE				(TIM_PWM_PERIOD_VALUE + 1)
 	#define MAX_PERCENTAGE						100
 
+	/*--- Shift Register Pins ---*/
+	/* Reference: https://lastminuteengineers.com/74hc595-shift-register-arduino-tutorial/ */
+	#define DIR_LATCH_Pin						GPIO_PIN_6
+	#define DIR_LATCH_GPIO_Port					GPIOB
+	#define DIR_SER_Pin							GPIO_PIN_10
+	#define DIR_SER_GPIO_Port					GPIOB
+	#define DIR_EN_Pin							GPIO_PIN_5
+	#define DIR_EN_GPIO_Port					GPIOB
+	#define DIR_CLK_Pin							GPIO_PIN_0
+	#define DIR_CLK_GPIO_Port					GPIOC
+
 
 /* Exported constants ----------------------------------------------------------------------------*/
 
@@ -69,6 +80,7 @@ typedef enum
 
 
 /* Exported Functions Prototypes -----------------------------------------------------------------*/
+void __MOTOR_SetShiftRegister(uint8_t cByte);
 void __MOTOR_ConfigureSpeed(E_MotorWheel_Pos MotorWheel, uint8_t Percentage);
 
 

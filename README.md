@@ -18,6 +18,9 @@
 	* Fixed SPI1 Bus Speed communication issue errors
 	* Fixed FreeRTOS and BLE insufficient task stack size by allocating a new task with larger stack size
 	* Implemented and tested 'N', 'E', 'S', 'W', 'X' commands on BLE Scanner App
+* June 27, 2021:
+	* Implemented and tested (through Logic Analyzer) `__MOTOR_SetShiftRegister()` function that will be used to communicate with Shift Register
+	* Tested PWM pins including modifying CCRx registers
 
 ### Errors:
 * BLE FreeRTOS HardFault crash:

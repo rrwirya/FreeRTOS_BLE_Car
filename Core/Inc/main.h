@@ -54,11 +54,11 @@ void Error_Handler(void);
 
 /* Private defines -----------------------------------------------------------*/
 	/*--- Nucleo-64 Board Pins ---*/
-	#define NUCLEO_PB_Pin GPIO_PIN_13
-	#define NUCLEO_PB_GPIO_Port GPIOC
-	#define NUCLEO_PB_EXTI_IRQn EXTI15_10_IRQn
-	#define NUCLEO_LED_Pin 			GPIO_PIN_5
-	#define NUCLEO_LED_GPIO_Port 	GPIOA
+	#define NUCLEO_PB_Pin 				GPIO_PIN_13
+	#define NUCLEO_PB_GPIO_Port 		GPIOC
+	#define NUCLEO_PB_EXTI_IRQn 		EXTI15_10_IRQn
+	#define NUCLEO_LED_Pin 				GPIO_PIN_5
+	#define NUCLEO_LED_GPIO_Port 		GPIOA
 
 	/*--- X-NUCLEO-BNRG2A1 Pins ---*/
 	#define BLE_SCK_Pin 				GPIO_PIN_3

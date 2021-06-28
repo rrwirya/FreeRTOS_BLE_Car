@@ -10,6 +10,8 @@
 
 
 /* Includes --------------------------------------------------------------------------------------*/
+#include "FreeRTOS.h"
+#include "task.h"
 #include "motordriver_io.h"
 
 
@@ -35,6 +37,12 @@
 
 
 /* Private function prototypes -------------------------------------------------------------------*/
+static void __MOTOR_EnableShiftRegister(void);
+static void __MOTOR_DisableShiftRegister(void);
+static void __MOTOR_ShiftRegister_DelaySetup(void);
+static void __MOTOR_ShiftRegister_DelayHold(void);
+static void __MOTOR_ShiftRegisterDelay(void);
+static void __MOTOR_SetShiftRegisterBit(FlagStatus BitStatus);
 
 
 /* Private user code -----------------------------------------------------------------------------*/
@@ -46,10 +54,143 @@
   */
 
 /**
- * @brief
- * @param
- * @retval
+ * @brief	Enables the shift register by setting DIR_EN to LOW
  * @note
+ */
+static void __MOTOR_EnableShiftRegister(void)
+{
+	/* The input pin is negated, and by default, the Shift Register is disabled */
+	HAL_GPIO_WritePin(DIR_EN_GPIO_Port, DIR_EN_Pin, GPIO_PIN_RESET);
+}
+
+/**
+ * @brief	Disables the shift register by setting DIR_EN to HIGH
+ * @note
+ */
+static void __MOTOR_DisableShiftRegister(void)
+{
+	/* The input pin is negated, and by default, the Shift Register is disabled */
+	HAL_GPIO_WritePin(DIR_EN_GPIO_Port, DIR_EN_Pin, GPIO_PIN_SET);
+}
+
+static void __MOTOR_ShiftRegister_DelaySetup(void)
+{
+	for(volatile uint8_t i=0; i<0x3F; i++);
+}
+
+static void __MOTOR_ShiftRegister_DelayHold(void)
+{
+	for(volatile uint8_t i=0; i<0x7F; i++);
+}
+
+static void __MOTOR_ShiftRegister_Delay(void)
+{
+	for(volatile uint8_t i=0; i<0xFF; i++);
+}
+
+/**
+ * @brief	Sets and configures individual bit in the shift register by toggling the DIR_SER and DIR_CLK pins
+ * @param	BitStatus: whether bit that will be sent is SET or RESET
+ * @retval 	None
+ * @note	Bit must be SET (Bit=1) on DIR_SER before DIR_CLK gets driven high (rising edge observed on DIR_CLK).
+ * 			Bit can then be RESET (Bit=0) before setting DIR_CLK=0 to apply data to the Shift Register.
+ */
+static void __MOTOR_SetShiftRegisterBit(FlagStatus BitStatus)
+{
+	if(BitStatus == SET)
+	{
+		/* Configure rising edge on DIR_SER */
+		HAL_GPIO_WritePin(DIR_SER_GPIO_Port, DIR_SER_Pin, GPIO_PIN_SET);
+
+		/* Set minimum set-up time delay between DIR_SER rising edge and DIR_CLK rising edge */
+		__MOTOR_ShiftRegister_DelaySetup();
+
+		/* Configure rising edge on DIR_CLK */
+		HAL_GPIO_WritePin(DIR_CLK_GPIO_Port, DIR_CLK_Pin, GPIO_PIN_SET);
+
+		/* Set minimum hold time for DIR_SER */
+		__MOTOR_ShiftRegister_DelayHold();
+
+		/* Configure falling edge on DIR_SER */
+		HAL_GPIO_WritePin(DIR_SER_GPIO_Port, DIR_SER_Pin, GPIO_PIN_RESET);
+
+		/* Set minimum fall-time delay between DIR_SER falling edge and DIR_CLK falling edge */
+		__MOTOR_ShiftRegister_DelaySetup();
+
+		/* Configure falling edge on DIR_CLK */
+		HAL_GPIO_WritePin(DIR_CLK_GPIO_Port, DIR_CLK_Pin, GPIO_PIN_RESET);
+	}
+	else
+	{
+		/* Configure rising edge on DIR_CLK */
+		HAL_GPIO_WritePin(DIR_CLK_GPIO_Port, DIR_CLK_Pin, GPIO_PIN_SET);
+
+		/* Set minimum hold time for DIR_CLK */
+		__MOTOR_ShiftRegister_DelayHold();
+
+		/* Configure falling edge on DIR_CLK */
+		HAL_GPIO_WritePin(DIR_CLK_GPIO_Port, DIR_CLK_Pin, GPIO_PIN_RESET);
+	}
+}
+
+/**
+ * @brief	Configures the shift register bytes that will be used to set/reset output pins
+ * @param	cByte: Byte to send (must be 8-bits)
+ * @retval	None
+ * @note	Last bit sent should represent MSbit, and first bit sent should represent LSbit
+ */
+void __MOTOR_SetShiftRegister(uint8_t cByte)
+{
+	uint8_t temp = cByte;
+
+#if PRIORITIZE_SR_DATA_TRF
+	taskENTER_CRITICAL();
+#endif
+
+	/* Re-enable shift register to toggle its output pins */
+	__MOTOR_EnableShiftRegister();
+
+	/* Iterate through all 8-bits */
+	for(uint8_t i=0; i<8; i++)
+	{
+		/* Check the zeroth bit each iteration. Note that bits sent must be from least order to highest order */
+		if(temp & 0x1)
+		{
+			/* Send a HI over DIR_SER */
+			__MOTOR_SetShiftRegisterBit(SET);
+		}
+		else
+		{
+			/* Send a LO over DIR_SER */
+			__MOTOR_SetShiftRegisterBit(RESET);
+		}
+
+		/* Parse the following bits and set a small delay in between bit transfers */
+		temp = temp >> 1;
+		__MOTOR_ShiftRegister_DelaySetup();
+	}
+
+
+#if PRIORITIZE_SR_DATA_TRF
+	taskEXIT_CRITICAL();
+#endif
+
+	/* A pulse must be sent to DIR_LATCH to output byte configured in Shift Register to its output pins */
+	HAL_GPIO_WritePin(DIR_LATCH_GPIO_Port, DIR_LATCH_Pin, GPIO_PIN_SET);
+	__MOTOR_ShiftRegister_Delay();
+	HAL_GPIO_WritePin(DIR_LATCH_GPIO_Port, DIR_LATCH_Pin, GPIO_PIN_RESET);
+	__MOTOR_ShiftRegister_Delay();
+
+	/* Disable shift register after use/configuration, to prevent spurious bits from being written */
+	__MOTOR_DisableShiftRegister();
+}
+
+
+/**
+ * @brief	Configures speed of motor wheel by modifying PWM duty cycle values
+ * @param	MotorWheel: The wheel to modify
+ * 			Percentage: Percentage duty cycle (ranging from 0% to 100%)
+ * @retval	None
  */
 void __MOTOR_ConfigureSpeed(E_MotorWheel_Pos MotorWheel, uint8_t Percentage)
 {

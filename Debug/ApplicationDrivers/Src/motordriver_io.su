@@ -1,1 +1,2 @@
-motordriver_io.c:54:6:__MOTOR_ConfigureSpeed	0	static
+motordriver_io.c:142:6:__MOTOR_SetShiftRegister	40	static
+motordriver_io.c:195:6:__MOTOR_ConfigureSpeed	0	static

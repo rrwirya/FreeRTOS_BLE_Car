@@ -303,6 +303,8 @@ static void Task_BlinkLEDIndicator(void *argument)
 	const TickType_t DelayFrequency = pdMS_TO_TICKS(1000);
 	TickType_t LastActiveTime;
 
+	// uint8_t temp = 1;
+
 	while(1)
 	{
 		/* Check amount of unused stack. If returned value is 0, stack overflow has occurred */
@@ -314,6 +316,19 @@ static void Task_BlinkLEDIndicator(void *argument)
 
 		/* Toggle LED every 1 second */
 		HAL_GPIO_TogglePin(NUCLEO_LED_GPIO_Port, NUCLEO_LED_Pin);
+
+		/* Test __MOTOR_SetShiftRegister Function */
+		/*
+		switch(temp)
+		{
+			case 1: __MOTOR_SetShiftRegister(0xB3); break;
+			case 2: __MOTOR_SetShiftRegister(0xAA); break;
+			case 3: __MOTOR_SetShiftRegister(0xFF); break;
+			case 4: __MOTOR_SetShiftRegister(0x3E); temp = 0; break;
+			default: break;
+		}
+		temp++;
+		*/
 	}
 
 	/* Delete tasks automatically if somehow code reached this point */
