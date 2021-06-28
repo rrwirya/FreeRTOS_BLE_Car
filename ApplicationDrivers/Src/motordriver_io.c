@@ -122,11 +122,15 @@ static void __MOTOR_SetShiftRegisterBit(FlagStatus BitStatus)
 	}
 	else
 	{
+		/* Included to match CLK waveform when a HIGH is sent to the shift register */
+		__MOTOR_ShiftRegister_DelaySetup();
+
 		/* Configure rising edge on DIR_CLK */
 		HAL_GPIO_WritePin(DIR_CLK_GPIO_Port, DIR_CLK_Pin, GPIO_PIN_SET);
 
 		/* Set minimum hold time for DIR_CLK */
 		__MOTOR_ShiftRegister_DelayHold();
+		__MOTOR_ShiftRegister_DelaySetup();
 
 		/* Configure falling edge on DIR_CLK */
 		HAL_GPIO_WritePin(DIR_CLK_GPIO_Port, DIR_CLK_Pin, GPIO_PIN_RESET);
