@@ -11,6 +11,7 @@
 
 
 /* Includes --------------------------------------------------------------------------------------*/
+#include "stm32f4xx_it.h"			/* Including only for FreeRTOS Task Notification Bitmask */
 #include "car_app_freertos.h"
 #include "FreeRTOS.h"
 #include "task.h"
@@ -41,7 +42,7 @@
 	__IO uint32_t g_CountDirForceStop = 0;
 
 	/*--- Variables to record remaining stack size of each tasks ---*/
-	UBaseType_t g_Task0_RSS, g_Task1_RSS, g_Task2_RSS, g_Task3_RSS;
+	UBaseType_t g_Task0_RSS, g_Task1_RSS, g_Task2_RSS, g_Task3_RSS, g_Task4_RSS;
 
 
 /* External variables ----------------------------------------------------------------------------*/
@@ -51,6 +52,7 @@
 	/*--- FreeRTOS Task Handles ---*/
 	TaskHandle_t h_TaskBLEConn;
 	TaskHandle_t h_TaskBLEMsg;
+	TaskHandle_t h_TaskPBProcessing;
 	static TaskHandle_t sh_TaskMcuLED;
 	static TaskHandle_t sh_TaskBLEEvents;
 
@@ -66,6 +68,7 @@
 /* Private function prototypes -------------------------------------------------------------------*/
 static void Task_ManageBLEConnections(void *argument);
 static void Task_ParseBLEMessage(void *argument);
+static void Task_ProcessPushButtonIRQ(void *argument);
 static void Task_BlinkLEDIndicator(void *argument);
 static void Task_ManageBLEEvents(void *argument);
 
@@ -143,6 +146,17 @@ void FRTOS_Init_Tasks(void)
 										NULL,
 										TASK_PRIO_BLE_MSG,
 										&h_TaskBLEMsg);
+
+	/* Ensure task creation succeeds */
+	assert_param(TaskCreationStatus == pdPASS);
+
+	/* Create task that will process push button interrupts */
+	TaskCreationStatus = xTaskCreate( Task_ProcessPushButtonIRQ,
+										"Task4 - PB",
+										TASK_STACKSIZE_DEFAULT,
+										NULL,
+										TASK_PRIO_PB,
+										&h_TaskPBProcessing);
 
 	/* Ensure task creation succeeds */
 	assert_param(TaskCreationStatus == pdPASS);
@@ -227,13 +241,13 @@ static void Task_ManageBLEConnections(void *argument)
  */
 static void Task_ParseBLEMessage(void *argument)
 {
-	/* Initialize BLE Peripheral and place in advertising mode at startup to allow establishment
-	 * of connections with BLE central devices in proximity.
-	 */
+	/* Variable declarations */
+	uint32_t NotificationValue = 0;
 
 	while(1)
 	{
-		uint32_t NotificationValue = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+		/* Block indefinitely until a notification to this task was obtained/received */
+		NotificationValue = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 
 		/* Check remaining stack size for this particular task */
 		g_Task1_RSS = uxTaskGetStackHighWaterMark(NULL);
@@ -258,6 +272,54 @@ static void Task_ParseBLEMessage(void *argument)
 		else if(NotificationValue & FRTOS_TASK_NOTIF_DIR_WEST)
 		{
 			g_CountDirLeft++;
+		}
+	}
+
+	/* Delete tasks automatically if somehow code reached this point */
+	vTaskDelete(NULL);
+}
+
+static void Task_ProcessPushButtonIRQ(void *argument)
+{
+	/* Variable declarations */
+	__IO uint32_t PBCounter = 0;
+	uint32_t NotificationValue = 0;
+
+	while(1)
+	{
+		/* Block indefinitely until a notification to this task was obtained/received */
+		NotificationValue = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+
+		/* Check remaining stack size for this particular task */
+		g_Task4_RSS = uxTaskGetStackHighWaterMark(NULL);
+
+		if(NotificationValue & FRTOS_TASK_NOTIF_PB_PRESSED)
+		{
+			/* Alternate motor direction and movement */
+			switch(PBCounter%4)
+			{
+				case 0:
+				{
+					__TESTMOTOR_MoveWheel(MOTWHEEL_REARLEFT, DIR_WHEEL_BACKWARD);
+					break;
+				}
+				case 1:
+				{
+					__TESTMOTOR_MoveWheel(MOTWHEEL_REARLEFT, DIR_WHEEL_OFF);
+					break;
+				}
+				case 2:
+				{
+					__TESTMOTOR_MoveWheel(MOTWHEEL_REARLEFT, DIR_WHEEL_FORWARD);
+					break;
+				}
+				case 3:
+				{
+					__TESTMOTOR_MoveWheel(MOTWHEEL_REARLEFT, DIR_WHEEL_OFF);
+					break;
+				}
+			}
+			PBCounter++;
 		}
 	}
 
@@ -303,7 +365,7 @@ static void Task_BlinkLEDIndicator(void *argument)
 	const TickType_t DelayFrequency = pdMS_TO_TICKS(1000);
 	TickType_t LastActiveTime;
 
-	uint8_t temp = 1;
+	// uint8_t temp = 1;
 
 	while(1)
 	{
@@ -318,6 +380,7 @@ static void Task_BlinkLEDIndicator(void *argument)
 		HAL_GPIO_TogglePin(NUCLEO_LED_GPIO_Port, NUCLEO_LED_Pin);
 
 		/* Test __MOTOR_SetShiftRegister Function */
+		/*
 		switch(temp)
 		{
 			case 1: __MOTOR_SetShiftRegister(0xB3); break;
@@ -327,7 +390,7 @@ static void Task_BlinkLEDIndicator(void *argument)
 			default: break;
 		}
 		temp++;
-
+		*/
 	}
 
 	/* Delete tasks automatically if somehow code reached this point */

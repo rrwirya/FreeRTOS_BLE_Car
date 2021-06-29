@@ -45,6 +45,7 @@ extern "C" {
 	/*--- Task Priorities ---*/
 	#define TASK_PRIO_BLE_CONN					osPriorityHigh6
 	#define TASK_PRIO_BLE_MSG					osPriorityHigh5
+	#define TASK_PRIO_PB						osPriorityHigh4
 	#define TASK_PRIO_MCULED					osPriorityNormal6
 	#define TASK_PRIO_BLE_EVENTS				osPriorityNormal1
 

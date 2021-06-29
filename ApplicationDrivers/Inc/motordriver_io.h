@@ -52,6 +52,7 @@ typedef enum
 
 
 /* Exported variables ----------------------------------------------------------------------------*/
+extern __IO uint8_t g_RecentShiftRegisterByte;
 
 
 /* Exported defines ------------------------------------------------------------------------------*/

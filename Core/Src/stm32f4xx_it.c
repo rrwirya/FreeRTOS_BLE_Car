@@ -22,6 +22,8 @@
 #include <stdlib.h>
 #include "main.h"
 #include "stm32f4xx_it.h"
+#include "FreeRTOS.h"
+#include "task.h"
 
 
 /* Private includes ----------------------------------------------------------*/
@@ -66,11 +68,15 @@
 
 
 /* External variables --------------------------------------------------------*/
-extern DMA_HandleTypeDef hdma_adc1;
-extern I2C_HandleTypeDef hi2c1;
-extern TIM_HandleTypeDef htim5;
-extern TIM_HandleTypeDef htim9;
-extern TIM_HandleTypeDef htim2;
+	/*--- Microcontroller Peripheral Handles ---*/
+	extern DMA_HandleTypeDef hdma_adc1;
+	extern I2C_HandleTypeDef hi2c1;
+	extern TIM_HandleTypeDef htim5;
+	extern TIM_HandleTypeDef htim9;
+	extern TIM_HandleTypeDef htim2;
+
+	/*--- FreeRTOS Task Handles ---*/
+	extern TaskHandle_t h_TaskPBProcessing;
 
 
 /******************************************************************************/
@@ -326,6 +332,26 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	else if(htim->Instance == TIM9)
 	{
 
+	}
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	if(GPIO_Pin == NUCLEO_PB_Pin)
+	{
+		/* 10ms debounce button */
+		HAL_Delay(10);
+
+		/* This value becomes pdTRUE if giving the notification caused a task to unblock, and the unblocked task has a
+		   higher priority than the currently running task, in which a context switch should occur */
+		BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+
+		/* Notify task that manages BLE connections that a connection was successfully created */
+		xTaskNotifyFromISR(h_TaskPBProcessing, FRTOS_TASK_NOTIF_PB_PRESSED, eSetBits, &xHigherPriorityTaskWoken);
+
+		/* Force context switch if xHigherPriorityTaskWoken == pdTRUE. This does nothing if xHigherPriorityTaskWoken
+		   is pdFALSE */
+		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 	}
 }
 

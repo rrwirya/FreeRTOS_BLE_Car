@@ -28,6 +28,7 @@
 
 
 /* Exported/Global variables ---------------------------------------------------------------------*/
+__IO uint8_t g_RecentShiftRegisterByte = 0x00;	/* Variable to keep track of recent value sent */
 
 
 /* External variables ----------------------------------------------------------------------------*/
@@ -41,7 +42,7 @@ static void __MOTOR_EnableShiftRegister(void);
 static void __MOTOR_DisableShiftRegister(void);
 static void __MOTOR_ShiftRegister_DelaySetup(void);
 static void __MOTOR_ShiftRegister_DelayHold(void);
-static void __MOTOR_ShiftRegisterDelay(void);
+static void __MOTOR_ShiftRegister_Delay(void);
 static void __MOTOR_SetShiftRegisterBit(FlagStatus BitStatus);
 
 
@@ -49,7 +50,7 @@ static void __MOTOR_SetShiftRegisterBit(FlagStatus BitStatus);
 
 /**
   **************************************************************************************************
-  * Section 1																				       *
+  * Shift Register I/O related code															       *
   **************************************************************************************************
   */
 
@@ -73,16 +74,25 @@ static void __MOTOR_DisableShiftRegister(void)
 	HAL_GPIO_WritePin(DIR_EN_GPIO_Port, DIR_EN_Pin, GPIO_PIN_SET);
 }
 
+/**
+ * @brief	Approximately 7.4us delay
+ */
 static void __MOTOR_ShiftRegister_DelaySetup(void)
 {
 	for(volatile uint8_t i=0; i<0x3F; i++);
 }
 
+/**
+ * @brief	Approximately 14.1us delay
+ */
 static void __MOTOR_ShiftRegister_DelayHold(void)
 {
 	for(volatile uint8_t i=0; i<0x7F; i++);
 }
 
+/**
+ * @brief	Approximately 28.1us - 34us delay
+ */
 static void __MOTOR_ShiftRegister_Delay(void)
 {
 	for(volatile uint8_t i=0; i<0xFF; i++);
@@ -145,6 +155,8 @@ static void __MOTOR_SetShiftRegisterBit(FlagStatus BitStatus)
  */
 void __MOTOR_SetShiftRegister(uint8_t cByte)
 {
+	/* Variable declarations and assignments */
+	g_RecentShiftRegisterByte = cByte;
 	uint8_t temp = cByte;
 
 #if PRIORITIZE_SR_DATA_TRF
@@ -185,10 +197,15 @@ void __MOTOR_SetShiftRegister(uint8_t cByte)
 	HAL_GPIO_WritePin(DIR_LATCH_GPIO_Port, DIR_LATCH_Pin, GPIO_PIN_RESET);
 	__MOTOR_ShiftRegister_Delay();
 
-	/* Disable shift register after use/configuration, to prevent spurious bits from being written */
+	/* Disable shift register after use/configuration, to prevent spurious bits from being written to the device */
 	__MOTOR_DisableShiftRegister();
 }
 
+/**
+  **************************************************************************************************
+  * PWM/Velocity related code																       *
+  **************************************************************************************************
+  */
 
 /**
  * @brief	Configures speed of motor wheel by modifying PWM duty cycle values
@@ -212,21 +229,25 @@ void __MOTOR_ConfigureSpeed(E_MotorWheel_Pos MotorWheel, uint8_t Percentage)
 	{
 		case MOTWHEEL_REARLEFT:
 		{
+			/* Update motor wheel speed by changing duty cycles */
 			TIM3->CCR1 = CCRvalue;
 			break;
 		}
 		case MOTWHEEL_REARRIGHT:
 		{
+			/* Update motor wheel speed by changing duty cycles */
 			TIM3->CCR2 = CCRvalue;
 			break;
 		}
 		case MOTWHEEL_FRONTRIGHT:
 		{
+			/* Update motor wheel speed by changing duty cycles */
 			TIM1->CCR3 = CCRvalue;
 			break;
 		}
 		case MOTWHEEL_FRONTLEFT:
 		{
+			/* Update motor wheel speed by changing duty cycles */
 			TIM1->CCR2 = CCRvalue;
 			break;
 		}

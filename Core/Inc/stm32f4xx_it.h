@@ -34,6 +34,9 @@
 #define USE_MODIFIED_HARDFAULT_HANDLER						1
 
 
+#define FRTOS_TASK_NOTIF_PB_PRESSED					((uint16_t)0x0001)
+
+
 /* Exported types ------------------------------------------------------------*/
 
 
@@ -55,6 +58,7 @@
 	extern unsigned long memmanage_fault_address;
 
 #endif
+
 
 /* Exported constants --------------------------------------------------------*/
 

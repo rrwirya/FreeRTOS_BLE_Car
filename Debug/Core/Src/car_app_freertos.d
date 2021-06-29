@@ -1,6 +1,6 @@
 Core/Src/car_app_freertos.o: ../Core/Src/car_app_freertos.c \
- ../Core/Inc/car_app_freertos.h ../Core/Inc/main.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+ ../Core/Inc/stm32f4xx_it.h ../Core/Inc/car_app_freertos.h \
+ ../Core/Inc/main.h ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
@@ -67,6 +67,8 @@ Core/Src/car_app_freertos.o: ../Core/Src/car_app_freertos.c \
  D:/Reggie/Projects/FreeRTOS-BLE-Car/F411RE_Car_FW/ApplicationDrivers/Inc/motordriver.h \
  D:/Reggie/Projects/FreeRTOS-BLE-Car/F411RE_Car_FW/ApplicationDrivers/Inc/motordriver_io.h \
  ../Core/Inc/main.h
+
+../Core/Inc/stm32f4xx_it.h:
 
 ../Core/Inc/car_app_freertos.h:
 
