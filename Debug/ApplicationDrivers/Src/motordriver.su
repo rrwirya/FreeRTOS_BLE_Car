@@ -1,1 +1,3 @@
-motordriver.c:81:6:__TESTMOTOR_MoveWheel	8	static
+motordriver.c:47:6:Motor_Init	0	static
+motordriver.c:58:6:Motor_ApplyWheelChanges	0	static
+motordriver.c:74:6:Motor_ConfigWheelDirection	0	static

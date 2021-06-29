@@ -93,16 +93,6 @@ int main(void)
   printf("STM32F411RE Nucleo-64 Board\n");
   printf("FreeRTOS-BLE-Car\n\n");
 
-  // TIM1->CCR2 |= 200;
-  // TIM1->CCR3 |= 400;
-  // TIM3->CCR1 |= 600;
-  // TIM3->CCR2 |= 800;
-
-  // HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
-  // HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
-  // HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-  // HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
-
   /* Init scheduler */
   osKernelInitialize();  /* Call init function for freertos objects (in freertos.c) */
   MX_FREERTOS_Init();

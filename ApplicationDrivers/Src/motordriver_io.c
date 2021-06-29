@@ -32,6 +32,8 @@ __IO uint8_t g_RecentShiftRegisterByte = 0x00;	/* Variable to keep track of rece
 
 
 /* External variables ----------------------------------------------------------------------------*/
+extern TIM_HandleTypeDef htim1;
+extern TIM_HandleTypeDef htim3;
 
 
 /* Private variables -----------------------------------------------------------------------------*/
@@ -47,6 +49,24 @@ static void __MOTOR_SetShiftRegisterBit(FlagStatus BitStatus);
 
 
 /* Private user code -----------------------------------------------------------------------------*/
+
+/**
+ * @brief	Initialize motor driver and shift register
+ * @note
+ */
+void __MOTOR_HWInit(void)
+{
+	/* Keep shift register enabled */
+	__MOTOR_EnableShiftRegister();
+
+#if ENABLE_SPEED_CONTROL
+	/* Enable PWM functionality to control wheel velocity */
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
+	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
+#endif
+}
 
 /**
   **************************************************************************************************
@@ -151,7 +171,17 @@ static void __MOTOR_SetShiftRegisterBit(FlagStatus BitStatus)
  * @brief	Configures the shift register bytes that will be used to set/reset output pins
  * @param	cByte: Byte to send (must be 8-bits)
  * @retval	None
- * @note	Last bit sent should represent MSbit, and first bit sent should represent LSbit
+ * @note	Sending a 0x30 with this function will set the following bits:
+ *
+ * 			QA = 0
+ * 			QB = 0
+ * 			QC = 1
+ * 			QD = 1
+ *
+ * 			QE = 0
+ * 			QF = 0
+ * 			QG = 0
+ * 			QH = 0
  */
 void __MOTOR_SetShiftRegister(uint8_t cByte)
 {
@@ -162,9 +192,6 @@ void __MOTOR_SetShiftRegister(uint8_t cByte)
 #if PRIORITIZE_SR_DATA_TRF
 	taskENTER_CRITICAL();
 #endif
-
-	/* Re-enable shift register to toggle its output pins */
-	__MOTOR_EnableShiftRegister();
 
 	/* Iterate through all 8-bits */
 	for(uint8_t i=0; i<8; i++)
@@ -197,8 +224,6 @@ void __MOTOR_SetShiftRegister(uint8_t cByte)
 	HAL_GPIO_WritePin(DIR_LATCH_GPIO_Port, DIR_LATCH_Pin, GPIO_PIN_RESET);
 	__MOTOR_ShiftRegister_Delay();
 
-	/* Disable shift register after use/configuration, to prevent spurious bits from being written to the device */
-	// __MOTOR_DisableShiftRegister();
 }
 
 /**

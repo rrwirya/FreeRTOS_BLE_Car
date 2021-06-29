@@ -1,5 +1,5 @@
-car_app_freertos.c:335:13:Task_ManageBLEEvents	16	static
-car_app_freertos.c:362:13:Task_BlinkLEDIndicator	24	static
+car_app_freertos.c:355:13:Task_ManageBLEEvents	16	static
+car_app_freertos.c:382:13:Task_BlinkLEDIndicator	24	static
 car_app_freertos.c:242:13:Task_ParseBLEMessage	32	static
 car_app_freertos.c:282:13:Task_ProcessPushButtonIRQ	24	static
 car_app_freertos.c:200:13:Task_ManageBLEConnections	16	static

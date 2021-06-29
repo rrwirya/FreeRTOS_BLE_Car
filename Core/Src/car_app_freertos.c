@@ -285,6 +285,9 @@ static void Task_ProcessPushButtonIRQ(void *argument)
 	__IO uint32_t PBCounter = 0;
 	uint32_t NotificationValue = 0;
 
+	/* Initialize Motor */
+	Motor_Init();
+
 	while(1)
 	{
 		/* Block indefinitely until a notification to this task was obtained/received */
@@ -300,22 +303,39 @@ static void Task_ProcessPushButtonIRQ(void *argument)
 			{
 				case 0:
 				{
-					__TESTMOTOR_MoveWheel(MOTWHEEL_REARRIGHT, DIR_WHEEL_BACKWARD);
+					Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_BACKWARD);
+					Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_BACKWARD);
+					Motor_ApplyWheelChanges();
 					break;
 				}
 				case 1:
 				{
-					__TESTMOTOR_MoveWheel(MOTWHEEL_REARRIGHT, DIR_WHEEL_OFF);
+
+					Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_OFF);
+					Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_OFF);
+					Motor_ApplyWheelChanges();
+#if ENABLE_SPEED_CONTROL
+					__MOTOR_ConfigureSpeed(MOTWHEEL_REARLEFT, 95);
+					__MOTOR_ConfigureSpeed(MOTWHEEL_REARRIGHT, 95);
+#endif
 					break;
 				}
 				case 2:
 				{
-					__TESTMOTOR_MoveWheel(MOTWHEEL_REARRIGHT, DIR_WHEEL_FORWARD);
+					Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_FORWARD);
+					Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_FORWARD);
+					Motor_ApplyWheelChanges();
 					break;
 				}
 				case 3:
 				{
-					__TESTMOTOR_MoveWheel(MOTWHEEL_REARRIGHT, DIR_WHEEL_OFF);
+					Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_OFF);
+					Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_OFF);
+					Motor_ApplyWheelChanges();
+#if ENABLE_SPEED_CONTROL
+					__MOTOR_ConfigureSpeed(MOTWHEEL_REARLEFT, 55);
+					__MOTOR_ConfigureSpeed(MOTWHEEL_REARRIGHT, 55);
+#endif
 					break;
 				}
 			}

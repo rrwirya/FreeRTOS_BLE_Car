@@ -27,6 +27,9 @@
 	* Tested PWM pins including modifying CCRx registers
 * June 28, 2021:
 	* Tested `__TESTMOTOR_MoveWheel()` and writing `0xAA` into the shift register. Both rear wheels moved in reverse direction.
+* June 29, 2021:
+	* Managed to control directions (forward/backward/off) for both rear wheels
+	* Included more implementations and fixed PWM speed control implementation (require more tests)
 
 ### Errors:
 * BLE FreeRTOS HardFault crash:
