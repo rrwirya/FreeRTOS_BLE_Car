@@ -303,17 +303,18 @@ static void Task_ProcessPushButtonIRQ(void *argument)
 			{
 				case 0:
 				{
-					Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_BACKWARD);
-					Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_BACKWARD);
+					Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_BACKWARD);
+					Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_BACKWARD);
 					Motor_ApplyWheelChanges();
 					break;
 				}
 				case 1:
 				{
 
-					Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_OFF);
-					Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_OFF);
+					Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_OFF);
+					Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_OFF);
 					Motor_ApplyWheelChanges();
+
 #if ENABLE_SPEED_CONTROL
 					__MOTOR_ConfigureSpeed(MOTWHEEL_REARLEFT, 95);
 					__MOTOR_ConfigureSpeed(MOTWHEEL_REARRIGHT, 95);
@@ -322,16 +323,17 @@ static void Task_ProcessPushButtonIRQ(void *argument)
 				}
 				case 2:
 				{
-					Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_FORWARD);
-					Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_FORWARD);
+					Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_FORWARD);
+					Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_FORWARD);
 					Motor_ApplyWheelChanges();
 					break;
 				}
 				case 3:
 				{
-					Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_OFF);
-					Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_OFF);
+					Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_OFF);
+					Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_OFF);
 					Motor_ApplyWheelChanges();
+
 #if ENABLE_SPEED_CONTROL
 					__MOTOR_ConfigureSpeed(MOTWHEEL_REARLEFT, 55);
 					__MOTOR_ConfigureSpeed(MOTWHEEL_REARRIGHT, 55);

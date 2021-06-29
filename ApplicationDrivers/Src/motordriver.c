@@ -135,14 +135,61 @@ void Motor_ConfigWheelDirection(E_MotorWheel_Pos MotorWheel, E_Dir_SingleWheel W
 		}
 		case MOTWHEEL_FRONTRIGHT:
 		{
+			/* Front Right Wheel (M3) Selection and direction controlled by pins M3A and M3B */
+			switch(WheelDirection)
+			{
+				case DIR_WHEEL_OFF:
+				{
+					/* Clear all bits related to this motor wheel */
+					g_ShiftRegisterByteToSet &= ~MOT3_SELECTION_BITMASK;
+					break;
+				}
+				case DIR_WHEEL_FORWARD:
+				{
+					/* Clear bits related to this motor and update its bits appropriately */
+					g_ShiftRegisterByteToSet &= ~MOT3_SELECTION_BITMASK;
+					g_ShiftRegisterByteToSet |= MOT3_SELECTION_IN1_BITMASK;
+					break;
+				}
+				case DIR_WHEEL_BACKWARD:
+				{
+					/* Clear bits related to this motor and update its bits appropriately */
+					g_ShiftRegisterByteToSet &= ~MOT3_SELECTION_BITMASK;
+					g_ShiftRegisterByteToSet |= MOT3_SELECTION_IN2_BITMASK;
+					break;
+				}
+			}
 
 			break;
 		}
 		case MOTWHEEL_FRONTLEFT:
 		{
+			/* Front Left Wheel (M4) Selection and direction controlled by pins M4A and M4B */
+			switch(WheelDirection)
+			{
+				case DIR_WHEEL_OFF:
+				{
+					/* Clear all bits related to this motor wheel */
+					g_ShiftRegisterByteToSet &= ~MOT4_SELECTION_BITMASK;
+					break;
+				}
+				case DIR_WHEEL_FORWARD:
+				{
+					/* Clear bits related to this motor and update its bits appropriately */
+					g_ShiftRegisterByteToSet &= ~MOT4_SELECTION_BITMASK;
+					g_ShiftRegisterByteToSet |= MOT4_SELECTION_IN4_BITMASK;
+					break;
+				}
+				case DIR_WHEEL_BACKWARD:
+				{
+					/* Clear bits related to this motor and update its bits appropriately */
+					g_ShiftRegisterByteToSet &= ~MOT4_SELECTION_BITMASK;
+					g_ShiftRegisterByteToSet |= MOT4_SELECTION_IN3_BITMASK;
+					break;
+				}
+			}
 			break;
 		}
-		default: break;
 	}
 }
 

@@ -65,12 +65,36 @@ extern __IO uint8_t g_ShiftRegisterByteToSet;
  *
  * Motor1 (Motor Wheel Rear Left) is controlled by M1A (0x20 bitmask) and M1B (0x10 bitmask)
  *
- * M1A is IN1 (L293D) -> IN3/IN1 high while IN4/IN2 low yields forward direction
- * M1B is IN4 (L293D) -> IN4/IN2 high while IN3/IN1 low yields backward direction
+ * M1A is IN1 (L293D) -> IN4/IN1 high while IN3/IN2 low yields forward direction
+ * M1B is IN2 (L293D) -> IN3/IN2 high while IN4/IN1 low yields backward direction
  */
 #define	MOT1_SELECTION_BITMASK			((uint8_t)0x30)
 #define MOT1_SELECTION_IN1_BITMASK		((uint8_t)0x20)
 #define MOT1_SELECTION_IN2_BITMASK		((uint8_t)0x10)
+
+/**
+ * @brief
+ *
+ * Motor3 (Motor Wheel Front Right) is controlled by M3A (0x80 bitmask) and M3B (0x02 bitmask)
+ *
+ * M3A is IN1 (L293D) -> IN4/IN1 high while IN3/IN2 low yields forward direction
+ * M3B is IN2 (L293D) -> IN3/IN2 high while IN4/IN1 low yields backward direction
+ */
+#define	MOT3_SELECTION_BITMASK			((uint8_t)0x82)
+#define MOT3_SELECTION_IN1_BITMASK		((uint8_t)0x80)
+#define MOT3_SELECTION_IN2_BITMASK		((uint8_t)0x02)
+
+/**
+ * @brief
+ *
+ * Motor4 (Motor Wheel Front Left) is controlled by M4A (0x04 bitmask) and M4B (0x01 bitmask)
+ *
+ * M4B is IN3 (L293D) -> IN4/IN1 high while IN3/IN2 low yields forward direction
+ * M4A is IN4 (L293D) -> IN3/IN2 high while IN4/IN1 low yields backward direction
+ */
+#define MOT4_SELECTION_BITMASK			((uint8_t)0x05)
+#define MOT4_SELECTION_IN3_BITMASK		((uint8_t)0x01)
+#define MOT4_SELECTION_IN4_BITMASK		((uint8_t)0x04)
 
 
 /* Exported constants ----------------------------------------------------------------------------*/
