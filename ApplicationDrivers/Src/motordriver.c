@@ -84,31 +84,31 @@ void __TESTMOTOR_MoveWheel(E_MotorWheel_Pos MotorWheel, E_Dir_SingleWheel WheelD
 
 	switch(MotorWheel)
 	{
-		case MOTWHEEL_REARLEFT:
+		case MOTWHEEL_REARRIGHT:
 		{
 			/* Speed controlled by PWM2A */
-			__MOTOR_ConfigureSpeed(MOTWHEEL_REARLEFT, 50);
+			__MOTOR_ConfigureSpeed(MOTWHEEL_REARLEFT, 10);
 
-			/* Selection and direction controlled by pins M1A and M1B */
+			/* Rear Right Wheel Selection and direction controlled by pins M1A and M1B */
 			switch(WheelDirection)
 			{
 				case DIR_WHEEL_OFF:
 				{
-					ShiftRegValue = g_RecentShiftRegisterByte & ~ALT_MOT1_SELECTION_BITMASK;
+					ShiftRegValue = g_RecentShiftRegisterByte & ~MOT1_SELECTION_BITMASK;
 					__MOTOR_SetShiftRegister(ShiftRegValue);
 					break;
 				}
 				case DIR_WHEEL_BACKWARD:
 				{
-					ShiftRegValue = g_RecentShiftRegisterByte & ~ALT_MOT1_SELECTION_BITMASK;
-					ShiftRegValue |= ALT_MOT1_SEL_IN2_BITMASK;
+					ShiftRegValue = g_RecentShiftRegisterByte & ~MOT1_SELECTION_BITMASK;
+					ShiftRegValue |= MOT1_SELECTION_IN2_BITMASK;
 					__MOTOR_SetShiftRegister(ShiftRegValue);
 					break;
 				}
 				case DIR_WHEEL_FORWARD:
 				{
-					ShiftRegValue = g_RecentShiftRegisterByte & ~ALT_MOT1_SELECTION_BITMASK;
-					ShiftRegValue |= ALT_MOT1_SEL_IN1_BITMASK;
+					ShiftRegValue = g_RecentShiftRegisterByte & ~MOT1_SELECTION_BITMASK;
+					ShiftRegValue |= MOT1_SELECTION_IN1_BITMASK;
 					__MOTOR_SetShiftRegister(ShiftRegValue);
 					break;
 				}
@@ -116,7 +116,7 @@ void __TESTMOTOR_MoveWheel(E_MotorWheel_Pos MotorWheel, E_Dir_SingleWheel WheelD
 
 			break;
 		}
-		case MOTWHEEL_REARRIGHT:
+		case MOTWHEEL_REARLEFT:
 		{
 			break;
 		}

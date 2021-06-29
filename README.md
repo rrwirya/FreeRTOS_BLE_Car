@@ -12,6 +12,10 @@
 * June 23, 2021:
 	* Fix BLE FreeRTOS HardFault crash
 	* Status: Fixed - FreeRTOS task that calls `hci_user_evt_proc()` did not have sufficient FreeRTOS heap
+* June 28, 2021:
+	* Fix issue where uC cannot control wheels in Debug mode when U5V jumper is selected (USB power) instead of E5V (external 5V)
+	* uC can control wheels when uC E5V jumper is active, and uC is connected to an external voltage source
+	
 
 ### Done:
 * June 24, 2021:
@@ -21,6 +25,8 @@
 * June 27, 2021:
 	* Implemented and tested (through Logic Analyzer) `__MOTOR_SetShiftRegister()` function that will be used to communicate with Shift Register
 	* Tested PWM pins including modifying CCRx registers
+* June 28, 2021:
+	* Tested `__TESTMOTOR_MoveWheel()` and writing `0xAA` into the shift register. Both rear wheels moved in reverse direction.
 
 ### Errors:
 * BLE FreeRTOS HardFault crash:

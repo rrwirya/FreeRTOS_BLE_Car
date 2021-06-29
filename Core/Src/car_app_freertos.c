@@ -300,22 +300,22 @@ static void Task_ProcessPushButtonIRQ(void *argument)
 			{
 				case 0:
 				{
-					__TESTMOTOR_MoveWheel(MOTWHEEL_REARLEFT, DIR_WHEEL_BACKWARD);
+					__TESTMOTOR_MoveWheel(MOTWHEEL_REARRIGHT, DIR_WHEEL_BACKWARD);
 					break;
 				}
 				case 1:
 				{
-					__TESTMOTOR_MoveWheel(MOTWHEEL_REARLEFT, DIR_WHEEL_OFF);
+					__TESTMOTOR_MoveWheel(MOTWHEEL_REARRIGHT, DIR_WHEEL_OFF);
 					break;
 				}
 				case 2:
 				{
-					__TESTMOTOR_MoveWheel(MOTWHEEL_REARLEFT, DIR_WHEEL_FORWARD);
+					__TESTMOTOR_MoveWheel(MOTWHEEL_REARRIGHT, DIR_WHEEL_FORWARD);
 					break;
 				}
 				case 3:
 				{
-					__TESTMOTOR_MoveWheel(MOTWHEEL_REARLEFT, DIR_WHEEL_OFF);
+					__TESTMOTOR_MoveWheel(MOTWHEEL_REARRIGHT, DIR_WHEEL_OFF);
 					break;
 				}
 			}

@@ -198,7 +198,7 @@ void __MOTOR_SetShiftRegister(uint8_t cByte)
 	__MOTOR_ShiftRegister_Delay();
 
 	/* Disable shift register after use/configuration, to prevent spurious bits from being written to the device */
-	__MOTOR_DisableShiftRegister();
+	// __MOTOR_DisableShiftRegister();
 }
 
 /**

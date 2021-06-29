@@ -27,10 +27,10 @@ extern "C" {
 /**
  * 		Motor Wheels Positions/Configurations (Pinout):
  *
- * Rear Left Motor Wheel connected to Motor Driver Shield M1
- * Rear Right Motor Wheel connected to Motor Driver Shield M2
- * Front Right Motor Wheel connected to Motor Driver Shield M3
- * Front Left Motor Wheel connected to Motor Driver Shield M4
+ * Rear Right Motor Wheel connected to Motor Driver Shield M1
+ * XX connected to Motor Driver Shield M2
+ * XX connected to Motor Driver Shield M3
+ * XX connected to Motor Driver Shield M4
  *
  * 		Motor Wheels PWM Speed Configurations:
  *
