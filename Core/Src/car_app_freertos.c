@@ -15,6 +15,7 @@
 #include "car_app_freertos.h"
 #include "FreeRTOS.h"
 #include "task.h"
+#include "timers.h"
 #include "hci.h"
 #include "hci_tl.h"
 
@@ -49,6 +50,9 @@
 
 
 /* Private variables -----------------------------------------------------------------------------*/
+	/*--- FreeRTOS Timer Handles ---*/
+	TimerHandle_t h_TimMotorTimeout;
+
 	/*--- FreeRTOS Task Handles ---*/
 	TaskHandle_t h_TaskBLEConn;
 	TaskHandle_t h_TaskBLEMsg;
@@ -66,11 +70,15 @@
 
 
 /* Private function prototypes -------------------------------------------------------------------*/
-static void Task_ManageBLEConnections(void *argument);
-static void Task_ParseBLEMessage(void *argument);
-static void Task_ProcessPushButtonIRQ(void *argument);
-static void Task_BlinkLEDIndicator(void *argument);
-static void Task_ManageBLEEvents(void *argument);
+	/* Task routines */
+	static void Task_ManageBLEConnections(void *argument);
+	static void Task_ParseBLEMessage(void *argument);
+	static void Task_ProcessPushButtonIRQ(void *argument);
+	static void Task_BlinkLEDIndicator(void *argument);
+	static void Task_ManageBLEEvents(void *argument);
+
+	/* FreeRTOS Timer Callback */
+	static void vTimMotorTimeoutCallback(TimerHandle_t xTimer);
 
 
 /* Private user code -----------------------------------------------------------------------------*/
@@ -106,9 +114,15 @@ void FRTOS_Init_Semaphores(void)
  */
 void FRTOS_Init_SWTimers(void)
 {
+	/* Create a timer that does not reload itself and triggers after 1.5 seconds */
+	h_TimMotorTimeout = xTimerCreate("TIM_MotorTimeout",
+										1500/portTICK_PERIOD_MS,
+										pdFALSE,
+										(void *)0,
+										vTimMotorTimeoutCallback);
 
-
-
+	/* Ensure SW Timer creation succeeds */
+	assert_param(h_TimMotorTimeout != NULL);
 }
 
 /**
@@ -255,10 +269,14 @@ static void Task_ParseBLEMessage(void *argument)
 		if(NotificationValue & FRTOS_TASK_NOTIF_DIR_FORCESTOP)
 		{
 			/* Forcing car to stop moving is top priority */
+			Car_ConfigDirection(DIR_CAR_BRAKES);
 			g_CountDirForceStop++;
 		}
 		else if(NotificationValue & FRTOS_TASK_NOTIF_DIR_NORTH)
 		{
+			/* Move car in forward direction and begin timer that stops car in 1.5s */
+			Car_ConfigDirection(DIR_CAR_FRONT);
+			xTimerStart(h_TimMotorTimeout, 0);
 			g_CountDirForward++;
 		}
 		else if(NotificationValue & FRTOS_TASK_NOTIF_DIR_EAST)
@@ -267,6 +285,9 @@ static void Task_ParseBLEMessage(void *argument)
 		}
 		else if(NotificationValue & FRTOS_TASK_NOTIF_DIR_SOUTH)
 		{
+			/* Move car in reverse direction and begin timer that stops car in 1.5s */
+			Car_ConfigDirection(DIR_CAR_BACK);
+			xTimerStart(h_TimMotorTimeout, 0);
 			g_CountDirBack++;
 		}
 		else if(NotificationValue & FRTOS_TASK_NOTIF_DIR_WEST)
@@ -299,10 +320,13 @@ static void Task_ProcessPushButtonIRQ(void *argument)
 		if(NotificationValue & FRTOS_TASK_NOTIF_PB_PRESSED)
 		{
 			/* Alternate motor direction and movement */
+			/*
 			switch(PBCounter%4)
 			{
 				case 0:
 				{
+					Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_BACKWARD);
+					Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_BACKWARD);
 					Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_BACKWARD);
 					Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_BACKWARD);
 					Motor_ApplyWheelChanges();
@@ -310,19 +334,17 @@ static void Task_ProcessPushButtonIRQ(void *argument)
 				}
 				case 1:
 				{
-
+					Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_OFF);
+					Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_OFF);
 					Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_OFF);
 					Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_OFF);
 					Motor_ApplyWheelChanges();
-
-#if ENABLE_SPEED_CONTROL
-					__MOTOR_ConfigureSpeed(MOTWHEEL_REARLEFT, 95);
-					__MOTOR_ConfigureSpeed(MOTWHEEL_REARRIGHT, 95);
-#endif
 					break;
 				}
 				case 2:
 				{
+					Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_FORWARD);
+					Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_FORWARD);
 					Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_FORWARD);
 					Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_FORWARD);
 					Motor_ApplyWheelChanges();
@@ -330,17 +352,22 @@ static void Task_ProcessPushButtonIRQ(void *argument)
 				}
 				case 3:
 				{
+					Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_OFF);
+					Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_OFF);
 					Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_OFF);
 					Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_OFF);
 					Motor_ApplyWheelChanges();
-
-#if ENABLE_SPEED_CONTROL
-					__MOTOR_ConfigureSpeed(MOTWHEEL_REARLEFT, 55);
-					__MOTOR_ConfigureSpeed(MOTWHEEL_REARRIGHT, 55);
-#endif
 					break;
 				}
 			}
+			*/
+
+			Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_OFF);
+			Motor_ApplyWheelChanges();
+
 			PBCounter++;
 		}
 	}
@@ -417,6 +444,23 @@ static void Task_BlinkLEDIndicator(void *argument)
 
 	/* Delete tasks automatically if somehow code reached this point */
 	vTaskDelete(NULL);
+}
+
+
+/**
+  **************************************************************************************************
+  * Timer Callbacks																			       *
+  **************************************************************************************************
+  */
+
+/**
+ * @brief	FreeRTOS Timer that stops the car after 1.5 seconds of movement
+ * @note
+ */
+static void vTimMotorTimeoutCallback(TimerHandle_t xTimer)
+{
+	/* Stops car movements */
+	Car_ConfigDirection(DIR_CAR_BRAKES);
 }
 
 /**

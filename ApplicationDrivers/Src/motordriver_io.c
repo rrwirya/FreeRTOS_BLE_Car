@@ -60,6 +60,9 @@ void __MOTOR_HWInit(void)
 	__MOTOR_EnableShiftRegister();
 
 #if ENABLE_SPEED_CONTROL
+	/* Configure motor wheel speed prior to enabling PWM */
+	__MOTOR_ConfigureAllWheelSpeed(100);
+
 	/* Enable PWM functionality to control wheel velocity */
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
@@ -277,6 +280,29 @@ void __MOTOR_ConfigureSpeed(E_MotorWheel_Pos MotorWheel, uint8_t Percentage)
 			break;
 		}
 	}
+}
+
+/**
+ * @brief	Configures speed of all the motor wheel by modifying PWM duty cycle values
+ * @param	Percentage: Percentage duty cycle (ranging from 0% to 100%)
+ * @retval	None
+ */
+void __MOTOR_ConfigureAllWheelSpeed(uint8_t Percentage)
+{
+	/* The percentage duty cycle is represented by: ((TIMx->CCRy)/(TIMx_period + 1)) * 100 */
+	uint16_t CCRvalue = 0;
+
+	/* Determine CCR value */
+	if(Percentage >= MAX_PERCENTAGE)
+		CCRvalue = TIM_PWM_MAX_CCR_VALUE;
+	else
+		CCRvalue = Percentage * 10;
+
+	/* Configure all relevant CCR registers with the same duty cycle value */
+	TIM3->CCR1 = CCRvalue;
+	TIM3->CCR2 = CCRvalue;
+	TIM1->CCR2 = CCRvalue;
+	TIM1->CCR3 = CCRvalue;
 }
 
 /******************************************* END OF FILE *******************************************/

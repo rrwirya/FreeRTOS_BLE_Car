@@ -46,6 +46,8 @@ Core/Src/car_app_freertos.o: ../Core/Src/car_app_freertos.c \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
  ../Middlewares/ST/BlueNRG-2/includes/hci.h \
  ../Middlewares/ST/BlueNRG-2/includes/bluenrg1_types.h \
  ../Middlewares/ST/BlueNRG-2/includes/compiler.h \
@@ -169,6 +171,10 @@ Core/Src/car_app_freertos.o: ../Core/Src/car_app_freertos.c \
 ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
 
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
 
 ../Middlewares/ST/BlueNRG-2/includes/hci.h:
 

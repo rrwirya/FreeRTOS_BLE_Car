@@ -30,9 +30,16 @@
 * June 29, 2021:
 	* Managed to control directions (forward/backward/off) for both rear wheels
 	* Included more implementations and fixed PWM speed control implementation (require more tests)
+* July 2, 2021:
+	* All wheels moving properly (although one of the front tires are wired incorrectly)
+	* Successfully integrated BLE writes and car movements for moving car forward and backward
+	* Implemented FreeRTOS timer to stop car movements after 1.5 seconds
 
 ### Errors:
 * BLE FreeRTOS HardFault crash:
 	* Using dissasembly, `0x800_625E` stored in `stacked_pc` points to `temp = temp->next` found in `list_get_size(tListNode \* listHead)`
 	* The function above is called by `free_event_list()`, which is also called by `hci_send_req(struct hci_request\* r, BOOL async)`
 	* It was discovered that `SCR->BFAR` address points to one of the iterations of `temp = temp->next`, which is a part of `tListNode` member
+* Car front tires not moving:
+	* Must initialize PWM for front wheels so that front tires can move
+

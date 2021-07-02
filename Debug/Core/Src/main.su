@@ -1,5 +1,5 @@
 main.c:61:5:_write	8	static,ignoring_inline_asm
-main.c:121:6:SystemClock_Config	96	static,ignoring_inline_asm
+main.c:122:6:SystemClock_Config	96	static,ignoring_inline_asm
 main.c:74:5:main	8	static
-main.c:171:6:Error_Handler	0	static,ignoring_inline_asm
-main.c:191:6:assert_failed	8	static
+main.c:172:6:Error_Handler	0	static,ignoring_inline_asm
+main.c:192:6:assert_failed	8	static

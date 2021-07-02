@@ -1,3 +1,4 @@
 motordriver.c:47:6:Motor_Init	0	static
 motordriver.c:58:6:Motor_ApplyWheelChanges	0	static
-motordriver.c:74:6:Motor_ConfigWheelDirection	0	static
+motordriver.c:77:6:Motor_ConfigWheelDirection	0	static
+motordriver.c:204:6:Car_ConfigDirection	0	static

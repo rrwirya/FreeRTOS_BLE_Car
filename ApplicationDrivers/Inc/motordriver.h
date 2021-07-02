@@ -38,7 +38,8 @@ typedef enum
 	DIR_CAR_LEFT,
 	DIR_CAR_RIGHT,
 	DIR_CAR_FRONT,
-	DIR_CAR_BACK
+	DIR_CAR_BACK,
+	DIR_CAR_BRAKES
 } E_Dir_Car;
 
 
@@ -91,6 +92,9 @@ extern __IO uint8_t g_ShiftRegisterByteToSet;
  *
  * M4B is IN3 (L293D) -> IN4/IN1 high while IN3/IN2 low yields forward direction
  * M4A is IN4 (L293D) -> IN3/IN2 high while IN4/IN1 low yields backward direction
+ *
+ * @warning	The pinout configuration (in physical HW) might be mixed up and direction
+ * 			might be reversed
  */
 #define MOT4_SELECTION_BITMASK			((uint8_t)0x05)
 #define MOT4_SELECTION_IN3_BITMASK		((uint8_t)0x01)
@@ -108,6 +112,7 @@ void Motor_Init(void);
 void Motor_ApplyWheelChanges(void);
 
 void Motor_ConfigWheelDirection(E_MotorWheel_Pos MotorWheel, E_Dir_SingleWheel WheelDirection);
+void Car_ConfigDirection(E_Dir_Car CarDirection);
 
 
 

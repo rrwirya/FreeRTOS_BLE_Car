@@ -87,15 +87,16 @@ int main(void)
   MX_I2C1_Init();
   MX_TIM1_Init();
   MX_TIM3_Init();
-  // MX_TIM5_Init();
-  // MX_TIM9_Init();
 
-  printf("STM32F411RE Nucleo-64 Board\n");
-  printf("FreeRTOS-BLE-Car\n\n");
+  // printf("STM32F411RE Nucleo-64 Board\n");
+  // printf("FreeRTOS-BLE-Car\n\n");
 
   /* Init scheduler */
   osKernelInitialize();  /* Call init function for freertos objects (in freertos.c) */
   MX_FREERTOS_Init();
+
+  /* Initialize FreeRTOS SW Timers */
+  FRTOS_Init_SWTimers();
 
   /* Additional FreeRTOS Object Initializations */
   FRTOS_Init_Tasks();

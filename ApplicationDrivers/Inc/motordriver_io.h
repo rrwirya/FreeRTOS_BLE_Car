@@ -56,7 +56,7 @@ extern __IO uint8_t g_RecentShiftRegisterByte;
 
 
 /* Exported defines ------------------------------------------------------------------------------*/
-	#define	ENABLE_SPEED_CONTROL				0
+	#define	ENABLE_SPEED_CONTROL				1
 
 
 	/*--- Timer PWM Parameters ---*/
@@ -87,7 +87,7 @@ extern __IO uint8_t g_RecentShiftRegisterByte;
 void __MOTOR_HWInit(void);
 void __MOTOR_SetShiftRegister(uint8_t cByte);
 void __MOTOR_ConfigureSpeed(E_MotorWheel_Pos MotorWheel, uint8_t Percentage);
-
+void __MOTOR_ConfigureAllWheelSpeed(uint8_t Percentage);
 
 
 #ifdef __cplusplus
