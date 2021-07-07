@@ -53,14 +53,14 @@ void Error_Handler(void);
 
 
 /* Private defines -----------------------------------------------------------*/
-	/*--- Nucleo-64 Board Pins ---*/
+	/*--- STM32F411RE Nucleo-64 Board Pins ---*/
 	#define NUCLEO_PB_Pin 				GPIO_PIN_13
 	#define NUCLEO_PB_GPIO_Port 		GPIOC
 	#define NUCLEO_PB_EXTI_IRQn 		EXTI15_10_IRQn
 	#define NUCLEO_LED_Pin 				GPIO_PIN_5
 	#define NUCLEO_LED_GPIO_Port 		GPIOA
 
-	/*--- X-NUCLEO-BNRG2A1 Pins ---*/
+	/*--- X-NUCLEO-BNRG2A1 SPI and IRQ Pins ---*/
 	#define BLE_SCK_Pin 				GPIO_PIN_3
 	#define BLE_SCK_GPIO_Port 			GPIOB
 	#define BLE_MISO_Pin 				GPIO_PIN_6
@@ -75,8 +75,15 @@ void Error_Handler(void);
 	#define HCI_TL_SPI_EXTI_GPIO_Port 	GPIOA
 	#define HCI_TL_SPI_EXTI_EXTI_IRQn 	EXTI0_IRQn
 
-	/*--- PWM Pins ---*/
-
+	/*--- PWM Pins (definitions below unused, only for user reference) ---*/
+	#define PWM0A_GPIO_Port				GPIOA			/* PWM0A controls Front Right Motor Wheels */
+	#define PWM0A_Pin					GPIO_PIN_9
+	#define PWM0B_GPIO_Port				GPIOA			/* PWM0B controls Front Left Motor Wheels */
+	#define PWM0B_Pin					GPIO_PIN_10
+	#define PWM2A_GPIO_Port				GPIOB			/* PWM2A controls Rear Left Motor Wheels */
+	#define PWM2A_Pin					GPIO_PIN_4
+	#define PWM2B_GPIO_Port				GPIOC			/* PWM2B controls Rear Right Motor Wheels */
+	#define PWM2B_Pin					GPIO_PIN_7
 
 
 #ifdef __cplusplus

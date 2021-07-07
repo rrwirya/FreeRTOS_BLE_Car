@@ -1,3 +1,5 @@
+"ApplicationDrivers/Src/adxl343.o"
+"ApplicationDrivers/Src/adxl343_io.o"
 "ApplicationDrivers/Src/motordriver.o"
 "ApplicationDrivers/Src/motordriver_io.o"
 "BlueNRG-2/Target/hci_tl_interface.o"

@@ -15,7 +15,7 @@ c:/st/stm32cubeide_1.6.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externalt
 c:/st/stm32cubeide_1.6.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-printf.o)
                               Core/Src/main.o (printf)
 c:/st/stm32cubeide_1.6.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-puts.o)
-                              Core/Src/main.o (puts)
+                              ApplicationDrivers/Src/adxl343_io.o (puts)
 c:/st/stm32cubeide_1.6.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-sprintf.o)
                               Middlewares/Third_Party/FreeRTOS/Source/tasks.o (sprintf)
 c:/st/stm32cubeide_1.6.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(lib_a-stpcpy.o)
@@ -165,6 +165,408 @@ Discarded input sections
  .ARM.exidx     0x0000000000000000       0x10 c:/st/stm32cubeide_1.6.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
  .ARM.attributes
                 0x0000000000000000       0x1c c:/st/stm32cubeide_1.6.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .text          0x0000000000000000        0x0 ApplicationDrivers/Src/adxl343.o
+ .data          0x0000000000000000        0x0 ApplicationDrivers/Src/adxl343.o
+ .bss           0x0000000000000000        0x0 ApplicationDrivers/Src/adxl343.o
+ .text.Accelerometer_SetMeasurementMode
+                0x0000000000000000       0x38 ApplicationDrivers/Src/adxl343.o
+ .text.Accelerometer_SetLowPowerMode
+                0x0000000000000000       0x38 ApplicationDrivers/Src/adxl343.o
+ .text.Accelerometer_SetOutputDataRate
+                0x0000000000000000       0x20 ApplicationDrivers/Src/adxl343.o
+ .text.Accelerometer_EnableAutoSleep
+                0x0000000000000000       0x70 ApplicationDrivers/Src/adxl343.o
+ .text.Accelerometer_WriteInactivityThreshTime
+                0x0000000000000000       0x1c ApplicationDrivers/Src/adxl343.o
+ .text.Accelerometer_WriteActivityThreshold
+                0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .text.Accelerometer_WriteInactivityThreshTimeMg
+                0x0000000000000000       0x5c ApplicationDrivers/Src/adxl343.o
+ .text.Accelerometer_WriteActivityThreshMg
+                0x0000000000000000       0x54 ApplicationDrivers/Src/adxl343.o
+ .text.Accelerometer_ConfigureActInactControl
+                0x0000000000000000      0x5e8 ApplicationDrivers/Src/adxl343.o
+ .text.Accelerometer_LinkActivityInactivity
+                0x0000000000000000       0x38 ApplicationDrivers/Src/adxl343.o
+ .text.Accelerometer_SetInterrupt
+                0x0000000000000000       0x40 ApplicationDrivers/Src/adxl343.o
+ .text.Accelerometer_ResetInterrupt
+                0x0000000000000000        0xc ApplicationDrivers/Src/adxl343.o
+ .text.Accelerometer_MapInterrupt
+                0x0000000000000000       0x40 ApplicationDrivers/Src/adxl343.o
+ .text.Accelerometer_ReturnIrqFlags
+                0x0000000000000000        0x8 ApplicationDrivers/Src/adxl343.o
+ .text.Accelerometer_CheckInterruptFlags
+                0x0000000000000000       0x3c ApplicationDrivers/Src/adxl343.o
+ .text.ADXL343_InterruptActiveLow
+                0x0000000000000000       0x38 ApplicationDrivers/Src/adxl343.o
+ .text.ADXL343_SPI3WireMode
+                0x0000000000000000       0x38 ApplicationDrivers/Src/adxl343.o
+ .text.ADXL343_ConfigureFIFOMode
+                0x0000000000000000       0x50 ApplicationDrivers/Src/adxl343.o
+ .text.ADXL343_Init
+                0x0000000000000000      0x6d0 ApplicationDrivers/Src/adxl343.o
+ .data.xActInactCtlValues
+                0x0000000000000000        0x8 ApplicationDrivers/Src/adxl343.o
+ .debug_info    0x0000000000000000     0x2123 ApplicationDrivers/Src/adxl343.o
+ .debug_abbrev  0x0000000000000000      0x3ef ApplicationDrivers/Src/adxl343.o
+ .debug_loc     0x0000000000000000      0xb72 ApplicationDrivers/Src/adxl343.o
+ .debug_aranges
+                0x0000000000000000       0xb0 ApplicationDrivers/Src/adxl343.o
+ .debug_ranges  0x0000000000000000      0x138 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x3cb ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0xaa8 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x22 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x4c ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x18 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x94 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x3c ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x34 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x16 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x57 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x97 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x339 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0xfd ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x10 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x16 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x43 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x34 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x10 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x58 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x71 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x1c ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x12a ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x10 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x6a ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x1c ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x52 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x22 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x10 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x40 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0xd5 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x1c ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x3d ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x16 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x145 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x2ae ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x2e ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x28 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x103 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x1df ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x1c ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x22 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0xd9 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000     0x102d ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x11f ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000     0xb937 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x43 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000     0x3659 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x56 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x447 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x9fe ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x117 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x11b ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x82 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x15f ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x287 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x5f ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x236 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x9e1 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x38b ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x17d ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0xf9 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x132 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x264 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x2e ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x1b5 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x22 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0xd6 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x11a ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x85 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x89 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x225 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x8d1 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x47 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x126 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x2e ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x82 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x6a ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0x40 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0xa0 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000       0xb8 ApplicationDrivers/Src/adxl343.o
+ .debug_macro   0x0000000000000000      0x33d ApplicationDrivers/Src/adxl343.o
+ .debug_line    0x0000000000000000     0x1248 ApplicationDrivers/Src/adxl343.o
+ .debug_str     0x0000000000000000    0x999ad ApplicationDrivers/Src/adxl343.o
+ .comment       0x0000000000000000       0x54 ApplicationDrivers/Src/adxl343.o
+ .debug_frame   0x0000000000000000      0x2ac ApplicationDrivers/Src/adxl343.o
+ .ARM.attributes
+                0x0000000000000000       0x34 ApplicationDrivers/Src/adxl343.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .group         0x0000000000000000        0xc ApplicationDrivers/Src/adxl343_io.o
+ .text          0x0000000000000000        0x0 ApplicationDrivers/Src/adxl343_io.o
+ .data          0x0000000000000000        0x0 ApplicationDrivers/Src/adxl343_io.o
+ .bss           0x0000000000000000        0x0 ApplicationDrivers/Src/adxl343_io.o
+ .text.AccelerometerBus_Init
+                0x0000000000000000       0x34 ApplicationDrivers/Src/adxl343_io.o
+ .rodata.__io_accelerometer_i2cWriteRegister.str1.4
+                0x0000000000000000       0x7c ApplicationDrivers/Src/adxl343_io.o
+ .text.__io_accelerometer_i2cWriteRegister
+                0x0000000000000000       0xc4 ApplicationDrivers/Src/adxl343_io.o
+ .text.__io_accelerometer_i2cReadRegister
+                0x0000000000000000       0xc8 ApplicationDrivers/Src/adxl343_io.o
+ .text.__RESET_ADXL343_REGISTERS
+                0x0000000000000000       0x90 ApplicationDrivers/Src/adxl343_io.o
+ .rodata.ResetValues
+                0x0000000000000000       0x1e ApplicationDrivers/Src/adxl343_io.o
+ .debug_info    0x0000000000000000     0x16f9 ApplicationDrivers/Src/adxl343_io.o
+ .debug_abbrev  0x0000000000000000      0x2bc ApplicationDrivers/Src/adxl343_io.o
+ .debug_loc     0x0000000000000000       0xdb ApplicationDrivers/Src/adxl343_io.o
+ .debug_aranges
+                0x0000000000000000       0x38 ApplicationDrivers/Src/adxl343_io.o
+ .debug_ranges  0x0000000000000000       0xa0 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x3dc ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0xaa8 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x22 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x4c ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x18 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x94 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x3c ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x34 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x16 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x57 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x97 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x339 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0xfd ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x10 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x16 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x43 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x34 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x10 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x58 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x71 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x1c ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x12a ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x10 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x6a ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x1c ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x52 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x22 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x10 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x40 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0xd5 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x1c ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x3d ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x16 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x145 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x2ae ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x2e ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x28 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x103 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x1df ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x1c ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x22 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0xd9 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000     0x102d ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x11f ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000     0xb937 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x43 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000     0x3659 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x56 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x447 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x9fe ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x117 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x11b ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x82 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x15f ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x287 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x5f ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x236 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x9e1 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x38b ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x17d ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0xf9 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x132 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x264 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x2e ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x1b5 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x22 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0xd6 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x11a ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x85 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x89 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x225 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x8d1 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x47 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000      0x126 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x2e ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x82 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x6a ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0x40 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0xa0 ApplicationDrivers/Src/adxl343_io.o
+ .debug_macro   0x0000000000000000       0xb8 ApplicationDrivers/Src/adxl343_io.o
+ .debug_line    0x0000000000000000      0xcd3 ApplicationDrivers/Src/adxl343_io.o
+ .debug_str     0x0000000000000000    0x984d1 ApplicationDrivers/Src/adxl343_io.o
+ .comment       0x0000000000000000       0x54 ApplicationDrivers/Src/adxl343_io.o
+ .debug_frame   0x0000000000000000       0xa8 ApplicationDrivers/Src/adxl343_io.o
+ .ARM.attributes
+                0x0000000000000000       0x34 ApplicationDrivers/Src/adxl343_io.o
  .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver.o
  .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver.o
  .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver.o
@@ -254,6 +656,84 @@ Discarded input sections
                 0x0000000000000000      0x120 ApplicationDrivers/Src/motordriver.o
  .bss.s_CarSpeed
                 0x0000000000000000        0x1 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0xaa8 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x22 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x4c ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x18 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x94 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x3c ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x34 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x16 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x57 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x97 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x339 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0xfd ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x10 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x16 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x43 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x34 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x10 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x58 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x71 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x1c ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x12a ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x10 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x6a ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x1c ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x52 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x22 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x10 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x40 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0xd5 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x1c ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x3d ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x16 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x145 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x2ae ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x2e ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x28 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x103 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x1df ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x1c ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x22 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0xd9 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000     0x102d ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x11f ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000     0xb937 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x43 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000     0x3659 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x56 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x447 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x9fe ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x117 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x11b ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x82 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x15f ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x287 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x5f ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x236 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x9e1 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x38b ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x17d ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0xf9 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x132 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x264 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x2e ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x1b5 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x22 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0xd6 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x11a ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x85 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x89 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x225 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x8d1 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x47 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000      0x126 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x2e ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x82 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x6a ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0x40 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x0000000000000000       0xa0 ApplicationDrivers/Src/motordriver.o
  .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
  .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
  .group         0x0000000000000000        0xc ApplicationDrivers/Src/motordriver_io.o
@@ -420,7 +900,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x82 ApplicationDrivers/Src/motordriver_io.o
  .debug_macro   0x0000000000000000       0x6a ApplicationDrivers/Src/motordriver_io.o
  .debug_macro   0x0000000000000000       0x40 ApplicationDrivers/Src/motordriver_io.o
- .debug_macro   0x0000000000000000       0x70 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000000       0xa0 ApplicationDrivers/Src/motordriver_io.o
  .debug_macro   0x0000000000000000       0xa9 ApplicationDrivers/Src/motordriver_io.o
  .group         0x0000000000000000        0xc BlueNRG-2/Target/hci_tl_interface.o
  .group         0x0000000000000000        0xc BlueNRG-2/Target/hci_tl_interface.o
@@ -714,7 +1194,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x82 Core/Src/adc.o
  .debug_macro   0x0000000000000000       0x6a Core/Src/adc.o
  .debug_macro   0x0000000000000000       0x40 Core/Src/adc.o
- .debug_macro   0x0000000000000000       0x70 Core/Src/adc.o
+ .debug_macro   0x0000000000000000       0xa0 Core/Src/adc.o
  .group         0x0000000000000000        0xc Core/Src/car_app_ble.o
  .group         0x0000000000000000        0xc Core/Src/car_app_ble.o
  .group         0x0000000000000000        0xc Core/Src/car_app_ble.o
@@ -1103,7 +1583,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x82 Core/Src/car_app_freertos.o
  .debug_macro   0x0000000000000000       0x6a Core/Src/car_app_freertos.o
  .debug_macro   0x0000000000000000       0x40 Core/Src/car_app_freertos.o
- .debug_macro   0x0000000000000000       0x70 Core/Src/car_app_freertos.o
+ .debug_macro   0x0000000000000000       0xa0 Core/Src/car_app_freertos.o
  .debug_macro   0x0000000000000000      0x1b9 Core/Src/car_app_freertos.o
  .debug_macro   0x0000000000000000      0x15a Core/Src/car_app_freertos.o
  .debug_macro   0x0000000000000000       0xc9 Core/Src/car_app_freertos.o
@@ -1394,7 +1874,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x82 Core/Src/dma.o
  .debug_macro   0x0000000000000000       0x6a Core/Src/dma.o
  .debug_macro   0x0000000000000000       0x40 Core/Src/dma.o
- .debug_macro   0x0000000000000000       0x70 Core/Src/dma.o
+ .debug_macro   0x0000000000000000       0xa0 Core/Src/dma.o
  .group         0x0000000000000000        0xc Core/Src/freertos.o
  .group         0x0000000000000000        0xc Core/Src/freertos.o
  .group         0x0000000000000000        0xc Core/Src/freertos.o
@@ -1590,7 +2070,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x82 Core/Src/freertos.o
  .debug_macro   0x0000000000000000       0x6a Core/Src/freertos.o
  .debug_macro   0x0000000000000000       0x40 Core/Src/freertos.o
- .debug_macro   0x0000000000000000       0x70 Core/Src/freertos.o
+ .debug_macro   0x0000000000000000       0xa0 Core/Src/freertos.o
  .debug_macro   0x0000000000000000       0x6c Core/Src/freertos.o
  .debug_macro   0x0000000000000000       0x74 Core/Src/freertos.o
  .debug_macro   0x0000000000000000       0xdd Core/Src/freertos.o
@@ -1766,7 +2246,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x82 Core/Src/gpio.o
  .debug_macro   0x0000000000000000       0x6a Core/Src/gpio.o
  .debug_macro   0x0000000000000000       0x40 Core/Src/gpio.o
- .debug_macro   0x0000000000000000       0x70 Core/Src/gpio.o
+ .debug_macro   0x0000000000000000       0xa0 Core/Src/gpio.o
  .debug_macro   0x0000000000000000       0xa9 Core/Src/gpio.o
  .group         0x0000000000000000        0xc Core/Src/i2c.o
  .group         0x0000000000000000        0xc Core/Src/i2c.o
@@ -1928,7 +2408,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x82 Core/Src/i2c.o
  .debug_macro   0x0000000000000000       0x6a Core/Src/i2c.o
  .debug_macro   0x0000000000000000       0x40 Core/Src/i2c.o
- .debug_macro   0x0000000000000000       0x70 Core/Src/i2c.o
+ .debug_macro   0x0000000000000000       0xa0 Core/Src/i2c.o
  .group         0x0000000000000000        0xc Core/Src/main.o
  .group         0x0000000000000000        0xc Core/Src/main.o
  .group         0x0000000000000000        0xc Core/Src/main.o
@@ -2104,7 +2584,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x82 Core/Src/main.o
  .debug_macro   0x0000000000000000       0x6a Core/Src/main.o
  .debug_macro   0x0000000000000000       0x40 Core/Src/main.o
- .debug_macro   0x0000000000000000       0x70 Core/Src/main.o
+ .debug_macro   0x0000000000000000       0xa0 Core/Src/main.o
  .debug_macro   0x0000000000000000      0x1b9 Core/Src/main.o
  .debug_macro   0x0000000000000000      0x15a Core/Src/main.o
  .debug_macro   0x0000000000000000       0xc9 Core/Src/main.o
@@ -2278,7 +2758,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x82 Core/Src/stm32f4xx_hal_msp.o
  .debug_macro   0x0000000000000000       0x6a Core/Src/stm32f4xx_hal_msp.o
  .debug_macro   0x0000000000000000       0x40 Core/Src/stm32f4xx_hal_msp.o
- .debug_macro   0x0000000000000000       0x70 Core/Src/stm32f4xx_hal_msp.o
+ .debug_macro   0x0000000000000000       0xa0 Core/Src/stm32f4xx_hal_msp.o
  .group         0x0000000000000000        0xc Core/Src/stm32f4xx_hal_timebase_tim.o
  .group         0x0000000000000000        0xc Core/Src/stm32f4xx_hal_timebase_tim.o
  .group         0x0000000000000000        0xc Core/Src/stm32f4xx_hal_timebase_tim.o
@@ -2548,7 +3028,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x82 Core/Src/stm32f4xx_it.o
  .debug_macro   0x0000000000000000       0x6a Core/Src/stm32f4xx_it.o
  .debug_macro   0x0000000000000000       0x40 Core/Src/stm32f4xx_it.o
- .debug_macro   0x0000000000000000       0x70 Core/Src/stm32f4xx_it.o
+ .debug_macro   0x0000000000000000       0xa0 Core/Src/stm32f4xx_it.o
  .debug_macro   0x0000000000000000       0x16 Core/Src/stm32f4xx_it.o
  .debug_macro   0x0000000000000000      0x1b9 Core/Src/stm32f4xx_it.o
  .debug_macro   0x0000000000000000      0x15a Core/Src/stm32f4xx_it.o
@@ -2967,7 +3447,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x82 Core/Src/tim.o
  .debug_macro   0x0000000000000000       0x6a Core/Src/tim.o
  .debug_macro   0x0000000000000000       0x40 Core/Src/tim.o
- .debug_macro   0x0000000000000000       0x70 Core/Src/tim.o
+ .debug_macro   0x0000000000000000       0xa0 Core/Src/tim.o
  .text          0x0000000000000000       0x14 Core/Startup/startup_stm32f411retx.o
  .data          0x0000000000000000        0x0 Core/Startup/startup_stm32f411retx.o
  .bss           0x0000000000000000        0x0 Core/Startup/startup_stm32f411retx.o
@@ -8968,6 +9448,8 @@ Linker script and memory map
 LOAD c:/st/stm32cubeide_1.6.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
 LOAD c:/st/stm32cubeide_1.6.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 LOAD c:/st/stm32cubeide_1.6.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
+LOAD ApplicationDrivers/Src/adxl343.o
+LOAD ApplicationDrivers/Src/adxl343_io.o
 LOAD ApplicationDrivers/Src/motordriver.o
 LOAD ApplicationDrivers/Src/motordriver_io.o
 LOAD BlueNRG-2/Target/hci_tl_interface.o
@@ -11191,204 +11673,126 @@ LOAD c:/st/stm32cubeide_1.6.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_ranges  0x0000000000005bd0       0xb8 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
  .debug_ranges  0x0000000000005c88       0x80 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
 
-.debug_macro    0x0000000000000000    0x21c4f
+.debug_macro    0x0000000000000000     0xbde6
  .debug_macro   0x0000000000000000      0x3c5 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x00000000000003c5      0xaa8 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000000e6d       0x22 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000000e8f       0x4c ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000000edb       0x18 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000000ef3       0x94 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000000f87       0x3c ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000000fc3       0x34 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000000ff7       0x16 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x000000000000100d       0x57 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000001064       0x97 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x00000000000010fb      0x339 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000001434       0xfd ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000001531       0x10 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000001541       0x16 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000001557       0x43 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x000000000000159a       0x34 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x00000000000015ce       0x10 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x00000000000015de       0x58 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000001636       0x71 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x00000000000016a7       0x1c ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x00000000000016c3      0x12a ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x00000000000017ed       0x10 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x00000000000017fd       0x6a ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000001867       0x1c ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000001883       0x52 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x00000000000018d5       0x22 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x00000000000018f7       0x10 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000001907       0x40 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000001947       0xd5 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000001a1c       0x1c ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000001a38       0x3d ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000001a75       0x16 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000001a8b      0x145 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000001bd0      0x2ae ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000001e7e       0x2e ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000001eac       0x28 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000001ed4      0x103 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000001fd7      0x1df ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x00000000000021b6       0x1c ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x00000000000021d2       0x22 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x00000000000021f4       0xd9 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x00000000000022cd     0x102d ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x00000000000032fa      0x11f ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000003419     0xb937 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x000000000000ed50       0x43 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x000000000000ed93     0x3659 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x00000000000123ec       0x56 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000012442      0x447 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000012889      0x9fe ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000013287      0x117 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x000000000001339e      0x11b ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x00000000000134b9       0x82 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x000000000001353b      0x15f ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x000000000001369a      0x287 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000013921       0x5f ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000013980      0x236 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000013bb6      0x9e1 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000014597      0x38b ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000014922      0x17d ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000014a9f       0xf9 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000014b98      0x132 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000014cca      0x264 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000014f2e       0x2e ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000014f5c      0x1b5 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000015111       0x22 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000015133       0xd6 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000015209      0x11a ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000015323       0x85 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x00000000000153a8       0x89 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000015431      0x225 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000015656      0x8d1 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000015f27       0x47 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000015f6e      0x126 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000016094       0x2e ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x00000000000160c2       0x82 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000016144       0x6a ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x00000000000161ae       0x40 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x00000000000161ee       0x70 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x000000000001625e       0xa9 ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000016307       0x1c ApplicationDrivers/Src/motordriver.o
- .debug_macro   0x0000000000016323      0x424 ApplicationDrivers/Src/motordriver_io.o
- .debug_macro   0x0000000000016747      0x174 ApplicationDrivers/Src/motordriver_io.o
- .debug_macro   0x00000000000168bb       0x8e ApplicationDrivers/Src/motordriver_io.o
- .debug_macro   0x0000000000016949       0x51 ApplicationDrivers/Src/motordriver_io.o
- .debug_macro   0x000000000001699a      0x1b9 ApplicationDrivers/Src/motordriver_io.o
- .debug_macro   0x0000000000016b53      0x15a ApplicationDrivers/Src/motordriver_io.o
- .debug_macro   0x0000000000016cad       0xc9 ApplicationDrivers/Src/motordriver_io.o
- .debug_macro   0x0000000000016d76       0x1c ApplicationDrivers/Src/motordriver_io.o
- .debug_macro   0x0000000000016d92       0x26 ApplicationDrivers/Src/motordriver_io.o
- .debug_macro   0x0000000000016db8      0x486 ApplicationDrivers/Src/motordriver_io.o
- .debug_macro   0x000000000001723e       0xb5 ApplicationDrivers/Src/motordriver_io.o
- .debug_macro   0x00000000000172f3       0xaa ApplicationDrivers/Src/motordriver_io.o
- .debug_macro   0x000000000001739d       0x52 ApplicationDrivers/Src/motordriver_io.o
- .debug_macro   0x00000000000173ef       0x35 ApplicationDrivers/Src/motordriver_io.o
- .debug_macro   0x0000000000017424      0x35a BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x000000000001777e       0x16 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000017794       0xdf BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000017873       0x5c BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000178cf       0x28 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x00000000000178f7       0x46 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x000000000001793d      0x333 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000017c70       0x10 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000017c80       0x20 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000017ca0       0xa0 BlueNRG-2/Target/hci_tl_interface.o
- .debug_macro   0x0000000000017d40      0x3b1 Core/Src/adc.o
- .debug_macro   0x00000000000180f1      0x563 Core/Src/car_app_ble.o
- .debug_macro   0x0000000000018654       0x55 Core/Src/car_app_ble.o
- .debug_macro   0x00000000000186a9       0x46 Core/Src/car_app_ble.o
- .debug_macro   0x00000000000186ef      0x17e Core/Src/car_app_ble.o
- .debug_macro   0x000000000001886d       0x9c Core/Src/car_app_ble.o
- .debug_macro   0x0000000000018909      0x387 Core/Src/car_app_ble.o
- .debug_macro   0x0000000000018c90       0x52 Core/Src/car_app_ble.o
- .debug_macro   0x0000000000018ce2      0x19b Core/Src/car_app_ble.o
- .debug_macro   0x0000000000018e7d      0x166 Core/Src/car_app_ble.o
- .debug_macro   0x0000000000018fe3      0x103 Core/Src/car_app_ble.o
- .debug_macro   0x00000000000190e6       0x1c Core/Src/car_app_ble.o
- .debug_macro   0x0000000000019102       0x76 Core/Src/car_app_ble.o
- .debug_macro   0x0000000000019178       0xc4 Core/Src/car_app_ble.o
- .debug_macro   0x000000000001923c      0x1b9 Core/Src/car_app_ble.o
- .debug_macro   0x00000000000193f5       0x6c Core/Src/car_app_ble.o
- .debug_macro   0x0000000000019461       0x74 Core/Src/car_app_ble.o
- .debug_macro   0x00000000000194d5       0xdd Core/Src/car_app_ble.o
- .debug_macro   0x00000000000195b2       0x40 Core/Src/car_app_ble.o
- .debug_macro   0x00000000000195f2      0x56d Core/Src/car_app_freertos.o
- .debug_macro   0x0000000000019b5f       0x16 Core/Src/car_app_freertos.o
- .debug_macro   0x0000000000019b75       0x66 Core/Src/car_app_freertos.o
- .debug_macro   0x0000000000019bdb       0x91 Core/Src/car_app_freertos.o
- .debug_macro   0x0000000000019c6c       0x16 Core/Src/car_app_freertos.o
- .debug_macro   0x0000000000019c82       0xca Core/Src/car_app_freertos.o
- .debug_macro   0x0000000000019d4c      0x236 Core/Src/custom_bus.o
- .debug_macro   0x0000000000019f82      0x3b1 Core/Src/dma.o
- .debug_macro   0x000000000001a333      0x517 Core/Src/freertos.o
- .debug_macro   0x000000000001a84a      0x3c4 Core/Src/gpio.o
- .debug_macro   0x000000000001ac0e      0x3b1 Core/Src/i2c.o
- .debug_macro   0x000000000001afbf      0x4be Core/Src/main.o
- .debug_macro   0x000000000001b47d       0x46 Core/Src/main.o
- .debug_macro   0x000000000001b4c3       0xa6 Core/Src/main.o
- .debug_macro   0x000000000001b569      0x3a7 Core/Src/stm32f4xx_hal_msp.o
- .debug_macro   0x000000000001b910      0x20f Core/Src/stm32f4xx_hal_timebase_tim.o
- .debug_macro   0x000000000001bb1f      0x446 Core/Src/stm32f4xx_it.o
- .debug_macro   0x000000000001bf65       0x16 Core/Src/stm32f4xx_it.o
- .debug_macro   0x000000000001bf7b      0x10e Core/Src/stm32f4xx_it.o
- .debug_macro   0x000000000001c089       0x8d Core/Src/stm32f4xx_it.o
- .debug_macro   0x000000000001c116       0x16 Core/Src/stm32f4xx_it.o
- .debug_macro   0x000000000001c12c       0x29 Core/Src/stm32f4xx_it.o
- .debug_macro   0x000000000001c155      0x24c Core/Src/syscalls.o
- .debug_macro   0x000000000001c3a1       0x10 Core/Src/syscalls.o
- .debug_macro   0x000000000001c3b1       0x10 Core/Src/syscalls.o
- .debug_macro   0x000000000001c3c1       0x10 Core/Src/syscalls.o
- .debug_macro   0x000000000001c3d1       0x35 Core/Src/syscalls.o
- .debug_macro   0x000000000001c406      0x12c Core/Src/syscalls.o
- .debug_macro   0x000000000001c532       0x10 Core/Src/syscalls.o
- .debug_macro   0x000000000001c542      0x241 Core/Src/syscalls.o
- .debug_macro   0x000000000001c783       0x10 Core/Src/syscalls.o
- .debug_macro   0x000000000001c793      0x189 Core/Src/syscalls.o
- .debug_macro   0x000000000001c91c       0x16 Core/Src/syscalls.o
- .debug_macro   0x000000000001c932       0xce Core/Src/syscalls.o
- .debug_macro   0x000000000001ca00       0xff Core/Src/sysmem.o
- .debug_macro   0x000000000001caff      0x23b Core/Src/sysmem.o
- .debug_macro   0x000000000001cd3a      0x20f Core/Src/system_stm32f4xx.o
- .debug_macro   0x000000000001cf49      0x3b1 Core/Src/tim.o
- .debug_macro   0x000000000001d2fa      0x26f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_macro   0x000000000001d569      0x210 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
- .debug_macro   0x000000000001d779      0x20f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_macro   0x000000000001d988      0x215 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
- .debug_macro   0x000000000001db9d      0x20f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o
- .debug_macro   0x000000000001ddac      0x215 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_macro   0x000000000001dfc1      0x256 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
- .debug_macro   0x000000000001e217      0x233 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_macro   0x000000000001e44a      0x21e Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
- .debug_macro   0x000000000001e668      0x210 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_macro   0x000000000001e878      0x20f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
- .debug_macro   0x000000000001ea87      0x3c3 Middlewares/ST/BlueNRG-2/hci/bluenrg1_events.o
- .debug_macro   0x000000000001ee4a       0x4c Middlewares/ST/BlueNRG-2/hci/bluenrg1_events.o
- .debug_macro   0x000000000001ee96      0x3c7 Middlewares/ST/BlueNRG-2/hci/bluenrg1_events_cb.o
- .debug_macro   0x000000000001f25d      0x3c9 Middlewares/ST/BlueNRG-2/hci/bluenrg1_hci_le.o
- .debug_macro   0x000000000001f626      0x3c9 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_gap_aci.o
- .debug_macro   0x000000000001f9ef      0x3c9 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_gatt_aci.o
- .debug_macro   0x000000000001fdb8      0x3c9 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_hal_aci.o
- .debug_macro   0x0000000000020181      0x3ef Middlewares/ST/BlueNRG-2/hci/hci_tl_patterns/Basic/hci_tl.o
- .debug_macro   0x0000000000020570      0x382 Middlewares/ST/BlueNRG-2/utils/ble_list.o
- .debug_macro   0x00000000000208f2      0x406 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x0000000000020cf8       0x10 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x0000000000020d08       0xd3 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x0000000000020ddb       0x8d Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x0000000000020e68       0x9a Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x0000000000020f02       0x22 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
- .debug_macro   0x0000000000020f24      0x187 Middlewares/Third_Party/FreeRTOS/Source/list.o
- .debug_macro   0x00000000000210ab      0x216 Middlewares/Third_Party/FreeRTOS/Source/queue.o
- .debug_macro   0x00000000000212c1       0x87 Middlewares/Third_Party/FreeRTOS/Source/queue.o
- .debug_macro   0x0000000000021348      0x340 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .debug_macro   0x0000000000021688       0x10 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .debug_macro   0x0000000000021698      0x1dc Middlewares/Third_Party/FreeRTOS/Source/timers.o
- .debug_macro   0x0000000000021874       0x97 Middlewares/Third_Party/FreeRTOS/Source/timers.o
- .debug_macro   0x000000000002190b      0x196 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
- .debug_macro   0x0000000000021aa1      0x1ae Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+ .debug_macro   0x00000000000003c5       0xa9 ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x000000000000046e       0x1c ApplicationDrivers/Src/motordriver.o
+ .debug_macro   0x000000000000048a      0x424 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x00000000000008ae      0x174 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000a22       0x8e ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000ab0       0x51 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000b01      0x1b9 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000cba      0x15a ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000e14       0xc9 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000edd       0x1c ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000ef9       0x26 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000000f1f      0x486 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x00000000000013a5       0xb5 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x000000000000145a       0xaa ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000001504       0x52 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x0000000000001556       0x35 ApplicationDrivers/Src/motordriver_io.o
+ .debug_macro   0x000000000000158b      0x35a BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x00000000000018e5       0x16 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x00000000000018fb       0xdf BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x00000000000019da       0x5c BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000001a36       0x28 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000001a5e       0x46 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000001aa4      0x333 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000001dd7       0x10 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000001de7       0x20 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000001e07       0xa0 BlueNRG-2/Target/hci_tl_interface.o
+ .debug_macro   0x0000000000001ea7      0x3b1 Core/Src/adc.o
+ .debug_macro   0x0000000000002258      0x563 Core/Src/car_app_ble.o
+ .debug_macro   0x00000000000027bb       0x55 Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000002810       0x46 Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000002856      0x17e Core/Src/car_app_ble.o
+ .debug_macro   0x00000000000029d4       0x9c Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000002a70      0x387 Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000002df7       0x52 Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000002e49      0x19b Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000002fe4      0x166 Core/Src/car_app_ble.o
+ .debug_macro   0x000000000000314a      0x103 Core/Src/car_app_ble.o
+ .debug_macro   0x000000000000324d       0x1c Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000003269       0xa6 Core/Src/car_app_ble.o
+ .debug_macro   0x000000000000330f       0xc4 Core/Src/car_app_ble.o
+ .debug_macro   0x00000000000033d3      0x1b9 Core/Src/car_app_ble.o
+ .debug_macro   0x000000000000358c       0x6c Core/Src/car_app_ble.o
+ .debug_macro   0x00000000000035f8       0x74 Core/Src/car_app_ble.o
+ .debug_macro   0x000000000000366c       0xdd Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000003749       0x40 Core/Src/car_app_ble.o
+ .debug_macro   0x0000000000003789      0x56d Core/Src/car_app_freertos.o
+ .debug_macro   0x0000000000003cf6       0x16 Core/Src/car_app_freertos.o
+ .debug_macro   0x0000000000003d0c       0x66 Core/Src/car_app_freertos.o
+ .debug_macro   0x0000000000003d72       0x91 Core/Src/car_app_freertos.o
+ .debug_macro   0x0000000000003e03       0x16 Core/Src/car_app_freertos.o
+ .debug_macro   0x0000000000003e19       0xca Core/Src/car_app_freertos.o
+ .debug_macro   0x0000000000003ee3      0x236 Core/Src/custom_bus.o
+ .debug_macro   0x0000000000004119      0x3b1 Core/Src/dma.o
+ .debug_macro   0x00000000000044ca      0x517 Core/Src/freertos.o
+ .debug_macro   0x00000000000049e1      0x3c4 Core/Src/gpio.o
+ .debug_macro   0x0000000000004da5      0x3b1 Core/Src/i2c.o
+ .debug_macro   0x0000000000005156      0x4be Core/Src/main.o
+ .debug_macro   0x0000000000005614       0x46 Core/Src/main.o
+ .debug_macro   0x000000000000565a       0xa6 Core/Src/main.o
+ .debug_macro   0x0000000000005700      0x3a7 Core/Src/stm32f4xx_hal_msp.o
+ .debug_macro   0x0000000000005aa7      0x20f Core/Src/stm32f4xx_hal_timebase_tim.o
+ .debug_macro   0x0000000000005cb6      0x446 Core/Src/stm32f4xx_it.o
+ .debug_macro   0x00000000000060fc       0x16 Core/Src/stm32f4xx_it.o
+ .debug_macro   0x0000000000006112      0x10e Core/Src/stm32f4xx_it.o
+ .debug_macro   0x0000000000006220       0x8d Core/Src/stm32f4xx_it.o
+ .debug_macro   0x00000000000062ad       0x16 Core/Src/stm32f4xx_it.o
+ .debug_macro   0x00000000000062c3       0x29 Core/Src/stm32f4xx_it.o
+ .debug_macro   0x00000000000062ec      0x24c Core/Src/syscalls.o
+ .debug_macro   0x0000000000006538       0x10 Core/Src/syscalls.o
+ .debug_macro   0x0000000000006548       0x10 Core/Src/syscalls.o
+ .debug_macro   0x0000000000006558       0x10 Core/Src/syscalls.o
+ .debug_macro   0x0000000000006568       0x35 Core/Src/syscalls.o
+ .debug_macro   0x000000000000659d      0x12c Core/Src/syscalls.o
+ .debug_macro   0x00000000000066c9       0x10 Core/Src/syscalls.o
+ .debug_macro   0x00000000000066d9      0x241 Core/Src/syscalls.o
+ .debug_macro   0x000000000000691a       0x10 Core/Src/syscalls.o
+ .debug_macro   0x000000000000692a      0x189 Core/Src/syscalls.o
+ .debug_macro   0x0000000000006ab3       0x16 Core/Src/syscalls.o
+ .debug_macro   0x0000000000006ac9       0xce Core/Src/syscalls.o
+ .debug_macro   0x0000000000006b97       0xff Core/Src/sysmem.o
+ .debug_macro   0x0000000000006c96      0x23b Core/Src/sysmem.o
+ .debug_macro   0x0000000000006ed1      0x20f Core/Src/system_stm32f4xx.o
+ .debug_macro   0x00000000000070e0      0x3b1 Core/Src/tim.o
+ .debug_macro   0x0000000000007491      0x26f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_macro   0x0000000000007700      0x210 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
+ .debug_macro   0x0000000000007910      0x20f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_macro   0x0000000000007b1f      0x215 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_macro   0x0000000000007d34      0x20f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o
+ .debug_macro   0x0000000000007f43      0x215 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_macro   0x0000000000008158      0x256 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
+ .debug_macro   0x00000000000083ae      0x233 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_macro   0x00000000000085e1      0x21e Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
+ .debug_macro   0x00000000000087ff      0x210 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_macro   0x0000000000008a0f      0x20f Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_macro   0x0000000000008c1e      0x3c3 Middlewares/ST/BlueNRG-2/hci/bluenrg1_events.o
+ .debug_macro   0x0000000000008fe1       0x4c Middlewares/ST/BlueNRG-2/hci/bluenrg1_events.o
+ .debug_macro   0x000000000000902d      0x3c7 Middlewares/ST/BlueNRG-2/hci/bluenrg1_events_cb.o
+ .debug_macro   0x00000000000093f4      0x3c9 Middlewares/ST/BlueNRG-2/hci/bluenrg1_hci_le.o
+ .debug_macro   0x00000000000097bd      0x3c9 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_gap_aci.o
+ .debug_macro   0x0000000000009b86      0x3c9 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_gatt_aci.o
+ .debug_macro   0x0000000000009f4f      0x3c9 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_hal_aci.o
+ .debug_macro   0x000000000000a318      0x3ef Middlewares/ST/BlueNRG-2/hci/hci_tl_patterns/Basic/hci_tl.o
+ .debug_macro   0x000000000000a707      0x382 Middlewares/ST/BlueNRG-2/utils/ble_list.o
+ .debug_macro   0x000000000000aa89      0x406 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x000000000000ae8f       0x10 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x000000000000ae9f       0xd3 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x000000000000af72       0x8d Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x000000000000afff       0x9a Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x000000000000b099       0x22 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_macro   0x000000000000b0bb      0x187 Middlewares/Third_Party/FreeRTOS/Source/list.o
+ .debug_macro   0x000000000000b242      0x216 Middlewares/Third_Party/FreeRTOS/Source/queue.o
+ .debug_macro   0x000000000000b458       0x87 Middlewares/Third_Party/FreeRTOS/Source/queue.o
+ .debug_macro   0x000000000000b4df      0x340 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_macro   0x000000000000b81f       0x10 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_macro   0x000000000000b82f      0x1dc Middlewares/Third_Party/FreeRTOS/Source/timers.o
+ .debug_macro   0x000000000000ba0b       0x97 Middlewares/Third_Party/FreeRTOS/Source/timers.o
+ .debug_macro   0x000000000000baa2      0x196 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
+ .debug_macro   0x000000000000bc38      0x1ae Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
 
 .debug_line     0x0000000000000000    0x465ac
  .debug_line    0x0000000000000000     0x12a0 ApplicationDrivers/Src/motordriver.o
@@ -11438,98 +11842,98 @@ LOAD c:/st/stm32cubeide_1.6.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_line    0x0000000000044e42      0xb8b Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
  .debug_line    0x00000000000459cd      0xbdf Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
 
-.debug_str      0x0000000000000000    0xb4d09
- .debug_str     0x0000000000000000    0x97e17 ApplicationDrivers/Src/motordriver.o
-                                      0x981dc (size before relaxing)
- .debug_str     0x0000000000097e17     0x4224 ApplicationDrivers/Src/motordriver_io.o
-                                      0x9c22a (size before relaxing)
- .debug_str     0x000000000009c03b      0xac7 BlueNRG-2/Target/hci_tl_interface.o
+.debug_str      0x0000000000000000    0xb4db6
+ .debug_str     0x0000000000000000    0x97ec4 ApplicationDrivers/Src/motordriver.o
+                                      0x98289 (size before relaxing)
+ .debug_str     0x0000000000097ec4     0x4224 ApplicationDrivers/Src/motordriver_io.o
+                                      0x9c2d7 (size before relaxing)
+ .debug_str     0x000000000009c0e8      0xac7 BlueNRG-2/Target/hci_tl_interface.o
                                       0x97571 (size before relaxing)
- .debug_str     0x000000000009cb02      0x259 Core/Src/adc.o
-                                      0x97f41 (size before relaxing)
- .debug_str     0x000000000009cd5b     0x4cfb Core/Src/car_app_ble.o
-                                      0xa0ace (size before relaxing)
- .debug_str     0x00000000000a1a56      0xeed Core/Src/car_app_freertos.o
-                                      0xa175c (size before relaxing)
- .debug_str     0x00000000000a2943      0x121 Core/Src/custom_bus.o
+ .debug_str     0x000000000009cbaf      0x259 Core/Src/adc.o
+                                      0x97fee (size before relaxing)
+ .debug_str     0x000000000009ce08     0x4cfb Core/Src/car_app_ble.o
+                                      0xa0b7b (size before relaxing)
+ .debug_str     0x00000000000a1b03      0xeed Core/Src/car_app_freertos.o
+                                      0xa1809 (size before relaxing)
+ .debug_str     0x00000000000a29f0      0x121 Core/Src/custom_bus.o
                                       0x93a31 (size before relaxing)
- .debug_str     0x00000000000a2a64       0x29 Core/Src/dma.o
-                                      0x9800b (size before relaxing)
- .debug_str     0x00000000000a2a8d      0x103 Core/Src/freertos.o
-                                      0xa0048 (size before relaxing)
- .debug_str     0x00000000000a2b90       0x2c Core/Src/gpio.o
-                                      0x9846e (size before relaxing)
- .debug_str     0x00000000000a2bbc      0x2c0 Core/Src/i2c.o
-                                      0x9838f (size before relaxing)
- .debug_str     0x00000000000a2e7c      0x23a Core/Src/main.o
-                                      0x9da0a (size before relaxing)
- .debug_str     0x00000000000a30b6       0x2c Core/Src/stm32f4xx_hal_msp.o
-                                      0x97ffb (size before relaxing)
- .debug_str     0x00000000000a30e2       0xec Core/Src/stm32f4xx_hal_timebase_tim.o
+ .debug_str     0x00000000000a2b11       0x29 Core/Src/dma.o
+                                      0x980b8 (size before relaxing)
+ .debug_str     0x00000000000a2b3a      0x103 Core/Src/freertos.o
+                                      0xa00f5 (size before relaxing)
+ .debug_str     0x00000000000a2c3d       0x2c Core/Src/gpio.o
+                                      0x9851b (size before relaxing)
+ .debug_str     0x00000000000a2c69      0x2c0 Core/Src/i2c.o
+                                      0x9843c (size before relaxing)
+ .debug_str     0x00000000000a2f29      0x23a Core/Src/main.o
+                                      0x9dab7 (size before relaxing)
+ .debug_str     0x00000000000a3163       0x2c Core/Src/stm32f4xx_hal_msp.o
+                                      0x980a8 (size before relaxing)
+ .debug_str     0x00000000000a318f       0xec Core/Src/stm32f4xx_hal_timebase_tim.o
                                       0x93866 (size before relaxing)
- .debug_str     0x00000000000a31ce      0x32e Core/Src/stm32f4xx_it.o
-                                      0x9c3b9 (size before relaxing)
- .debug_str     0x00000000000a34fc     0x14ed Core/Src/syscalls.o
+ .debug_str     0x00000000000a327b      0x32e Core/Src/stm32f4xx_it.o
+                                      0x9c466 (size before relaxing)
+ .debug_str     0x00000000000a35a9     0x14ed Core/Src/syscalls.o
                                        0x8eeb (size before relaxing)
- .debug_str     0x00000000000a49e9       0x6b Core/Src/sysmem.o
+ .debug_str     0x00000000000a4a96       0x6b Core/Src/sysmem.o
                                        0x62a4 (size before relaxing)
- .debug_str     0x00000000000a4a54       0x5b Core/Src/system_stm32f4xx.o
+ .debug_str     0x00000000000a4b01       0x5b Core/Src/system_stm32f4xx.o
                                       0x92eb5 (size before relaxing)
- .debug_str     0x00000000000a4aaf      0x2a6 Core/Src/tim.o
-                                      0x98695 (size before relaxing)
- .debug_str     0x00000000000a4d55       0x36 Core/Startup/startup_stm32f411retx.o
+ .debug_str     0x00000000000a4b5c      0x2a6 Core/Src/tim.o
+                                      0x98742 (size before relaxing)
+ .debug_str     0x00000000000a4e02       0x36 Core/Startup/startup_stm32f411retx.o
                                          0x6e (size before relaxing)
- .debug_str     0x00000000000a4d8b      0x538 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_str     0x00000000000a4e38      0x538 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
                                       0x93892 (size before relaxing)
- .debug_str     0x00000000000a52c3      0x2bb Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
+ .debug_str     0x00000000000a5370      0x2bb Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o
                                       0x934ab (size before relaxing)
- .debug_str     0x00000000000a557e      0x31d Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_str     0x00000000000a562b      0x31d Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
                                       0x9363e (size before relaxing)
- .debug_str     0x00000000000a589b      0x2c7 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
+ .debug_str     0x00000000000a5948      0x2c7 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o
                                       0x932e7 (size before relaxing)
- .debug_str     0x00000000000a5b62      0x171 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o
+ .debug_str     0x00000000000a5c0f      0x171 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o
                                       0x92f5b (size before relaxing)
- .debug_str     0x00000000000a5cd3       0x8d Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_str     0x00000000000a5d80       0x8d Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
                                       0x9306a (size before relaxing)
- .debug_str     0x00000000000a5d60      0xa78 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
+ .debug_str     0x00000000000a5e0d      0xa78 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o
                                       0x93e9d (size before relaxing)
- .debug_str     0x00000000000a67d8      0x1f2 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_str     0x00000000000a6885      0x1f2 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
                                       0x932df (size before relaxing)
- .debug_str     0x00000000000a69ca      0x50b Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
+ .debug_str     0x00000000000a6a77      0x50b Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o
                                       0x93791 (size before relaxing)
- .debug_str     0x00000000000a6ed5      0xce0 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_str     0x00000000000a6f82      0xce0 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
                                       0x9422c (size before relaxing)
- .debug_str     0x00000000000a7bb5      0x3fe Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_str     0x00000000000a7c62      0x3fe Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
                                       0x93a2d (size before relaxing)
- .debug_str     0x00000000000a7fb3     0x277f Middlewares/ST/BlueNRG-2/hci/bluenrg1_events.o
+ .debug_str     0x00000000000a8060     0x277f Middlewares/ST/BlueNRG-2/hci/bluenrg1_events.o
                                       0x9cade (size before relaxing)
- .debug_str     0x00000000000aa732       0x35 Middlewares/ST/BlueNRG-2/hci/bluenrg1_events_cb.o
+ .debug_str     0x00000000000aa7df       0x35 Middlewares/ST/BlueNRG-2/hci/bluenrg1_events_cb.o
                                       0x9ae9f (size before relaxing)
- .debug_str     0x00000000000aa767     0x1a34 Middlewares/ST/BlueNRG-2/hci/bluenrg1_hci_le.o
+ .debug_str     0x00000000000aa814     0x1a34 Middlewares/ST/BlueNRG-2/hci/bluenrg1_hci_le.o
                                       0x9bbfc (size before relaxing)
- .debug_str     0x00000000000ac19b     0x15e2 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_gap_aci.o
+ .debug_str     0x00000000000ac248     0x15e2 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_gap_aci.o
                                       0x9b96c (size before relaxing)
- .debug_str     0x00000000000ad77d     0x14f8 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_gatt_aci.o
+ .debug_str     0x00000000000ad82a     0x14f8 Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_gatt_aci.o
                                       0x9b7db (size before relaxing)
- .debug_str     0x00000000000aec75      0x99d Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_hal_aci.o
+ .debug_str     0x00000000000aed22      0x99d Middlewares/ST/BlueNRG-2/hci/controller/bluenrg1_hal_aci.o
                                       0x9ab37 (size before relaxing)
- .debug_str     0x00000000000af612      0x299 Middlewares/ST/BlueNRG-2/hci/hci_tl_patterns/Basic/hci_tl.o
+ .debug_str     0x00000000000af6bf      0x299 Middlewares/ST/BlueNRG-2/hci/hci_tl_patterns/Basic/hci_tl.o
                                       0x9a4c6 (size before relaxing)
- .debug_str     0x00000000000af8ab       0xf8 Middlewares/ST/BlueNRG-2/utils/ble_list.o
+ .debug_str     0x00000000000af958       0xf8 Middlewares/ST/BlueNRG-2/utils/ble_list.o
                                       0x96f72 (size before relaxing)
- .debug_str     0x00000000000af9a3     0x2738 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
+ .debug_str     0x00000000000afa50     0x2738 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o
                                       0x9da8a (size before relaxing)
- .debug_str     0x00000000000b20db      0x12d Middlewares/Third_Party/FreeRTOS/Source/list.o
+ .debug_str     0x00000000000b2188      0x12d Middlewares/Third_Party/FreeRTOS/Source/list.o
                                        0xabbd (size before relaxing)
- .debug_str     0x00000000000b2208      0x889 Middlewares/Third_Party/FreeRTOS/Source/queue.o
+ .debug_str     0x00000000000b22b5      0x889 Middlewares/Third_Party/FreeRTOS/Source/queue.o
                                        0xc70e (size before relaxing)
- .debug_str     0x00000000000b2a91     0x1222 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_str     0x00000000000b2b3e     0x1222 Middlewares/Third_Party/FreeRTOS/Source/tasks.o
                                        0xe36e (size before relaxing)
- .debug_str     0x00000000000b3cb3      0x5af Middlewares/Third_Party/FreeRTOS/Source/timers.o
+ .debug_str     0x00000000000b3d60      0x5af Middlewares/Third_Party/FreeRTOS/Source/timers.o
                                        0xcc4d (size before relaxing)
- .debug_str     0x00000000000b4262      0x783 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
+ .debug_str     0x00000000000b430f      0x783 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
                                        0x8726 (size before relaxing)
- .debug_str     0x00000000000b49e5      0x324 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+ .debug_str     0x00000000000b4a92      0x324 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
                                        0xb511 (size before relaxing)
 
 .comment        0x0000000000000000       0x53

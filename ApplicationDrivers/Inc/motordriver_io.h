@@ -106,7 +106,7 @@ extern __IO uint8_t g_RecentShiftRegisterByte;
 	/**
 	 * @brief
 	 *
-	 * Motor3 (Motor Wheel Front Right) is controlled by M3A (0x80 bitmask) and M3B (0x02 bitmask)
+	 * Motor3 (Motor Wheel Front Left) is controlled by M3A (0x80 bitmask) and M3B (0x02 bitmask)
 	 *
 	 * M3A is IN1 (L293D) -> IN4/IN1 high while IN3/IN2 low yields forward direction
 	 * M3B is IN2 (L293D) -> IN3/IN2 high while IN4/IN1 low yields backward direction
@@ -118,7 +118,7 @@ extern __IO uint8_t g_RecentShiftRegisterByte;
 	/**
 	 * @brief
 	 *
-	 * Motor4 (Motor Wheel Front Left) is controlled by M4A (0x04 bitmask) and M4B (0x01 bitmask)
+	 * Motor4 (Motor Wheel Front Right) is controlled by M4A (0x04 bitmask) and M4B (0x01 bitmask)
 	 *
 	 * M4B is IN3 (L293D) -> IN4/IN1 high while IN3/IN2 low yields forward direction
 	 * M4A is IN4 (L293D) -> IN3/IN2 high while IN4/IN1 low yields backward direction

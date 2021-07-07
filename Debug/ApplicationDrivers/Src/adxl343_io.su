@@ -1,0 +1,4 @@
+adxl343_io.c:69:6:AccelerometerBus_Init	8	static
+adxl343_io.c:94:6:__io_accelerometer_i2cWriteRegister	56	static
+adxl343_io.c:148:9:__io_accelerometer_i2cReadRegister	56	static
+adxl343_io.c:204:6:__RESET_ADXL343_REGISTERS	32	static
