@@ -26,13 +26,14 @@
 
 
 /* Exported/Global variables ---------------------------------------------------------------------*/
-__IO uint8_t g_ShiftRegisterByteToSet = 0x00;
+__IO uint8_t g_ShiftRegisterByteToSet = 0x00;		/* Variable will be used to set shift register */
 
 
 /* External variables ----------------------------------------------------------------------------*/
 
 
 /* Private variables -----------------------------------------------------------------------------*/
+static __IO E_Speed_Car s_CarSpeed = SPEED_CAR_OFF;	/* Variable will store configured speed */
 
 
 /* Private function prototypes -------------------------------------------------------------------*/
@@ -69,7 +70,8 @@ void Motor_ApplyWheelChanges(void)
 /**
  * @brief	Function/routine to assign shift register values appropriate with each motor wheel movement
  * 			directions
- * @param	MotorWheel: The wheel to control/assign values
+ * @param	MotorWheel: The wheel to control/assign values (all enumerations except MOTWHEEL_FRONTTIRES
+ * 						and MOTWHEEL_REARTIRES handled)
  * 			E_Dir_SingleWheel: The direction of the wheel (forward, backwards, off/disabled)
  * @note	SR output pin QA might represent LSbit, while QH might represent MSbit.
  * 			These functions have been properly calibrated/adjusted to incorrect hardware wirings.
@@ -193,6 +195,7 @@ void Motor_ConfigWheelDirection(E_MotorWheel_Pos MotorWheel, E_Dir_SingleWheel W
 			}
 			break;
 		}
+		default: break;
 	}
 }
 
@@ -203,6 +206,31 @@ void Motor_ConfigWheelDirection(E_MotorWheel_Pos MotorWheel, E_Dir_SingleWheel W
  */
 void Car_ConfigDirection(E_Dir_Car CarDirection)
 {
+
+#if ENABLE_SPEED_CONTROL
+	if(s_CarSpeed == SPEED_CAR_OFF)
+	{
+		/* Notify user that speed needs to be configured prior to moving car's wheels */
+		return;
+	}
+	else if(s_CarSpeed == SPEED_CAR_VERYFAST)
+	{
+		__MOTOR_ConfigureAllWheelSpeed(SPEED_CAR_VERYFAST_PERCENTAGE);
+	}
+	else if(s_CarSpeed == SPEED_CAR_FAST)
+	{
+		__MOTOR_ConfigureAllWheelSpeed(SPEED_CAR_FAST_PERCENTAGE);
+	}
+	else if(s_CarSpeed == SPEED_CAR_NORMAL)
+	{
+		__MOTOR_ConfigureAllWheelSpeed(SPEED_CAR_NORMAL_PERCENTAGE);
+	}
+	else if(s_CarSpeed == SPEED_CAR_SLOW)
+	{
+		__MOTOR_ConfigureAllWheelSpeed(SPEED_CAR_SLOW_PERCENTAGE);
+	}
+#endif
+
 	switch(CarDirection)
 	{
 		case DIR_CAR_LEFT:
@@ -261,12 +289,23 @@ void Car_ConfigDirection(E_Dir_Car CarDirection)
   **************************************************************************************************
   */
 
+#if ENABLE_SPEED_CONTROL
+
 /**
- * @brief
- * @param
- * @retval
- * @note
+ * @brief	Updates static variable holding car speed configuration
+ * @param	CarSpeed: Speed of car to configure
  */
+void Car_ConfigSpeed(E_Speed_Car CarSpeed)
+{
+	/* Update static variable that stores/keeps car speed configuration. This variable will be used
+	 * to change each tires movement speed accordingly when configuring car movements with
+	 * Car_ConfigDirection()
+	 */
+	if(CarSpeed != SPEED_CAR_OFF)
+		s_CarSpeed = CarSpeed;
+}
+
+#endif
 
 
 /**

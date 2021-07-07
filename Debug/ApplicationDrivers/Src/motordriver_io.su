@@ -1,4 +1,4 @@
 motordriver_io.c:57:6:__MOTOR_HWInit	16	static
-motordriver_io.c:189:6:__MOTOR_SetShiftRegister	40	static
-motordriver_io.c:244:6:__MOTOR_ConfigureSpeed	0	static
-motordriver_io.c:290:6:__MOTOR_ConfigureAllWheelSpeed	0	static
+motordriver_io.c:190:6:__MOTOR_SetShiftRegister	40	static
+motordriver_io.c:245:6:__MOTOR_ConfigureSpeed	0	static
+motordriver_io.c:305:6:__MOTOR_ConfigureAllWheelSpeed	0	static

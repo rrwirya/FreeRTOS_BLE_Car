@@ -2,7 +2,7 @@ car_app_freertos.c:474:13:vTimUpdateOledScreenCallback	0	static
 car_app_freertos.c:463:13:vTimMotorTimeoutCallback	0	static
 car_app_freertos.c:380:13:Task_ManageBLEEvents	16	static
 car_app_freertos.c:407:13:Task_BlinkLEDIndicator	24	static
-car_app_freertos.c:346:13:Task_ProcessPushButtonIRQ	24	static
+car_app_freertos.c:349:13:Task_ProcessPushButtonIRQ	24	static
 car_app_freertos.c:293:13:Task_ParseBLEMessage	56	static
 car_app_freertos.c:251:13:Task_ManageBLEConnections	16	static
 car_app_freertos.c:101:6:FRTOS_Init_Mutex	0	static

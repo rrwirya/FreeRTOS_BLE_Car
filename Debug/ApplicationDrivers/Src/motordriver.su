@@ -1,5 +1,5 @@
-motordriver.c:47:6:Motor_Init	0	static
-motordriver.c:58:6:Motor_ApplyWheelChanges	0	static
-motordriver.c:77:6:Motor_ConfigWheelDirection	0	static
-motordriver.c:204:6:Car_ConfigDirection	0	static
-motordriver.c:281:6:__TEST_MOTOR_AlternateWheel	0	static
+motordriver.c:48:6:Motor_Init	0	static
+motordriver.c:59:6:Motor_ApplyWheelChanges	0	static
+motordriver.c:79:6:Motor_ConfigWheelDirection	0	static
+motordriver.c:207:6:Car_ConfigDirection	0	static
+motordriver.c:320:6:__TEST_MOTOR_AlternateWheel	0	static

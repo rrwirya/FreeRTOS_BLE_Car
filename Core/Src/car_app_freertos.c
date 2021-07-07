@@ -295,6 +295,9 @@ static void Task_ParseBLEMessage(void *argument)
 	/* Variable declarations */
 	uint32_t NotificationValue = 0;
 
+	/* Initialize Motor */
+	Motor_Init();
+
 	while(1)
 	{
 		/* Block indefinitely until a notification to this task was obtained/received */
@@ -348,9 +351,6 @@ static void Task_ProcessPushButtonIRQ(void *argument)
 	/* Variable declarations */
 	__IO uint32_t PBCounter = 0;
 	uint32_t NotificationValue = 0;
-
-	/* Initialize Motor */
-	Motor_Init();
 
 	while(1)
 	{

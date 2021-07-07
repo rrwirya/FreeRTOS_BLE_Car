@@ -131,10 +131,12 @@ void HardFault_Handler(void)
  */
 void HardFault_Handler_C(unsigned long * hardfault_args, unsigned int lr_value)
 {
+	/* Relevant registers that display code/memory address that caused hardfault */
 	bus_fault_address       = SCB->BFAR;
 	memmanage_fault_address = SCB->MMFAR;
 	cfsr                    = SCB->CFSR;
 
+	/* Relevant ARM registers */
 	stacked_r0  = ((unsigned long) hardfault_args[0]);
 	stacked_r1  = ((unsigned long) hardfault_args[1]);
 	stacked_r2  = ((unsigned long) hardfault_args[2]);
@@ -144,6 +146,7 @@ void HardFault_Handler_C(unsigned long * hardfault_args, unsigned int lr_value)
 	stacked_pc  = ((unsigned long) hardfault_args[6]);
 	stacked_psr = ((unsigned long) hardfault_args[7]);
 
+	/* Need to enable ITM/SWD on CubeIDE and MDK-ARM to observer printf() statements */
 	printf ("[HardFault]\n");
 	printf ("- Stack frame:\n");
 	printf (" R0  = %lx\n", stacked_r0);
@@ -164,7 +167,8 @@ void HardFault_Handler_C(unsigned long * hardfault_args, unsigned int lr_value)
 	printf ("- Misc\n");
 	printf (" LR/EXC_RETURN= %x\n", lr_value);
 
-	while(1); // endless loop
+	/* Infinite loop - halt program/software */
+	while(1);
 }
 
 #else

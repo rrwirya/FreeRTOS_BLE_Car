@@ -44,7 +44,7 @@
 
 #if USE_MODIFIED_HARDFAULT_HANDLER
 
-	/*--- Variables to observe ARM CPU registers */
+	/*--- Variables to observe internal ARM CPU registers */
 	extern unsigned long stacked_r0;
 	extern unsigned long stacked_r1;
 	extern unsigned long stacked_r2;

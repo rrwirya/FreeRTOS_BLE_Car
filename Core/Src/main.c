@@ -92,10 +92,10 @@ int main(void)
   MX_TIM1_Init();
   MX_TIM3_Init();
 
-  // printf("STM32F411RE Nucleo-64 Board\n");
-  // printf("FreeRTOS-BLE-Car\n\n");
+  printf("\tSTM32F411RE Nucleo-64 Board\n");
+  printf("\tFreeRTOS-BLE-Car\n\n");
 
-  /* Init scheduler */
+  /* Initialize scheduler */
   osKernelInitialize();  /* Call init function for freertos objects (in freertos.c) */
   MX_FREERTOS_Init();
 
@@ -112,7 +112,7 @@ int main(void)
   /* Infinite loop */
   while (1)
   {
-	  /* Indication of failed code */
+	  /* Indication of failed code - LED blinks rapidly at a frequency of 10Hz */
 	  HAL_GPIO_TogglePin(NUCLEO_LED_GPIO_Port, NUCLEO_LED_Pin);
 	  HAL_Delay(100);
   }

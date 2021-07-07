@@ -60,15 +60,18 @@ void __MOTOR_HWInit(void)
 	__MOTOR_EnableShiftRegister();
 
 #if ENABLE_SPEED_CONTROL
-	/* Configure motor wheel speed prior to enabling PWM */
-	__MOTOR_ConfigureAllWheelSpeed(100);
+	/* Configure motor wheel speed to 0 (no movements) prior to enabling PWM */
+	__MOTOR_ConfigureAllWheelSpeed(WHEEL_SPEED_DEFAULT_STARTING_PERCENTAGE);
+#else
+	/* Configure motor wheel speed to 100% (max movement) prior to enabling PWM */
+	__MOTOR_ConfigureAllWheelSpeed(WHEEL_SPEED_DEFAULT_PERCENTAGE);
+#endif
 
 	/* Enable PWM functionality to control wheel velocity */
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
 	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
 	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
 	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
-#endif
 }
 
 /**
@@ -79,7 +82,6 @@ void __MOTOR_HWInit(void)
 
 /**
  * @brief	Enables the shift register by setting DIR_EN to LOW
- * @note
  */
 static void __MOTOR_EnableShiftRegister(void)
 {
@@ -89,7 +91,6 @@ static void __MOTOR_EnableShiftRegister(void)
 
 /**
  * @brief	Disables the shift register by setting DIR_EN to HIGH
- * @note
  */
 static void __MOTOR_DisableShiftRegister(void)
 {
@@ -98,7 +99,7 @@ static void __MOTOR_DisableShiftRegister(void)
 }
 
 /**
- * @brief	Approximately 7.4us delay
+ * @brief	Approximately 7.4us delay @ 100MHz SYSCLK (measured through Logic Analyzer)
  */
 static void __MOTOR_ShiftRegister_DelaySetup(void)
 {
@@ -106,7 +107,7 @@ static void __MOTOR_ShiftRegister_DelaySetup(void)
 }
 
 /**
- * @brief	Approximately 14.1us delay
+ * @brief	Approximately 14.1us delay @ 100MHz SYSCLK (measured through Logic Analyzer)
  */
 static void __MOTOR_ShiftRegister_DelayHold(void)
 {
@@ -114,7 +115,7 @@ static void __MOTOR_ShiftRegister_DelayHold(void)
 }
 
 /**
- * @brief	Approximately 28.1us - 34us delay
+ * @brief	Approximately 28.1us - 34us delay @ 100MHz SYSCLK (measured through Logic Analyzer)
  */
 static void __MOTOR_ShiftRegister_Delay(void)
 {
@@ -270,13 +271,27 @@ void __MOTOR_ConfigureSpeed(E_MotorWheel_Pos MotorWheel, uint8_t Percentage)
 		case MOTWHEEL_FRONTRIGHT:
 		{
 			/* Update motor wheel speed by changing duty cycles */
-			TIM1->CCR3 = CCRvalue;
+			TIM1->CCR2 = CCRvalue;
 			break;
 		}
 		case MOTWHEEL_FRONTLEFT:
 		{
 			/* Update motor wheel speed by changing duty cycles */
+			TIM1->CCR3 = CCRvalue;
+			break;
+		}
+		case MOTWHEEL_FRONTTIRES:
+		{
+			/* Update motor wheels' speed by changing duty cycles */
 			TIM1->CCR2 = CCRvalue;
+			TIM1->CCR3 = CCRvalue;
+			break;
+		}
+		case MOTWHEEL_REARTIRES:
+		{
+			/* Update motor wheels' speed by changing duty cycles */
+			TIM3->CCR1 = CCRvalue;
+			TIM3->CCR2 = CCRvalue;
 			break;
 		}
 	}
