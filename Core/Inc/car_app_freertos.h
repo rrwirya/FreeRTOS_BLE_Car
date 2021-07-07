@@ -44,8 +44,10 @@ extern "C" {
 
 	/*--- Task Priorities ---*/
 	#define TASK_PRIO_BLE_CONN					osPriorityHigh6
-	#define TASK_PRIO_BLE_MSG					osPriorityHigh5
-	#define TASK_PRIO_PB						osPriorityHigh4
+	#define TASK_PRIO_CALCULATIONS				osPriorityHigh4		/* Might not need this */
+	#define TASK_PRIO_I2C_EVENTS				osPriorityHigh3		/* Might not need this */
+	#define TASK_PRIO_BLE_MSG					osPriorityHigh2
+	#define TASK_PRIO_PB						osPriorityHigh1
 	#define TASK_PRIO_MCULED					osPriorityNormal6
 	#define TASK_PRIO_BLE_EVENTS				osPriorityNormal1
 

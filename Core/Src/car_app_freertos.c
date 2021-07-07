@@ -52,6 +52,7 @@
 /* Private variables -----------------------------------------------------------------------------*/
 	/*--- FreeRTOS Timer Handles ---*/
 	TimerHandle_t h_TimMotorTimeout;
+	TimerHandle_t h_TimUpdateLED;
 
 	/*--- FreeRTOS Task Handles ---*/
 	TaskHandle_t h_TaskBLEConn;
@@ -59,6 +60,8 @@
 	TaskHandle_t h_TaskPBProcessing;
 	static TaskHandle_t sh_TaskMcuLED;
 	static TaskHandle_t sh_TaskBLEEvents;
+	static TaskHandle_t sh_TaskCarCalculations;
+	static TaskHandle_t sh_TaskI2CEvents;
 
 	/*--- Private variables related to BLE Connection Task ---*/
 
@@ -76,9 +79,12 @@
 	static void Task_ProcessPushButtonIRQ(void *argument);
 	static void Task_BlinkLEDIndicator(void *argument);
 	static void Task_ManageBLEEvents(void *argument);
+	static void Task_CarMovementCalculations(void *argument);
+	static void Task_ManageI2CEvents(void *argument);
 
 	/* FreeRTOS Timer Callback */
 	static void vTimMotorTimeoutCallback(TimerHandle_t xTimer);
+	static void vTimUpdateOledScreenCallback(TimerHandle_t xTimer);
 
 
 /* Private user code -----------------------------------------------------------------------------*/
@@ -114,15 +120,25 @@ void FRTOS_Init_Semaphores(void)
  */
 void FRTOS_Init_SWTimers(void)
 {
-	/* Create a timer that does not reload itself and triggers after 1.5 seconds */
+	/* Create a timer that does not reload itself and triggers after 1 second */
 	h_TimMotorTimeout = xTimerCreate("TIM_MotorTimeout",
-										1500/portTICK_PERIOD_MS,
+										1000/portTICK_PERIOD_MS,
 										pdFALSE,
 										(void *)0,
 										vTimMotorTimeoutCallback);
 
 	/* Ensure SW Timer creation succeeds */
 	assert_param(h_TimMotorTimeout != NULL);
+
+	/* Create a timer that auto-reloads itself every 300ms */
+	h_TimUpdateLED = xTimerCreate("TIM_UpdateOLEDScreen",
+									300/portTICK_PERIOD_MS,
+									pdTRUE,
+									(void *)0,
+									vTimUpdateOledScreenCallback);
+
+	/* Ensure SW Timer creation succeeds */
+	assert_param(h_TimUpdateLED != NULL);
 }
 
 /**
@@ -196,6 +212,27 @@ void FRTOS_Init_Tasks(void)
 
 	/* Ensure task creation succeeds */
 	assert_param(TaskCreationStatus == pdPASS);
+
+	/*
+	TaskCreationStatus = xTaskCreate( Task_CarMovementCalculations,
+										"Task4 - MovementCalculations",
+										TASK_STACKSIZE_DEFAULT,
+										NULL,
+										TASK_PRIO_CALCULATIONS,
+										&sh_TaskCarCalculations);
+
+	assert_param(TaskCreationStatus == pdPASS);
+
+	TaskCreationStatus = xTaskCreate( Task_ManageI2CEvents,
+										"Task5 - I2C Events",
+										TASK_STACKSIZE_DEFAULT,
+										NULL,
+										TASK_PRIO_I2C_EVENTS,
+										&sh_TaskI2CEvents);
+
+	assert_param(TaskCreationStatus == pdPASS);
+
+	*/
 }
 
 
@@ -276,22 +313,28 @@ static void Task_ParseBLEMessage(void *argument)
 		{
 			/* Move car in forward direction and begin timer that stops car in 1.5s */
 			Car_ConfigDirection(DIR_CAR_FRONT);
-			xTimerStart(h_TimMotorTimeout, 0);
+			xTimerStart(h_TimMotorTimeout, 500/portTICK_PERIOD_MS);
 			g_CountDirForward++;
 		}
 		else if(NotificationValue & FRTOS_TASK_NOTIF_DIR_EAST)
 		{
+			/* Move car in right direction and begin timer that stops car in 1s */
+			Car_ConfigDirection(DIR_CAR_RIGHT);
+			xTimerStart(h_TimMotorTimeout, 0);
 			g_CountDirRight++;
 		}
 		else if(NotificationValue & FRTOS_TASK_NOTIF_DIR_SOUTH)
 		{
 			/* Move car in reverse direction and begin timer that stops car in 1.5s */
 			Car_ConfigDirection(DIR_CAR_BACK);
-			xTimerStart(h_TimMotorTimeout, 0);
+			xTimerStart(h_TimMotorTimeout, 500/portTICK_PERIOD_MS);
 			g_CountDirBack++;
 		}
 		else if(NotificationValue & FRTOS_TASK_NOTIF_DIR_WEST)
 		{
+			/* Move car in left direction and begin timer that stops car in 1s */
+			Car_ConfigDirection(DIR_CAR_LEFT);
+			xTimerStart(h_TimMotorTimeout, 0);
 			g_CountDirLeft++;
 		}
 	}
@@ -319,55 +362,8 @@ static void Task_ProcessPushButtonIRQ(void *argument)
 
 		if(NotificationValue & FRTOS_TASK_NOTIF_PB_PRESSED)
 		{
-			/* Alternate motor direction and movement */
-			/*
-			switch(PBCounter%4)
-			{
-				case 0:
-				{
-					Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_BACKWARD);
-					Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_BACKWARD);
-					Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_BACKWARD);
-					Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_BACKWARD);
-					Motor_ApplyWheelChanges();
-					break;
-				}
-				case 1:
-				{
-					Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_OFF);
-					Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_OFF);
-					Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_OFF);
-					Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_OFF);
-					Motor_ApplyWheelChanges();
-					break;
-				}
-				case 2:
-				{
-					Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_FORWARD);
-					Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_FORWARD);
-					Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_FORWARD);
-					Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_FORWARD);
-					Motor_ApplyWheelChanges();
-					break;
-				}
-				case 3:
-				{
-					Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_OFF);
-					Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_OFF);
-					Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_OFF);
-					Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_OFF);
-					Motor_ApplyWheelChanges();
-					break;
-				}
-			}
-			*/
-
-			Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_OFF);
-			Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_OFF);
-			Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_OFF);
-			Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_OFF);
-			Motor_ApplyWheelChanges();
-
+			/* Test alternating each wheel to observe sequence */
+			__TEST_MOTOR_AlternateWheel(PBCounter);
 			PBCounter++;
 		}
 	}
@@ -414,8 +410,6 @@ static void Task_BlinkLEDIndicator(void *argument)
 	const TickType_t DelayFrequency = pdMS_TO_TICKS(1000);
 	TickType_t LastActiveTime;
 
-	// uint8_t temp = 1;
-
 	while(1)
 	{
 		/* Check amount of unused stack. If returned value is 0, stack overflow has occurred */
@@ -427,25 +421,33 @@ static void Task_BlinkLEDIndicator(void *argument)
 
 		/* Toggle LED every 1 second */
 		HAL_GPIO_TogglePin(NUCLEO_LED_GPIO_Port, NUCLEO_LED_Pin);
-
-		/* Test __MOTOR_SetShiftRegister Function */
-		/*
-		switch(temp)
-		{
-			case 1: __MOTOR_SetShiftRegister(0xB3); break;
-			case 2: __MOTOR_SetShiftRegister(0xAA); break;
-			case 3: __MOTOR_SetShiftRegister(0xFF); break;
-			case 4: __MOTOR_SetShiftRegister(0x3E); temp = 0; break;
-			default: break;
-		}
-		temp++;
-		*/
 	}
 
 	/* Delete tasks automatically if somehow code reached this point */
 	vTaskDelete(NULL);
 }
 
+/**
+ * @brief	FreeRTOS Task responsible for measuring velocity and distance covered from retrieved acceleration
+ * @note
+ */
+static void Task_CarMovementCalculations(void *argument)
+{
+
+	/* Delete tasks automatically if somehow code reached this point */
+	vTaskDelete(NULL);
+}
+
+/**
+ * @brief	FreeRTOS Task responsible for managing all I2C events/communication
+ * @note
+ */
+static void Task_ManageI2CEvents(void *argument)
+{
+
+	/* Delete tasks automatically if somehow code reached this point */
+	vTaskDelete(NULL);
+}
 
 /**
   **************************************************************************************************
@@ -454,13 +456,24 @@ static void Task_BlinkLEDIndicator(void *argument)
   */
 
 /**
- * @brief	FreeRTOS Timer that stops the car after 1.5 seconds of movement
+ * @brief	FreeRTOS Timer that stops the car after 1.5 seconds of movement or 1 second of movement
+ * 			depending on movement direction
  * @note
  */
 static void vTimMotorTimeoutCallback(TimerHandle_t xTimer)
 {
 	/* Stops car movements */
 	Car_ConfigDirection(DIR_CAR_BRAKES);
+}
+
+/**
+ * @brief	FreeRTOS Timer that executes periodically to notify FreeRTOS task that it is
+ * 			time to update OLED screen
+ * @note
+ */
+static void vTimUpdateOledScreenCallback(TimerHandle_t xTimer)
+{
+	/* Fill value in <customqueue> Queue to notify <customtask> of pending actions */
 }
 
 /**

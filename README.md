@@ -34,6 +34,11 @@
 	* All wheels moving properly (although one of the front tires are wired incorrectly)
 	* Successfully integrated BLE writes and car movements for moving car forward and backward
 	* Implemented FreeRTOS timer to stop car movements after 1.5 seconds
+* July 6, 2021:
+	* Car can steer left (by moving forward all right wheels), and right (by moving all left wheels)
+	* Included test function for testing all wheel sequences
+	* Fixed front left wheel and front right wheel control mix-up. `Motor_ConfigWheelDirection()` function properly controls all wheels.
+
 
 ### Errors:
 * BLE FreeRTOS HardFault crash:

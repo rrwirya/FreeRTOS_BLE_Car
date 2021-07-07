@@ -136,9 +136,9 @@ void Motor_ConfigWheelDirection(E_MotorWheel_Pos MotorWheel, E_Dir_SingleWheel W
 
 			break;
 		}
-		case MOTWHEEL_FRONTRIGHT:
+		case MOTWHEEL_FRONTLEFT:
 		{
-			/* Front Right Wheel (M3) Selection and direction controlled by pins M3A and M3B */
+			/* Front Left Wheel (M3) Selection and direction controlled by pins M3A and M3B */
 			switch(WheelDirection)
 			{
 				case DIR_WHEEL_OFF:
@@ -165,9 +165,9 @@ void Motor_ConfigWheelDirection(E_MotorWheel_Pos MotorWheel, E_Dir_SingleWheel W
 
 			break;
 		}
-		case MOTWHEEL_FRONTLEFT:
+		case MOTWHEEL_FRONTRIGHT:
 		{
-			/* Front Left Wheel (M4) Selection and direction controlled by pins M4A and M4B */
+			/* Front Right Wheel (M4) Selection and direction controlled by pins M4A and M4B */
 			switch(WheelDirection)
 			{
 				case DIR_WHEEL_OFF:
@@ -207,12 +207,20 @@ void Car_ConfigDirection(E_Dir_Car CarDirection)
 	{
 		case DIR_CAR_LEFT:
 		{
-			/* Move car left by ... */
+			/* Move car left by moving both wheels on right side of the car */
+			Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_FORWARD);
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_FORWARD);
 			break;
 		}
 		case DIR_CAR_RIGHT:
 		{
-			/* Move car right by ... */
+			/* Move car right by moving both wheels on left side of the car */
+			Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_FORWARD);
+			Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_FORWARD);
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_OFF);
 			break;
 		}
 		case DIR_CAR_FRONT:
@@ -267,6 +275,99 @@ void Car_ConfigDirection(E_Dir_Car CarDirection)
   **************************************************************************************************
   */
 
+/**
+ * @brief	Test code to check each wheel configuration and sequence
+ */
+void __TEST_MOTOR_AlternateWheel(uint32_t Counter)
+{
+	switch(Counter % 9)
+	{
+		case 0:
+		{
+			/* All wheels off */
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_OFF);
+			break;
+		}
+		case 1:
+		{
+			/* All wheels off except front left tires */
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_FORWARD);
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_OFF);
+			break;
+		}
+		case 2:
+		{
+			/* All wheels off except front right tires */
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_FORWARD);
+			Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_OFF);
+			break;
+		}
+		case 3:
+		{
+			/* All wheels off except rear left tires */
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_FORWARD);
+			Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_OFF);
+			break;
+		}
+		case 4:
+		{
+			/* All wheels off except rear right tires */
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_FORWARD);
+			break;
+		}
+		case 5:
+		{
+			/* All wheels off except front left tires */
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_BACKWARD);
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_OFF);
+			break;
+		}
+		case 6:
+		{
+			/* All wheels off except front right tires */
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_BACKWARD);
+			Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_OFF);
+			break;
+		}
+		case 7:
+		{
+			/* All wheels off except rear left tires */
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_BACKWARD);
+			Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_OFF);
+			break;
+		}
+		case 8:
+		{
+			/* All wheels off except rear right tires */
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTLEFT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_FRONTRIGHT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_REARLEFT, DIR_WHEEL_OFF);
+			Motor_ConfigWheelDirection(MOTWHEEL_REARRIGHT, DIR_WHEEL_BACKWARD);
+			break;
+		}
+	}
+
+	/* Apply Shift Register value changes to immediately apply motor effects */
+	Motor_ApplyWheelChanges();
+}
 
 
 /******************************************* END OF FILE *******************************************/

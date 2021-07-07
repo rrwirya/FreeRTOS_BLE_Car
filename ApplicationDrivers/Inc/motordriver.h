@@ -42,6 +42,15 @@ typedef enum
 	DIR_CAR_BRAKES
 } E_Dir_Car;
 
+/* Enumerations for car speed configurations (4 PWM values represented currently) */
+typedef enum
+{
+	SPEED_CAR_VERYFAST	= ((uint8_t)0x33),
+	SPEED_CAR_FAST		= ((uint8_t)0x22),
+	SPEED_CAR_NORMAL	= ((uint8_t)0x11),
+	SPEED_CAR_SLOW		= ((uint8_t)0x00)
+} E_Speed_Car;
+
 
 /* Exported variables ----------------------------------------------------------------------------*/
 extern __IO uint8_t g_ShiftRegisterByteToSet;
@@ -108,11 +117,17 @@ extern __IO uint8_t g_ShiftRegisterByteToSet;
 
 
 /* Exported Functions Prototypes -----------------------------------------------------------------*/
-void Motor_Init(void);
-void Motor_ApplyWheelChanges(void);
+	/*--- Basic/general motor functions ---*/
+	void Motor_Init(void);
+	void Motor_ApplyWheelChanges(void);
 
-void Motor_ConfigWheelDirection(E_MotorWheel_Pos MotorWheel, E_Dir_SingleWheel WheelDirection);
-void Car_ConfigDirection(E_Dir_Car CarDirection);
+	/*--- Motor Direction related functions ---*/
+	void Motor_ConfigWheelDirection(E_MotorWheel_Pos MotorWheel, E_Dir_SingleWheel WheelDirection);
+	void Car_ConfigDirection(E_Dir_Car CarDirection);
+
+	/*--- Misc. functions ---*/
+	void __TEST_MOTOR_AlternateWheel(uint32_t Counter);
+
 
 
 

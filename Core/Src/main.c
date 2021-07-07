@@ -58,6 +58,10 @@ void MX_FREERTOS_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 
+/**
+  * @brief  Function to print out text via SWD when calling printf()
+  * @retval length of string/characters
+  */
 int _write(int file, char *ptr, int len)
 {
 	/* Implement your write code here, this is used by puts and printf for example */
