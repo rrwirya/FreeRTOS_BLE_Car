@@ -4,6 +4,19 @@
 **BLE** : [X-NUCLEO-BNRG2A1](https://www.st.com/resource/en/user_manual/dm00673688-getting-started-with-the-xnucleobnrg2a1-ble-expansion-board-based-on-bluenrgm2sp-module-for-stm32-nucleo-stmicroelectronics.pdf) <br>
 **IDE** : STM32CubeIDE <br>
 
+### Relevant Files:
+* FreeRTOS_BLE_Car/ApplicationDrivers/Src : contains driver files for motor and ADXL343 accelerometer
+* FreeRTOS_BLE_Car/Core/Src/car_app_ble.c : contains BLE layer for communication between STM32 and Android/iOS
+* FreeRTOS_BLE_Car/Core/Src/car_app_freertos.c : contains FreeRTOS tasks and objects running in the STM32
+* FreeRTOS_BLE_Car/Core/Src : contains other files such as main, peripheral initializations, and interrupt handlers
+
+
+
+
+
+
+
+
 ### TODO:
 * June 19, 2021:
 	* Fix BLE initialization

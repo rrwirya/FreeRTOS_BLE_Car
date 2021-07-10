@@ -528,7 +528,7 @@ void ADXL343_Init(void)
 	temp &= MSK_REG_BW_LOWPOWER;
  800063a:	f000 0010 	and.w	r0, r0, #16
 	__io_accelerometer_i2cWriteRegister(REG_BW_RATE_BASE, temp, NMAX_I2C_RETX);
- 800063e:	f040 0108 	orr.w	r1, r0, #8
+ 800063e:	f040 0109 	orr.w	r1, r0, #9
  8000642:	2201      	movs	r2, #1
  8000644:	202c      	movs	r0, #44	; 0x2c
  8000646:	f000 f847 	bl	80006d8 <__io_accelerometer_i2cWriteRegister>
