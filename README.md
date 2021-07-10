@@ -19,7 +19,8 @@
 	* Fix issue where as soon as DATA_READY interrupts are enabled on the ADXL343, EXTI4 (DATA_READY) interrupt becomes immediately available
 	* Determine the cause of why and how the DATA_READY interrupt gets triggered consecutively
 	* Determine a reliable method to measure time difference between each FIFO reads to accurately measure displacement and velocity
-
+	* In periodic measurement scenario, determine why acceleration is always non-zero, while velocity is always increasing with current algorithm
+	
 
 ### Done:
 * June 24, 2021:
@@ -45,6 +46,7 @@
 * July 9, 2021:
 	* Implemented Accelerometer FIFO related functions including `ADXL_ReadAcceleration()`, `ADXL_TwosComplement_13bits()`, `ADXL_ConfigureAccelerationRange()`, and `ADXL343_FullResolutionMode()`
 	* Tested Twos Complement on Online C Compiler. Observed some of the FIFO/Data initializations with a Logic Analyzer
+	* Tested measuring acceleration and calculating velocity every 25ms. Velocity seems to be accumulating even though car is not moving. Acceleration seems to be non-zero even though car is not moving either.
 	
 	
 ### Errors:

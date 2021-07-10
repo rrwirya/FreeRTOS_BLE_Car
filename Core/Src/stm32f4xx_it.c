@@ -375,14 +375,14 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	{
 		/* This value becomes pdTRUE if giving the notification caused a task to unblock, and the unblocked task has a
 		   higher priority than the currently running task, in which a context switch should occur */
-		BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+		// BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 
 		/* Notifies task that a new acceleration data is available */
-		xTaskNotifyFromISR(h_TaskCarCalculations, FRTOS_TASK_NOTIF_ADXL343_INT1, eSetBits, &xHigherPriorityTaskWoken);
+		// xTaskNotifyFromISR(h_TaskCarCalculations, FRTOS_TASK_NOTIF_ADXL343_INT1, eSetBits, &xHigherPriorityTaskWoken);
 
 		/* Force context switch if xHigherPriorityTaskWoken == pdTRUE. This does nothing if xHigherPriorityTaskWoken
 		   is pdFALSE */
-		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+		// portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 	}
 }
 

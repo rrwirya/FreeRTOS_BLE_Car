@@ -31,6 +31,10 @@
 
 
 /* Private define --------------------------------------------------------------------------------*/
+/* By default, accelerometer will be polled every 25ms. I2C readings is expected to last 860us. */
+#if !defined(ACCELEROMETER_INTERRUPTS) && !defined(ACCELEROMETER_PERIODIC_MEASUREMENTS)
+	#define ACCELEROMETER_PERIODIC_MEASUREMENTS
+#endif
 
 
 /* Private macro ---------------------------------------------------------------------------------*/
@@ -68,13 +72,16 @@
 	//static TaskHandle_t sh_TaskI2CEvents;
 
 	/*--- Private variables related to Task Car Calculations/Measurements ---*/
-	static uint32_t s_CarLocalDistanceCovered = 0;		/* units in m */
-	static float s_CarVelocityX = 0;					/* units in m/s */
-	static float s_CarVelocityY = 0;					/* units in m/s */
-	static float s_CarVelocity = 0;						/* units in m/s */
-	static float s_CarAccelerationX = 0;				/* units in m/(s^2) */
-	static float s_CarAccelerationY = 0;				/* units in m/(s^2) */
-	static float s_CarAcceleration = 0;					/* units in m/(s^2) */
+	// static uint32_t s_CarLocalDistanceCovered = 0;		/* units in m */
+	static __IO float s_CarOldVelocityX = 0;				/* units in m/s */
+	static __IO float s_CarOldVelocityY = 0;				/* units in m/s */
+	static __IO float s_CarOldVelocityZ = 0;				/* units in m/s */
+	static __IO float s_CarVelocityX = 0;					/* units in m/s */
+	static __IO float s_CarVelocityY = 0;					/* units in m/s */
+	static __IO float s_CarVelocityZ = 0;					/* units in m/s */
+	static float s_CarAccelerationX = 0;					/* units in m/(s^2) */
+	static float s_CarAccelerationY = 0;					/* units in m/(s^2) */
+	static float s_CarAccelerationZ = 0;					/* units in m/(s^2) */
 
 
 /* Private function prototypes -------------------------------------------------------------------*/
@@ -440,13 +447,19 @@ static void Task_BlinkLEDIndicator(void *argument)
  */
 static void Task_CarMovementCalculations(void *argument)
 {
-	/* Variable declaration */
+
+#if defined(ACCELEROMETER_INTERRUPTS)
 	uint32_t NotificationValue = 0;
-	float AccelerationX, AccelerationY, AccelerationZ;
-	__IO uint32_t DataReadyCounter = 0;
+#elif defined(ACCELEROMETER_PERIODIC_MEASUREMENTS)
+	/* Variables used to perform accurate delays */
+	const TickType_t DelayFrequency = pdMS_TO_TICKS(FREQUENCY_MS_CALCULATION);
+	TickType_t LastActiveTime;
+#endif
 
 	/* Initialize accelerometer */
 	ADXL343_Init();
+
+#if defined(ACCELEROMETER_INTERRUPTS)
 
 	while(1)
 	{
@@ -460,7 +473,7 @@ static void Task_CarMovementCalculations(void *argument)
 		if(NotificationValue & FRTOS_TASK_NOTIF_ADXL343_INT1)
 		{
 			/* Read accelerations axis x and y from ADXL343 accelerometer connected through I2C/SMBus */
-			ADXL_ReadAcceleration(&AccelerationX, &AccelerationY, &AccelerationZ);
+			ADXL_ReadAcceleration(&s_CarAccelerationX, &s_CarAccelerationY, &s_CarAccelerationZ);
 			DataReadyCounter++;
 
 			/* Measure velocity, and update old velocity afterwards with new duplicate */
@@ -470,6 +483,37 @@ static void Task_CarMovementCalculations(void *argument)
 			// s_CarLocalDistanceCovered += (s_CarVelocity * FREQUENCY_S_CALCULATION) + (0.5 * s_CarAcceleration * pow(FREQUENCY_S_CALCULATION,2));
 		}
 	}
+
+#elif defined(ACCELEROMETER_PERIODIC_MEASUREMENTS)
+
+	while(1)
+	{
+		/* Check amount of unused stack. If returned value is 0, stack overflow has occurred */
+		g_Task5_RSS = uxTaskGetStackHighWaterMark(NULL);
+
+		/* Perform accurate blocking delay */
+		LastActiveTime = xTaskGetTickCount();
+		vTaskDelayUntil(&LastActiveTime, DelayFrequency);
+
+		taskENTER_CRITICAL();
+
+		/* Read accelerations axis x and y from ADXL343 accelerometer connected through I2C/SMBus */
+		ADXL_ReadAcceleration(&s_CarAccelerationX, &s_CarAccelerationY, &s_CarAccelerationZ);
+
+		taskEXIT_CRITICAL();
+
+		/* Calculate velocity */
+		s_CarVelocityX = s_CarOldVelocityX + (s_CarAccelerationX * FREQUENCY_S_CALCULATION);
+		s_CarVelocityY = s_CarOldVelocityY + (s_CarAccelerationY * FREQUENCY_S_CALCULATION);
+		s_CarVelocityZ = s_CarOldVelocityZ + (s_CarAccelerationZ * FREQUENCY_S_CALCULATION);
+
+		/* Update old velocity values to be used in next iteration/measurement */
+		s_CarOldVelocityX = s_CarVelocityX;
+		s_CarOldVelocityY = s_CarVelocityY;
+		s_CarOldVelocityZ = s_CarVelocityZ;
+	}
+
+#endif
 
 	/* Delete tasks automatically if somehow code reached this point */
 	vTaskDelete(NULL);

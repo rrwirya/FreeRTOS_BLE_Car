@@ -39,7 +39,7 @@ extern "C" {
 
 /* Exported defines ------------------------------------------------------------------------------*/
 	/*--- Measurement/Calculation Parameters ---*/
-	#define FREQUENCY_MS_CALCULATION			((uint8_t)100)
+	#define FREQUENCY_MS_CALCULATION			((uint8_t)25)
 	#define FREQUENCY_S_CALCULATION				((float)FREQUENCY_MS_CALCULATION/1000.0f)
 
 	/*--- Task Stack Sizes ---*/
@@ -49,11 +49,10 @@ extern "C" {
 
 	/*--- Task Priorities ---*/
 	#define TASK_PRIO_BLE_CONN					osPriorityHigh6
-	#define TASK_PRIO_CALCULATIONS				osPriorityHigh4		/* Might not need this */
-	#define TASK_PRIO_I2C_EVENTS				osPriorityHigh3		/* Might not need this */
-	#define TASK_PRIO_BLE_MSG					osPriorityHigh2
-	#define TASK_PRIO_PB						osPriorityHigh1
-	#define TASK_PRIO_MCULED					osPriorityNormal6
+	#define TASK_PRIO_BLE_MSG					osPriorityHigh4
+	#define TASK_PRIO_CALCULATIONS				osPriorityHigh1
+	#define TASK_PRIO_PB						osPriorityAboveNormal7
+	#define TASK_PRIO_MCULED					osPriorityAboveNormal4
 	#define TASK_PRIO_BLE_EVENTS				osPriorityNormal1
 
 

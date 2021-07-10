@@ -564,7 +564,7 @@ int32_t ADXL_TwosComplement_13bits(uint16_t value)
 
 
 /**
- * @brief	Returns all axes acceleration in float variable
+ * @brief	Returns all axes acceleration in float variable in units of m/(s^2)
  */
 void ADXL_ReadAcceleration(float *AccelerationX, float *AccelerationY, float *AccelerationZ)
 {
@@ -575,9 +575,9 @@ void ADXL_ReadAcceleration(float *AccelerationX, float *AccelerationY, float *Ac
 	__ADXL_READMULTIBYTE_FIFO(&RawAccelX, &RawAccelY, &RawAccelZ);
 
 	/* Conversion from raw values to normal interpretation, and that value is multiplied with 4mg/LSB resolution */
-	*AccelerationX = 4.0f * (float)(ADXL_TwosComplement_13bits(RawAccelX));
-	*AccelerationY = 4.0f * (float)(ADXL_TwosComplement_13bits(RawAccelY));
-	*AccelerationZ = 4.0f * (float)(ADXL_TwosComplement_13bits(RawAccelZ));
+	*AccelerationX = (4.0f * (float)(ADXL_TwosComplement_13bits(RawAccelX))/1000.0f);
+	*AccelerationY = (4.0f * (float)(ADXL_TwosComplement_13bits(RawAccelY))/1000.0f);
+	*AccelerationZ = (4.0f * (float)(ADXL_TwosComplement_13bits(RawAccelZ))/1000.0f);
 }
 
 
@@ -634,7 +634,7 @@ void ADXL343_Init(void)
 	ADXL343_ConfigureFIFOMode(Buffer_Bypass);
 
 	/* Enable Interrupts through the INT_ENABLE register */
-	Accelerometer_SetInterrupt(DATA_READY, A_ENABLE);
+	// Accelerometer_SetInterrupt(DATA_READY, A_ENABLE);
 	
 /*--- END OF CUSTOM ADXL343 CONFIGURATION TO MEASURE ACCELERATION FROM FIFO ---*/
 	
