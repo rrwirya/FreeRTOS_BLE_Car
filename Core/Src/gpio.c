@@ -67,11 +67,11 @@ void MX_GPIO_Init(void)
   HAL_GPIO_Init(NUCLEO_PB_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PC14 PC15 PC1
-                           PC2 PC3 PC4 PC5
+                           PC2 PC3 PC5
                            PC6 PC8 PC9
                            PC10 PC11 PC12 */
-  GPIO_InitStruct.Pin = GPIO_PIN_14|GPIO_PIN_15/*|GPIO_PIN_0*/|GPIO_PIN_1
-                          |GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5
+  GPIO_InitStruct.Pin = GPIO_PIN_14|GPIO_PIN_15|GPIO_PIN_1
+                          |GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_5
                           |GPIO_PIN_6|GPIO_PIN_8|GPIO_PIN_9
                           |GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12;
   GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
@@ -89,6 +89,12 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(HCI_TL_SPI_EXTI_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PC4 - Accelerometer INT1 pin */
+  GPIO_InitStruct.Pin = ACCELEROMETER_INT1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(ACCELEROMETER_INT1_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : BLE Pins and Nucleo LED Pin */
   GPIO_InitStruct.Pin = BLE_CS_Pin|NUCLEO_LED_Pin|HCI_TL_RST_Pin;
@@ -140,6 +146,8 @@ void MX_GPIO_Init(void)
   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 6, 2);
   HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
+  HAL_NVIC_SetPriority(EXTI4_IRQn, 6, 3);
+  HAL_NVIC_EnableIRQ(EXTI4_IRQn);
 }
 
 /* USER CODE BEGIN 2 */

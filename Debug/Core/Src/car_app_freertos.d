@@ -68,7 +68,9 @@ Core/Src/car_app_freertos.o: ../Core/Src/car_app_freertos.c \
  ../Middlewares/ST/BlueNRG-2/includes/sm.h ../Core/Inc/car_app_ble.h \
  D:/Reggie/Projects/FreeRTOS-BLE-Car/F411RE_Car_FW/ApplicationDrivers/Inc/motordriver.h \
  D:/Reggie/Projects/FreeRTOS-BLE-Car/F411RE_Car_FW/ApplicationDrivers/Inc/motordriver_io.h \
- ../Core/Inc/main.h
+ ../Core/Inc/main.h \
+ D:/Reggie/Projects/FreeRTOS-BLE-Car/F411RE_Car_FW/ApplicationDrivers/Inc/adxl343.h \
+ D:/Reggie/Projects/FreeRTOS-BLE-Car/F411RE_Car_FW/ApplicationDrivers/Inc/adxl343_io.h
 
 ../Core/Inc/stm32f4xx_it.h:
 
@@ -219,3 +221,7 @@ D:/Reggie/Projects/FreeRTOS-BLE-Car/F411RE_Car_FW/ApplicationDrivers/Inc/motordr
 D:/Reggie/Projects/FreeRTOS-BLE-Car/F411RE_Car_FW/ApplicationDrivers/Inc/motordriver_io.h:
 
 ../Core/Inc/main.h:
+
+D:/Reggie/Projects/FreeRTOS-BLE-Car/F411RE_Car_FW/ApplicationDrivers/Inc/adxl343.h:
+
+D:/Reggie/Projects/FreeRTOS-BLE-Car/F411RE_Car_FW/ApplicationDrivers/Inc/adxl343_io.h:

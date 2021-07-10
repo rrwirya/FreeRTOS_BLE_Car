@@ -25,11 +25,13 @@
 /* Private define ------------------------------------------------------------*/
 /* Maximum i2c comms retransmissions */
 #define NMAX_I2C_RETX													1
-// Uncomment the line below to utilize SWO printf outputs 
+
+/* Uncomment the line below to utilize SWO/SWD printf() outputs */
 // #define USE_VCOM
 
 
 /* Private variables ---------------------------------------------------------*/
+/* Variable for activity/inactivity interrupt configuration (3-axis) */
 ActInactControlBits xActInactCtlValues = {
 	ACT_AC_DC_EN,
 	ACT_X_AXIS_EN,
@@ -47,13 +49,17 @@ ActInactControlBits xActInactCtlValues = {
 
 /* Private function prototypes -----------------------------------------------*/
 
-/******!< @group Power related functions ******/
+/**
+  **************************************************************************************************
+  * Power related functions/routines 														       *
+  **************************************************************************************************
+  */
 
 /**
- * @brief Sets the measurement bit of the device to exit/enter standby mode
- * @note  Configure device prior to setting the measurement bit high (while
- *        device is still in STANDBY mode). Clearing the measurement bit
- *        will place device back in STANDBY mode.
+ * @brief 	Sets the measurement bit of the device to exit/enter standby mode
+ * @note  	Configure device prior to setting the measurement bit high (while
+ *        	device is still in STANDBY mode). Clearing the measurement bit
+ *        	will place device back in STANDBY mode.
  */
 void Accelerometer_SetMeasurementMode(AccelerometerBitState xState)
 {
@@ -73,14 +79,13 @@ void Accelerometer_SetMeasurementMode(AccelerometerBitState xState)
 	
 	/* Overwrite/update the POWER_CTL register */
 	__io_accelerometer_i2cWriteRegister(REG_POWER_CTL_BASE, temp, NMAX_I2C_RETX);
-	
 }
 
 
 /**
- * @brief Sets the low power bit for normal/low power operation
- * @note  At low power operation, the accelerometer will produce larger noise
- *        If using low power mode, set the Rate bits with Accelerometer_SetOutputDataRate()
+ * @brief 	Sets the low power bit for normal/low power operation
+ * @note  	At low power operation, the accelerometer will produce larger noise
+ *        	If using low power mode, set the Rate bits with Accelerometer_SetOutputDataRate()
  */
 void Accelerometer_SetLowPowerMode(AccelerometerBitState xState)
 {
@@ -106,9 +111,9 @@ void Accelerometer_SetLowPowerMode(AccelerometerBitState xState)
 
 /**
  * @brief	Sets the output data rate of the accelerometer
- * @param OutputDataRate_Hz: fill with one of the bit masks format
- *													 MSK_REG_BW_RATE_XXXX_HZ found under the REG_BW_RATE_BASE
- *													 register definition
+ * @param 	OutputDataRate_Hz: fill with one of the bit masks format
+ *							   MSK_REG_BW_RATE_XXXX_HZ found under the REG_BW_RATE_BASE
+ *							   register definition
  */
 void Accelerometer_SetOutputDataRate(uint8_t cOutputDataRate_Hz)
 {
@@ -123,14 +128,13 @@ void Accelerometer_SetOutputDataRate(uint8_t cOutputDataRate_Hz)
 	
 	/* Overwrite/update the BW_RATE register */
 	__io_accelerometer_i2cWriteRegister(REG_BW_RATE_BASE, temp, NMAX_I2C_RETX);
-	
 }
 
 
 /**
- * @brief Enables the Auto Sleep Mode of the ADXL343
- * @param		cTimeInactivity: time representing time of inactivity before auto sleep in seconds
- *				cThreshInactivity: value representing inactivity event (gravity) in mg (not g)
+ * @brief 	Enables the Auto Sleep Mode of the ADXL343
+ * @param	cTimeInactivity: time representing time of inactivity before auto sleep in seconds
+ *			cThreshInactivity: value representing inactivity event (gravity) in mg (not g)
  */
 void Accelerometer_EnableAutoSleep(uint8_t cTimeInactivity, float cThreshmg)
 {
@@ -148,33 +152,34 @@ void Accelerometer_EnableAutoSleep(uint8_t cTimeInactivity, float cThreshmg)
 	
 	/* Overwrite/update the POWER_CTL register */
 	__io_accelerometer_i2cWriteRegister(REG_POWER_CTL_BASE, temp, NMAX_I2C_RETX);
-	
 }
 
-/****** !< @group Interrupt related functions ******/
+/**
+  **************************************************************************************************
+  * Interrupt related functions/routines													       *
+  **************************************************************************************************
+  */
 
 /**
- * @brief Sets Inactivity Threshold and Inactivity Time to trigger inactivity status
- * @param		cTimeInactivity: raw 8-bit value representing time of inactivity before auto sleep
- *				cThreshInactivity: raw 8-bit value representing inactivity event (gravity) 
+ * @brief 	Sets Inactivity Threshold and Inactivity Time to trigger inactivity status
+ * @param	cTimeInactivity: raw 8-bit value representing time of inactivity before auto sleep
+ *			cThreshInactivity: raw 8-bit value representing inactivity event (gravity)
  */
 void Accelerometer_WriteInactivityThreshTime(uint8_t cTimeInactivity, uint8_t cThreshInactivity)
 {
 	/* Configure inactivity conditions/requirements for inactivity function */
 	__io_accelerometer_i2cWriteRegister(REG_THRESH_INACT_BASE, cThreshInactivity, NMAX_I2C_RETX);
 	__io_accelerometer_i2cWriteRegister(REG_TIME_INACT_BASE, cTimeInactivity, NMAX_I2C_RETX);
-	
 }
 
 
 /**
- * @brief Sets the Activity Threshold in the THRESH_ACT register (addr: 0x24)
+ * @brief 	Sets the Activity Threshold in the THRESH_ACT register (addr: 0x24)
  */
 void Accelerometer_WriteActivityThreshold(uint8_t cThreshActivity)
 {
 	/* Configure the activity threshold */
 	__io_accelerometer_i2cWriteRegister(REG_THRESH_ACT_BASE, cThreshActivity, NMAX_I2C_RETX);
-	
 }
 
 
@@ -201,7 +206,6 @@ void Accelerometer_WriteInactivityThreshTimeMg(uint8_t cTimeSeconds, float cThre
 	
 	/* Writes to the respective inactivity thresholds */
 	Accelerometer_WriteInactivityThreshTime(cTimeSeconds, cThresh);
-	
 }
 
 
@@ -223,7 +227,6 @@ void Accelerometer_WriteActivityThreshMg(float cThreshmg)
 	
 	/* Writes to the respective activity thresholds register */
 	Accelerometer_WriteActivityThreshold(cThresh);
-	
 }
 
 
@@ -269,18 +272,17 @@ void Accelerometer_ConfigureActInactControl(ActInactControlBits xInput)
 	
 	/* Update the ACT_INACT_CTL register with the new configuration */
 	__io_accelerometer_i2cWriteRegister(REG_ACT_INACT_CTL_BASE, temp, NMAX_I2C_RETX);
-	
 }
 
 
 /**
- * @brief Enables/Disables the link bit that links the activity function and 
- *				inactivity function together. If they both are linked, device will
- *				detect activity only after an inactivity is detected (while also
- *				disabling future detection of inactivity until an activity is
- *				detected), and vice versa.
+ * @brief 	Enables/Disables the link bit that links the activity function and
+ *			inactivity function together. If they both are linked, device will
+ *			detect activity only after an inactivity is detected (while also
+ *			disabling future detection of inactivity until an activity is
+ *			detected), and vice versa.
  * @note	If the link bit is enabled, ensure that the inactivity functions are
- *				also enabled through Accelerometer_ConfigureActInactControl()
+ *			also enabled through Accelerometer_ConfigureActInactControl()
  */
 void Accelerometer_LinkActivityInactivity(AccelerometerBitState xState)
 {
@@ -304,9 +306,9 @@ void Accelerometer_LinkActivityInactivity(AccelerometerBitState xState)
 
 
 /**
- * @brief Enables or disables the ADXL343's registered interrupts
+ * @brief 	Enables or disables the ADXL343's registered interrupts
  * @param   xIrq: Interrupt type/category to enable/disable
- *				xState: A_ENABLE or A_DISABLE to respectively enable/disable the interrupt
+ *			xState: A_ENABLE or A_DISABLE to respectively enable/disable the interrupt
  */
 void Accelerometer_SetInterrupt(AccelerometerIrq xIrqPos, AccelerometerBitState xState)
 {
@@ -326,7 +328,6 @@ void Accelerometer_SetInterrupt(AccelerometerIrq xIrqPos, AccelerometerBitState 
 	
 	/* Overwrite/update the INT_ENABLE register */
 	__io_accelerometer_i2cWriteRegister(REG_INT_ENABLE_BASE, temp, NMAX_I2C_RETX);
-	
 }
 
 
@@ -341,7 +342,7 @@ void Accelerometer_ResetInterrupt(void)
 
 
 /**
- * @brief Maps interrupts to either INT1 pin or INT2 pin
+ * @brief 	Maps interrupts to either INT1 pin or INT2 pin
  */
 void Accelerometer_MapInterrupt(AccelerometerIrq xIrqPos, AcceleromterIrqPin xIrqPin)
 {
@@ -361,13 +362,12 @@ void Accelerometer_MapInterrupt(AccelerometerIrq xIrqPos, AcceleromterIrqPin xIr
 	
 	/* Overwrite/update the INT_MAP register */
 	__io_accelerometer_i2cWriteRegister(REG_INT_MAP_BASE, temp, NMAX_I2C_RETX);
-	
 }
 
 
 /**
- * @brief Returns raw 8-bit value of all the interrupts that occurred
- * @note  This function can be used to clear interrupt flags 
+ * @brief 	Returns raw 8-bit value of all the interrupts that occurred
+ * @note  	This function can be used to clear interrupt flags
  */
 uint8_t Accelerometer_ReturnIrqFlags(void)
 {
@@ -380,8 +380,8 @@ uint8_t Accelerometer_ReturnIrqFlags(void)
 
 /**
  * @brief	Saves status of the accelerometer irq flags for further processing
- * @param *xIrqStatus: pointer to the struct object where the status of the
- *										 irq flags will be saved to. 
+ * @param 	*xIrqStatus: pointer to the struct object where the status of the
+ *						 irq flags will be saved to.
  * @note	This function also clears the irq flags by reading the INT_SOURCE register
  */
 void Accelerometer_CheckInterruptFlags(AccelerometerIrqStatus *xIrqStatus)
@@ -401,12 +401,16 @@ void Accelerometer_CheckInterruptFlags(AccelerometerIrqStatus *xIrqStatus)
 	
 }
 
-/****** !< @group Data and Device configuration ******/
+/**
+  **************************************************************************************************
+  * Data and Device Configuration															       *
+  **************************************************************************************************
+  */
 
 /**
  * @brief	Controls if the interrupt is active high or active low. Passing in an
- *				A_ENABLE value will configure the device to produce active high
- *				interrupts on the INTx pins. Default is active high.
+ *			A_ENABLE value will configure the device to produce active high
+ *			interrupts on the INTx pins. Default is active high.
  */
 void ADXL343_InterruptActiveLow(AccelerometerBitState xState)
 {
@@ -425,12 +429,42 @@ void ADXL343_InterruptActiveLow(AccelerometerBitState xState)
 	
 	/* Update the DATA_FORMAT register */
 	__io_accelerometer_i2cWriteRegister(REG_DATA_FORMAT_BASE, temp, NMAX_I2C_RETX);
-	
 }
 
 
 /**
- * @brief Set the accelerometer to 3-wire SPI Mode or 4-wire SPI Mode
+ * @brief	Controls whether accelerometer will use full-resolution or 10-bit mode.
+ * 			In full-resolution mode, output resolution is 4mg/LSB.
+ * @note	At the following acceleration range (assuming right justified format):
+ * 				+-2g	: 10-bit resolution (MSbit at bit D1 of DATAa1 register, a = X, Y, or Z)
+ * 				+-4g	: 11-bit resolution (MSbit at bit D2 of DATAa1 register, a = X, Y, or Z)
+ * 				+-8g	: 12-bit resolution (MSbit at bit D3 of DATAa1 register, a = X, Y, or Z)
+ * 				+-16g	: 13-bit resolution	(MSbit at bit D4 of DATAa1 register, a = X, Y, or Z)
+ * 			Refer to page 30 of the datasheet for more details
+ */
+void ADXL343_FullResolutionMode(AccelerometerBitState xState)
+{
+	/* Read DATA_FORMAT register prior to changing its values */
+	uint8_t temp = __io_accelerometer_i2cReadRegister(REG_DATA_FORMAT_BASE, NMAX_I2C_RETX);
+
+	if(xState == A_ENABLE)
+	{
+		/* value of 1 in FULL_RES bit configures full resolution mode */
+		temp |= MSK_DATA_FORMAT_FULL_RES;
+	}
+	else if(xState == A_DISABLE)
+	{
+		/* value of 0 in FULL_RES bit configures 10-bit resolution mode */
+		temp &= ~MSK_DATA_FORMAT_FULL_RES;
+	}
+	
+	/* Update the DATA_FORMAT register */
+	__io_accelerometer_i2cWriteRegister(REG_DATA_FORMAT_BASE, temp, NMAX_I2C_RETX);
+}
+
+
+/**
+ * @brief 	Set the accelerometer to 3-wire SPI Mode or 4-wire SPI Mode
  */
 void ADXL343_SPI3WireMode(AccelerometerBitState xState)
 {
@@ -449,13 +483,12 @@ void ADXL343_SPI3WireMode(AccelerometerBitState xState)
 	
 	/* Update the DATA_FORMAT register */
 	__io_accelerometer_i2cWriteRegister(REG_DATA_FORMAT_BASE, temp, NMAX_I2C_RETX);
-	
 }
 
 
 /**
- * @brief Configures the Buffer Mode in either Bypass mode, FIFO mode, Stream
- *				mode, or Trigger mode. Default value at startup is Bypass mode.
+ * @brief 	Configures the Buffer Mode in either Bypass mode, FIFO mode, Stream
+ *			mode, or Trigger mode. Default value at startup is Bypass mode.
  */
 void ADXL343_ConfigureFIFOMode(AccelerometerBufferStates xBufferMode)
 {
@@ -489,11 +522,74 @@ void ADXL343_ConfigureFIFOMode(AccelerometerBufferStates xBufferMode)
 }
 
 
+/**
+ * @brief 	Configures either +-2g, +-4g, +-8g, or +-16g as the measurement range
+ * @param	xRange: Check enumeration AccelerometerRange for possible measurement ranges
+ */
+void ADXL_ConfigureAccelerationRange(AccelerometerRange xRange)
+{
+	/* Read DATA_FORMAT register prior to changing its values */
+	uint8_t temp = __io_accelerometer_i2cReadRegister(REG_DATA_FORMAT_BASE, NMAX_I2C_RETX);
 
-/* ---------------------------- CHANGE ACCORDINGLY --------------------------- */
+	/* Clear the range bitfields and configure the desired range */
+	temp = ((temp & ~(0x03)) | ((uint8_t)xRange));
+
+	/* Overwrite/Update DATA_FORMAT register with new values */
+	__io_accelerometer_i2cWriteRegister(REG_DATA_FORMAT_BASE, temp, NMAX_I2C_RETX);
+}
+
 
 /**
- * @brief Initializes the ADXL343 in Standby Mode
+ * @brief	Converts sign extension 2's complement to normal integers
+ */
+int32_t ADXL_TwosComplement_13bits(uint16_t value)
+{
+    uint16_t temp = value;
+
+    if(value & 0x1000)
+    {
+        /* 13th bit high, negative integer */
+
+        /* Reverse bits and add 1, then multiply with -1 */
+        temp = (~temp) & FULL_13_BITS;
+        temp = temp + 1;
+        return (-1 * temp);
+    }
+    else
+    {
+        /* 13th bit low, positive integer. Return normal interpretation of its value */
+        return (int)value;
+    }
+}
+
+
+/**
+ * @brief	Returns all axes acceleration in float variable
+ */
+void ADXL_ReadAcceleration(float *AccelerationX, float *AccelerationY, float *AccelerationZ)
+{
+	/* Variable declaration */
+	uint16_t RawAccelX, RawAccelY, RawAccelZ;
+
+	/* Read FIFO/DATA registers */
+	__ADXL_READMULTIBYTE_FIFO(&RawAccelX, &RawAccelY, &RawAccelZ);
+
+	/* Conversion from raw values to normal interpretation, and that value is multiplied with 4mg/LSB resolution */
+	*AccelerationX = 4.0f * (float)(ADXL_TwosComplement_13bits(RawAccelX));
+	*AccelerationY = 4.0f * (float)(ADXL_TwosComplement_13bits(RawAccelY));
+	*AccelerationZ = 4.0f * (float)(ADXL_TwosComplement_13bits(RawAccelZ));
+}
+
+
+
+/**
+  **************************************************************************************************
+  * ADXL343 Accelerometer User Application/Configuration									       *
+  **************************************************************************************************
+  */
+
+/**
+ * @brief 	Initializes the ADXL343 in Standby Mode
  */
 void ADXL343_Init(void)
 {
@@ -503,23 +599,18 @@ void ADXL343_Init(void)
 	/* Check accelerometer device/serial ID */
 	if(__io_accelerometer_i2cReadRegister(REG_DEVID_BASE, NMAX_I2C_RETX) == 0xE5)
 	{
-		/* printf statements took around 0.7 ms observed through Logic Analyzer */
-		
 #if defined(USE_VCOM)
 		printf("Correct Accelerometer ID detected\n");
 		printf("Accelerometer: ADXL343\n");
 		printf("Device ID: 0xE5\n\n");
 #endif
-		
 	}
 	else
 	{
-		Error_Handler();
-		
 #if defined(USE_VCOM)
 		printf("Wrong Accelerometer ID detected\n\n");
 #endif
-		
+		Error_Handler();
 	}
 	
 	/* Configure output data rate of 25Hz */
@@ -531,44 +622,21 @@ void ADXL343_Init(void)
 	/* Clear all Irq Flags */
 	__CLEAR_ADXL_IRQFLAGS();
 	
-	Accelerometer_LinkActivityInactivity(A_DISABLE);
-	
-	/* Enable relevant interrupts */
-	Accelerometer_SetInterrupt(ACTIVITY, A_ENABLE);
-	
-	/*!< @testedparams
-		130mg = 0.13g -> ok, need to be able to detect small muscle movements
-										 in a period of 255 seconds if there is an ongoing
-										 treatment but the doctor does not move a lot.
-	  @note current/default range is +-2g, for less precision but higher
-	        range change the range to +-4g and above
-	*/
-	Accelerometer_WriteActivityThreshMg(1300);
-	
-	/* Map ACTIVITY interrupt to INT2 pin */
-	Accelerometer_MapInterrupt(ACTIVITY, InterruptPin2);
-	
-#if defined(ADXL343_LINK_ACTIVITY_INACTIVITY)
+/*--- CUSTOM ADXL343 CONFIGURATION TO MEASURE ACCELERATION FROM FIFO ---*/
+	/* Set data parameters such as: Data Rate, Measurement Range, Data Format, Offset Adjustment */
+	ADXL343_FullResolutionMode(A_ENABLE);
+	ADXL_ConfigureAccelerationRange(Range_16g);
 
-	/* Enable inactivity interrupts */
-	Accelerometer_SetInterrupt(INACTIVITY, A_ENABLE);
-	Accelerometer_WriteInactivityThreshTimeMg(10, 130);
-	Accelerometer_MapInterrupt(INACTIVITY, InterruptPin2);
-	
-	/* Link activity and inactivity together */
-	Accelerometer_LinkActivityInactivity(A_ENABLE);
-	
-#elif defined(ADXL343_ACTIVITY_INACTIVITY)
+	/* Configure DATA_READY interrupts, interrupt mappings, thresholds, timing values */
+	Accelerometer_MapInterrupt(DATA_READY, InterruptPin1);
 
-	/* Enable inactivity interrupts */
-	Accelerometer_SetInterrupt(INACTIVITY, A_ENABLE);
-	Accelerometer_WriteInactivityThreshTimeMg(INACTIVITY_PERIOD, 1300);
-	Accelerometer_MapInterrupt(INACTIVITY, InterruptPin2);
+	/* Configure FIFO mode, trigger interrupt if using interrupt mode, and sample bits */
+	ADXL343_ConfigureFIFOMode(Buffer_Bypass);
 
-#endif
+	/* Enable Interrupts through the INT_ENABLE register */
+	Accelerometer_SetInterrupt(DATA_READY, A_ENABLE);
 	
-	/* Configure Activity/Inactivity conditions/thresholds */
-	Accelerometer_ConfigureActInactControl(xActInactCtlValues);
+/*--- END OF CUSTOM ADXL343 CONFIGURATION TO MEASURE ACCELERATION FROM FIFO ---*/
 	
 	/* Place device in non STANDBY mode */
 	Accelerometer_SetMeasurementMode(A_ENABLE);
@@ -577,3 +645,4 @@ void ADXL343_Init(void)
 
 
 /********************************* END OF FILE *********************************/
+

@@ -11,6 +11,7 @@
 
 
 /* Includes --------------------------------------------------------------------------------------*/
+ #include <math.h>
 #include "stm32f4xx_it.h"			/* Including only for FreeRTOS Task Notification Bitmask */
 #include "car_app_freertos.h"
 #include "FreeRTOS.h"
@@ -23,6 +24,7 @@
 /* Private includes ------------------------------------------------------------------------------*/
 #include "car_app_ble.h"
 #include "motordriver.h"
+#include "adxl343.h"
 
 
 /* Private typedef -------------------------------------------------------------------------------*/
@@ -36,14 +38,16 @@
 
 /* Exported/Global variables ---------------------------------------------------------------------*/
 	/*--- Variables related to Received BLE Message Task ---*/
-	__IO uint32_t g_CountDirForward = 0;
-	__IO uint32_t g_CountDirLeft = 0;
-	__IO uint32_t g_CountDirRight = 0;
-	__IO uint32_t g_CountDirBack = 0;
-	__IO uint32_t g_CountDirForceStop = 0;
+	__IO uint32_t g_CountDirForward = 0;			/* Counter to number of 'N' inputs via BLE */
+	__IO uint32_t g_CountDirLeft = 0;				/* Counter to number of 'W' inputs via BLE */
+	__IO uint32_t g_CountDirRight = 0;				/* Counter to number of 'E' inputs via BLE */
+	__IO uint32_t g_CountDirBack = 0;				/* Counter to number of 'S' inputs via BLE */
+	__IO uint32_t g_CountDirForceStop = 0;			/* Counter to number of 'X' inputs via BLE */
+	__IO uint32_t g_CarTotalDistanceCovered = 0;	/* Total distance covered after power cycles, also
+													   saved in Flash Memory */
 
 	/*--- Variables to record remaining stack size of each tasks ---*/
-	UBaseType_t g_Task0_RSS, g_Task1_RSS, g_Task2_RSS, g_Task3_RSS, g_Task4_RSS;
+	UBaseType_t g_Task0_RSS, g_Task1_RSS, g_Task2_RSS, g_Task3_RSS, g_Task4_RSS, g_Task5_RSS;
 
 
 /* External variables ----------------------------------------------------------------------------*/
@@ -60,16 +64,17 @@
 	TaskHandle_t h_TaskPBProcessing;
 	static TaskHandle_t sh_TaskMcuLED;
 	static TaskHandle_t sh_TaskBLEEvents;
-	static TaskHandle_t sh_TaskCarCalculations;
-	static TaskHandle_t sh_TaskI2CEvents;
+	TaskHandle_t h_TaskCarCalculations;
+	//static TaskHandle_t sh_TaskI2CEvents;
 
-	/*--- Private variables related to BLE Connection Task ---*/
-
-
-	/*--- Private variables related to Received BLE Message Task ---*/
-
-
-
+	/*--- Private variables related to Task Car Calculations/Measurements ---*/
+	static uint32_t s_CarLocalDistanceCovered = 0;		/* units in m */
+	static float s_CarVelocityX = 0;					/* units in m/s */
+	static float s_CarVelocityY = 0;					/* units in m/s */
+	static float s_CarVelocity = 0;						/* units in m/s */
+	static float s_CarAccelerationX = 0;				/* units in m/(s^2) */
+	static float s_CarAccelerationY = 0;				/* units in m/(s^2) */
+	static float s_CarAcceleration = 0;					/* units in m/(s^2) */
 
 
 /* Private function prototypes -------------------------------------------------------------------*/
@@ -213,16 +218,18 @@ void FRTOS_Init_Tasks(void)
 	/* Ensure task creation succeeds */
 	assert_param(TaskCreationStatus == pdPASS);
 
-	/*
+	/* Create task that will periodically measure acceleration and calculate movement velocity and distance */
 	TaskCreationStatus = xTaskCreate( Task_CarMovementCalculations,
 										"Task4 - MovementCalculations",
 										TASK_STACKSIZE_DEFAULT,
 										NULL,
 										TASK_PRIO_CALCULATIONS,
-										&sh_TaskCarCalculations);
+										&h_TaskCarCalculations);
 
+	/* Ensure task creation succeeds */
 	assert_param(TaskCreationStatus == pdPASS);
 
+	/*
 	TaskCreationStatus = xTaskCreate( Task_ManageI2CEvents,
 										"Task5 - I2C Events",
 										TASK_STACKSIZE_DEFAULT,
@@ -433,6 +440,36 @@ static void Task_BlinkLEDIndicator(void *argument)
  */
 static void Task_CarMovementCalculations(void *argument)
 {
+	/* Variable declaration */
+	uint32_t NotificationValue = 0;
+	float AccelerationX, AccelerationY, AccelerationZ;
+	__IO uint32_t DataReadyCounter = 0;
+
+	/* Initialize accelerometer */
+	ADXL343_Init();
+
+	while(1)
+	{
+		/* Block indefinitely until a notification to this task was obtained/received */
+		NotificationValue = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+
+		/* Check amount of unused stack. If returned value is 0, stack overflow has occurred */
+		g_Task5_RSS = uxTaskGetStackHighWaterMark(NULL);
+
+		/* Request acceleration data from ADXL343 accelerometer */
+		if(NotificationValue & FRTOS_TASK_NOTIF_ADXL343_INT1)
+		{
+			/* Read accelerations axis x and y from ADXL343 accelerometer connected through I2C/SMBus */
+			ADXL_ReadAcceleration(&AccelerationX, &AccelerationY, &AccelerationZ);
+			DataReadyCounter++;
+
+			/* Measure velocity, and update old velocity afterwards with new duplicate */
+			// s_CarVelocity += (s_CarAcceleration * FREQUENCY_S_CALCULATION);
+
+			/* Measure distance covered/lapsed */
+			// s_CarLocalDistanceCovered += (s_CarVelocity * FREQUENCY_S_CALCULATION) + (0.5 * s_CarAcceleration * pow(FREQUENCY_S_CALCULATION,2));
+		}
+	}
 
 	/* Delete tasks automatically if somehow code reached this point */
 	vTaskDelete(NULL);

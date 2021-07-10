@@ -35,6 +35,13 @@ extern "C" {
 
 
 /* Private defines -----------------------------------------------------------*/
+#define FULL_13_BITS							((uint16_t)0x1FFF)
+
+#define SIGN_BIT_16G_FULL_RES					((uint16_t)0x1000)	/* 13th bit indicates sign bit */
+#define SIGN_BIT_8G_FULL_RES					((uint16_t)0x0800)	/* 12th bit indicates sign bit */
+#define SIGN_BIT_4G_FULL_RES					((uint16_t)0x0400)	/* 11th bit indicates sign bit */
+#define SIGN_BIT_2G_FULL_RES					((uint16_t)0x0200)	/* 10th bit indicates sign bit */
+
 #define ADXL343_ACTIVITY_INACTIVITY
 
 
@@ -559,6 +566,20 @@ typedef enum
 
 
 /**
+ * Possible g range settings to be configured in DATA_FORMAT register. The
+ * 8-bit representations below are the exact bit values for each configuration
+ * for D1-D0 bit positions.
+ */
+typedef enum
+{
+	Range_2g = ((uint8_t)0x00),
+	Range_4g = ((uint8_t)0x01),
+	Range_8g = ((uint8_t)0x02),
+	Range_16g = ((uint8_t)0x03)
+} AccelerometerRange;
+
+
+/**
  * @brief 	Special structure for controlling how the Inactivity and Activity events
  *          are determined. This structure is related to the ACT_INACT_CTL register
  *          (addr: 0x27). Read page 22 of the ADXL343 Datasheet for more information.
@@ -585,7 +606,7 @@ typedef struct
 
 
 /**
- * @brief		Special structure containing status of interrupts when the INT_SOURCE
+ * @brief	Special structure containing status of interrupts when the INT_SOURCE
  *          register is read. An interrupt was triggered if the value of the bitfield
  *          is A_ENABLED. 
  */
@@ -629,14 +650,14 @@ typedef struct
 
 
 /* Exported functions prototypes ---------------------------------------------*/
-	/*!< @group Power related functions */
+	/*--- Power related functions ---*/
 	void Accelerometer_SetMeasurementMode(AccelerometerBitState xState);
 	void Accelerometer_SetLowPowerMode(AccelerometerBitState xState);
 	void Accelerometer_SetOutputDataRate(uint8_t OutputDataRate_Hz);
 	void Accelerometer_EnableAutoSleep(uint8_t cTimeInactivity, float cThreshmg);
 
 
-	/*!< @group Interrupt related functions */
+	/*--- Interrupt related functions ---*/
 	void Accelerometer_WriteInactivityThreshTime(uint8_t cTimeInactivity, uint8_t cThreshInactivity);
 	void Accelerometer_WriteActivityThreshold(uint8_t cThreshActivity);
 	void Accelerometer_WriteInactivityThreshTimeMg(uint8_t cTimeSeconds, float cThreshmg);
@@ -650,12 +671,17 @@ typedef struct
 	void Accelerometer_CheckInterruptFlags(AccelerometerIrqStatus *xIrqStatus);
 
 
-	/*!< @group Data and Device configuration */
+	/*--- Data and Device configuration ---*/
 	void ADXL343_InterruptActiveLow(AccelerometerBitState xState);
+	void ADXL343_FullResolutionMode(AccelerometerBitState xState);
 	void ADXL343_SPI3WireMode(AccelerometerBitState xState);
+	void ADXL343_ConfigureFIFOMode(AccelerometerBufferStates xBufferMode);
+	void ADXL_ConfigureAccelerationRange(AccelerometerRange xRange);
+	int32_t ADXL_TwosComplement_13bits(uint16_t value);
+	void ADXL_ReadAcceleration(float *AccelerationX, float *AccelerationY, float *AccelerationZ);
 
 
-	/*!< @group Initialization */
+	/*--- Initialization ---*/
 	void ADXL343_Init(void);
 
 

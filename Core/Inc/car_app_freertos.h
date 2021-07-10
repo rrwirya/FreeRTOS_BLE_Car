@@ -34,9 +34,14 @@ extern "C" {
 	extern __IO uint32_t g_CountDirRight;
 	extern __IO uint32_t g_CountDirBack;
 	extern __IO uint32_t g_CountDirForceStop;
+	extern __IO uint32_t g_CarTotalDistanceCovered;
 
 
 /* Exported defines ------------------------------------------------------------------------------*/
+	/*--- Measurement/Calculation Parameters ---*/
+	#define FREQUENCY_MS_CALCULATION			((uint8_t)100)
+	#define FREQUENCY_S_CALCULATION				((float)FREQUENCY_MS_CALCULATION/1000.0f)
+
 	/*--- Task Stack Sizes ---*/
 	#define TASK_STACKSIZE_MIN					(64 * 4)			/* 256 words = 512 bytes */
 	#define TASK_STACKSIZE_DEFAULT				(256 * 4)			/* 1024 words = 2048 bytes */

@@ -44,6 +44,11 @@ extern "C" {
 
 
 /* Private defines -----------------------------------------------------------*/
+
+	/**
+	 * @note 	Writing to a READ-ONLY register should not change/affect its values
+	 */
+
 /* Reset values of registers 0x1D to 0x1F */
 #define RST_REG_THRESH_TAP							((uint8_t)0x00)
 #define RST_REG_OFSX								((uint8_t)0x00)
@@ -69,7 +74,7 @@ extern "C" {
 
 /* Reset values of registers 0x30 to 0x39 */
 #define RST_REG_INT_SOURCE							((uint8_t)0x02)			// Default: Watermark Interrupt
-#define RST_REG_DATA_FORMAT							((uint8_t)0x00)
+#define RST_REG_DATA_FORMAT							((uint8_t)0x00)			// Default: Right-justified data with sign extension
 #define RST_REG_DATA_X0								((uint8_t)0x00)
 #define RST_REG_DATA_X1								((uint8_t)0x00)
 #define RST_REG_DATA_Y0								((uint8_t)0x00)
@@ -99,6 +104,7 @@ void AccelerometerBus_Init(void);
 // void __io_accelerometer_i2cRead(uint8_t* pRxBuff, uint16_t cRxLen);
 void __io_accelerometer_i2cWriteRegister(uint8_t cRegAddress, uint8_t pData, uint8_t nRetransmissions);
 uint8_t __io_accelerometer_i2cReadRegister(uint8_t cRegAddress, uint8_t nRetransmissions);
+void __ADXL_READMULTIBYTE_FIFO(uint16_t *DataX, uint16_t *DataY, uint16_t *DataZ);
 
 
 void __RESET_ADXL343_REGISTERS(void);

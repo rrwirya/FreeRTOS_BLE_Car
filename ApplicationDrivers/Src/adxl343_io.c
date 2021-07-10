@@ -35,6 +35,12 @@
 	#endif
 
 
+/* This will be used to look for all the I2C devices on the I2C1 bus */
+#if !defined(I2C_ADDR_LOOP) && !defined(I2C_ADDR_CHECK)
+	#define I2C_ADDR_LOOP
+#endif
+
+
 /* Private variables ---------------------------------------------------------*/
 static const uint32_t i2cTimeout = 50;
 static const uint16_t cRegisterSize = I2C_MEMADD_SIZE_8BIT;			/* registers' addresses are 8-bits wide */
@@ -61,6 +67,58 @@ static const uint8_t ResetValues[TOTALNUM_ADXL_REGISTERS + 1] = {
 
 
 /* Private function prototypes -----------------------------------------------*/
+static uint16_t __I2C_AddressLoop(void);
+
+
+/* Private user code ---------------------------------------------------------*/
+
+/**
+ * @brief	Loops through all possible I2C addresses for STM32 to receive ACK signal
+ * @note	ACK condition will be observed through a Logic Analyzer
+ * @retval	NumDevices: The number of devices that responded with an ACK
+ */
+static uint16_t __I2C_AddressLoop(void)
+{
+	/* This function will return the number of I2C devices on the bus */
+	uint16_t NumDevices = 0;
+
+#if defined(I2C_ADDR_LOOP)
+
+	/* Iterate through all possible addresses */
+	for(volatile uint16_t i=0; i<=127; i++)
+	{
+		/* 8-bit I2C address to check/probe */
+		uint16_t l_Address = ((uint8_t)i << 1);
+
+		/* Send nothing over I2C, this operation will see if an ACK is received */
+		HAL_I2C_Master_Transmit(&hi2c1, l_Address, NULL, 0, i2cTimeout);
+
+		/* Wait until I2C bus is ready/available */
+		while(HAL_I2C_GetState(&hi2c1) != HAL_I2C_STATE_READY);
+
+		/* Increment variable if an ACK was received */
+		if(HAL_I2C_GetError(&hi2c1) != HAL_I2C_ERROR_AF)
+			NumDevices++;
+	}
+
+#elif defined(I2C_ADDR_CHECK)
+
+	/* Sends no data only to the accelerometer device to see if an ACK is received on the Bus */
+	HAL_I2C_Master_Transmit(&hi2c1, ACCELEROMETER_ADDRESS, NULL, 0, i2cTimeout);
+
+	/* Wait until I2C bus is ready/available */
+	while(HAL_I2C_GetState(&hi2c1) != HAL_I2C_STATE_READY);
+
+	/* Increment variable if an ACK was received */
+	if(HAL_I2C_GetError(&hi2c1) != HAL_I2C_ERROR_AF)
+		return 1;
+
+#endif
+
+	/* Return the number of devices that responded back with an ACK */
+	return NumDevices;
+}
+
 
 /**
  * @brief	I2C bus initialization
@@ -118,14 +176,11 @@ void __io_accelerometer_i2cWriteRegister(uint8_t cRegAddress, uint8_t pData, uin
 			errorhandler_counter++;
 		}
 
-		/* If I2C is BUSY even after 1ms */
+		/* If I2C is BUSY even after 16000 CPU cycles */
 		if((errorhandler_counter >= 16000) && (HAL_I2C_GetState(&hi2c1) != HAL_I2C_STATE_READY))
 		{
-			// __I2C_Alternate_ErrorHandler();
-			printf("I2C_ERR_RES: Sent clock pulses to get slave device to release SDA\n");
-			// __I2C_ErrorHandler();
-			printf("I2C_ERR_RES: Issued STOP START STOP sequence on I2C bus\n");
-			i2c_process_status = ERROR;
+			printf("I2C Bus still busy\n");
+			Error_Handler();
 		}
 
 		/* Counter to ensure repeating transaction only happens up to nRetransmissions */
@@ -172,14 +227,11 @@ uint8_t __io_accelerometer_i2cReadRegister(uint8_t cRegAddress, uint8_t nRetrans
 			errorhandler_counter++;
 		}
 
-		/* If I2C is BUSY even after 1ms */
+		/* If I2C is BUSY even after 16000 CPU cycles */
 		if((errorhandler_counter >= 16000) && (HAL_I2C_GetState(&hi2c1) != HAL_I2C_STATE_READY))
 		{
-			// __I2C_Alternate_ErrorHandler();
-			printf("I2C_ERR_RES: Sent clock pulses to get slave device to release SDA\n");
-			// __I2C_ErrorHandler();
-			printf("I2C_ERR_RES: Issued STOP START STOP sequence on I2C bus\n");
-			i2c_process_status = ERROR;
+			printf("I2C Bus still busy\n");
+			Error_Handler();
 		}
 
 		/* Counter to ensure repeating transaction only happens up to nRetransmissions */
@@ -194,6 +246,35 @@ uint8_t __io_accelerometer_i2cReadRegister(uint8_t cRegAddress, uint8_t nRetrans
 	/* Return 8-bit value read from internal register */
 	return pRxBuff[0];
 
+}
+
+
+/**
+ * @brief 	Reads data from the ADXL343's internal register
+ * @param   Pointer to variables that will hold raw 16-bit acceleration values
+ * @note	To be used with reading Accelerometer FIFO/Data Registers
+ */
+void __ADXL_READMULTIBYTE_FIFO(uint16_t *DataX, uint16_t *DataY, uint16_t *DataZ)
+{
+	/* Variable declarations */
+	uint8_t pRxBuff[6] = {0x00};		/* Store received bytes in this array/buffer */
+	HAL_StatusTypeDef l_status;			/* Used to check if HAL operations were successful or not */
+	uint8_t RxLen = 6;					/* Number of bytes to be received in I2C operation */
+
+	/* Perform I2C Memory Read operation. 0x32 represents address of DATAX0 register. */
+	HAL_I2C_Mem_Read(&hi2c1, ACCELEROMETER_ADDRESS, ((uint8_t)0x32), cRegisterSize, (uint8_t*)pRxBuff, RxLen, i2cTimeout);
+
+	/* Ensure HAL terminated/executed successfully */
+	assert_param(l_status == HAL_OK);
+
+	/* Wait until I2C bus is ready, and check if an ACK was received or not afterwards */
+	while(HAL_I2C_GetState(&hi2c1) != HAL_I2C_STATE_READY);
+	assert_param(HAL_I2C_GetError(&hi2c1) != HAL_I2C_ERROR_AF);
+
+	/* Assign passed input arguments the raw acceleration values for each axes */
+	*DataX = (((uint16_t)pRxBuff[1] << 8) | pRxBuff[0]);
+	*DataY = (((uint16_t)pRxBuff[3] << 8) | pRxBuff[2]);
+	*DataZ = (((uint16_t)pRxBuff[5] << 8) | pRxBuff[4]);
 }
 
 
@@ -227,14 +308,11 @@ void __RESET_ADXL343_REGISTERS(void){
 			errorhandler_counter++;
 		}
 
-		/* If I2C bus is still BUSY after 3.5ms */
+		/* If I2C bus is still BUSY after 56000 CPU cycles */
 		if((errorhandler_counter >= 56000) && (HAL_I2C_GetState(&hi2c1) != HAL_I2C_STATE_READY))
 		{
-			// __I2C_Alternate_ErrorHandler();
-			printf("I2C_ERR_RES: Sent clock pulses to get slave device to release SDA\n");
-			// __I2C_ErrorHandler();
-			printf("I2C_ERR_RES: Issued STOP START STOP sequence on I2C bus\n");
-			i2c_process_status = ERROR;
+			printf("I2C Bus still busy\n");
+			Error_Handler();
 		}
 
 		/* Repeat transmission until an ACK signal is received */

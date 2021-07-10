@@ -77,6 +77,7 @@
 
 	/*--- FreeRTOS Task Handles ---*/
 	extern TaskHandle_t h_TaskPBProcessing;
+	extern TaskHandle_t h_TaskCarCalculations;
 
 
 /******************************************************************************/
@@ -264,6 +265,14 @@ void EXTI0_IRQHandler(void)
 }
 
 /**
+  * @brief This function handles EXTI line4 interrupt.
+  */
+void EXTI4_IRQHandler(void)
+{
+  HAL_EXTI_IRQHandler(GPIO_PIN_4);
+}
+
+/**
   * @brief This function handles TIM1 break interrupt and TIM9 global interrupt.
   */
 void TIM1_BRK_TIM9_IRQHandler(void)
@@ -339,6 +348,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	}
 }
 
+/**
+ * @brief  GPIO Interrupt Callback functions
+ * @note   This function is called after end of interrupt execution/processing
+ * @param  GPIO_Pin: GPIO pin that registered the rising edge/falling edge signal
+ */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
 	if(GPIO_Pin == NUCLEO_PB_Pin)
@@ -350,8 +364,21 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 		   higher priority than the currently running task, in which a context switch should occur */
 		BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 
-		/* Notify task that manages BLE connections that a connection was successfully created */
+		/* Notifies task that the push button was pressed on the microcontroller */
 		xTaskNotifyFromISR(h_TaskPBProcessing, FRTOS_TASK_NOTIF_PB_PRESSED, eSetBits, &xHigherPriorityTaskWoken);
+
+		/* Force context switch if xHigherPriorityTaskWoken == pdTRUE. This does nothing if xHigherPriorityTaskWoken
+		   is pdFALSE */
+		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+	}
+	else if(GPIO_Pin == ACCELEROMETER_INT1_Pin)
+	{
+		/* This value becomes pdTRUE if giving the notification caused a task to unblock, and the unblocked task has a
+		   higher priority than the currently running task, in which a context switch should occur */
+		BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+
+		/* Notifies task that a new acceleration data is available */
+		xTaskNotifyFromISR(h_TaskCarCalculations, FRTOS_TASK_NOTIF_ADXL343_INT1, eSetBits, &xHigherPriorityTaskWoken);
 
 		/* Force context switch if xHigherPriorityTaskWoken == pdTRUE. This does nothing if xHigherPriorityTaskWoken
 		   is pdFALSE */

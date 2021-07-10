@@ -15,7 +15,11 @@
 * June 28, 2021:
 	* Fix issue where uC cannot control wheels in Debug mode when U5V jumper is selected (USB power) instead of E5V (external 5V)
 	* uC can control wheels when uC E5V jumper is active, and uC is connected to an external voltage source
-	
+* July 9, 2021:
+	* Fix issue where as soon as DATA_READY interrupts are enabled on the ADXL343, EXTI4 (DATA_READY) interrupt becomes immediately available
+	* Determine the cause of why and how the DATA_READY interrupt gets triggered consecutively
+	* Determine a reliable method to measure time difference between each FIFO reads to accurately measure displacement and velocity
+
 
 ### Done:
 * June 24, 2021:
@@ -38,8 +42,11 @@
 	* Car can steer left (by moving forward all right wheels), and right (by moving all left wheels)
 	* Included test function for testing all wheel sequences
 	* Fixed front left wheel and front right wheel control mix-up. `Motor_ConfigWheelDirection()` function properly controls all wheels.
-
-
+* July 9, 2021:
+	* Implemented Accelerometer FIFO related functions including `ADXL_ReadAcceleration()`, `ADXL_TwosComplement_13bits()`, `ADXL_ConfigureAccelerationRange()`, and `ADXL343_FullResolutionMode()`
+	* Tested Twos Complement on Online C Compiler. Observed some of the FIFO/Data initializations with a Logic Analyzer
+	
+	
 ### Errors:
 * BLE FreeRTOS HardFault crash:
 	* Using dissasembly, `0x800_625E` stored in `stacked_pc` points to `temp = temp->next` found in `list_get_size(tListNode \* listHead)`
@@ -47,4 +54,6 @@
 	* It was discovered that `SCR->BFAR` address points to one of the iterations of `temp = temp->next`, which is a part of `tListNode` member
 * Car front tires not moving:
 	* Must initialize PWM for front wheels so that front tires can move
-
+* I2C Bus hangs after DATA_READY interrupt enable:
+	* STOP event was never issued by the STM32
+	* EXTI4 (INT1 on ADXL343) gets triggered repeatedly at a fast rate as soon as DATA_READY interrupt is enabled

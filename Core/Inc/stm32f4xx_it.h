@@ -35,6 +35,7 @@
 
 
 #define FRTOS_TASK_NOTIF_PB_PRESSED					((uint16_t)0x0001)
+#define FRTOS_TASK_NOTIF_ADXL343_INT1				((uint16_t)0x0001)
 
 
 /* Exported types ------------------------------------------------------------*/
