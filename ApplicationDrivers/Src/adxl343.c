@@ -13,6 +13,7 @@
   
   
 /* Includes ------------------------------------------------------------------*/
+#include <math.h>
 #include "adxl343.h"
 
 
@@ -26,8 +27,18 @@
 /* Maximum i2c comms retransmissions */
 #define NMAX_I2C_RETX													1
 
+/* Number of samples to take/measure to configure offset registers */
+#define NUM_ACCELERATION_OFFSET_SAMPLES									10
+
 /* Uncomment the line below to utilize SWO/SWD printf() outputs */
 // #define USE_VCOM
+
+/* define FREERTOS_INCLUDED to perform accurate sampling of acceleration data */
+#define FREERTOS_INCLUDED
+#if defined(FREERTOS_INCLUDED)
+	#include "FreeRTOS.h"
+	#include "task.h"
+#endif
 
 
 /* Private variables ---------------------------------------------------------*/
@@ -540,7 +551,9 @@ void ADXL_ConfigureAccelerationRange(AccelerometerRange xRange)
 
 
 /**
- * @brief	Converts sign extension 2's complement to normal integers
+ * @brief	Converts sign extension 2's complement to normal integers. To be used with full resolution
+ * 			at +-16g. Use this function in conjunction with ADXL_ReadAcceleration, in order to obtain
+ * 			numerical scale of raw value (before multiplying with acceleration resolution).
  */
 int32_t ADXL_TwosComplement_13bits(uint16_t value)
 {
@@ -564,6 +577,26 @@ int32_t ADXL_TwosComplement_13bits(uint16_t value)
 
 
 /**
+ * @brief	Converts sign extension representation to 8-bit 2's complement. Use this function
+ * 			to convert LSB into normal 8-bit values to be placed in OFSX, OFSY, and OFSZ
+ * 			registers.
+ */
+uint8_t ADXL_TwosComplement_8bits(int8_t input)
+{
+    if(input < 0)
+    {
+        uint8_t retval = (input * -1) - 1;
+        retval = ~(retval);
+        return retval;
+    }
+    else
+    {
+        return input;
+    }
+}
+
+
+/**
  * @brief	Returns all axes acceleration in float variable in units of m/(s^2)
  */
 void ADXL_ReadAcceleration(float *AccelerationX, float *AccelerationY, float *AccelerationZ)
@@ -574,10 +607,77 @@ void ADXL_ReadAcceleration(float *AccelerationX, float *AccelerationY, float *Ac
 	/* Read FIFO/DATA registers */
 	__ADXL_READMULTIBYTE_FIFO(&RawAccelX, &RawAccelY, &RawAccelZ);
 
-	/* Conversion from raw values to normal interpretation, and that value is multiplied with 4mg/LSB resolution */
-	*AccelerationX = (4.0f * (float)(ADXL_TwosComplement_13bits(RawAccelX))/1000.0f);
-	*AccelerationY = (4.0f * (float)(ADXL_TwosComplement_13bits(RawAccelY))/1000.0f);
-	*AccelerationZ = (4.0f * (float)(ADXL_TwosComplement_13bits(RawAccelZ))/1000.0f);
+	/**
+	 * Conversion from raw values to normal interpretation, and that value is multiplied with 3.90625mg/LSB
+	 * resolution, or more accurately, 256LSB/g
+	 */
+	*AccelerationX = (3.90625f * (float)(ADXL_TwosComplement_13bits(RawAccelX))/1000.0f);
+	*AccelerationY = (3.90625f * (float)(ADXL_TwosComplement_13bits(RawAccelY))/1000.0f);
+	*AccelerationZ = (3.90625f * (float)(ADXL_TwosComplement_13bits(RawAccelZ))/1000.0f);
+}
+
+
+/**
+ * @brief	Configures all offset register (acceleration calibration) so that data read from
+ * 			DATA registers will take offset into account. (This includes taking +1g from Z
+ * 			axis acceleration due to gravity into DATAZ0 and DATAZ1 registers).
+ */
+void ADXL_ConfigureOffsets(void)
+{
+	/* Variable declarations */
+	uint16_t InputSampleX = 0, InputSampleY = 0, InputSampleZ = 0;
+	int32_t AvgSampleX = 0, AvgSampleY = 0, AvgSampleZ = 0;			/* a.k.a. X_0g, Y_0g, Z_0g in ADXL343 Datasheet page 28 */
+	int8_t X_offset = 0, Y_offset = 0, Z_offset = 0;
+	uint8_t OFSXvalue = 0, OFSYvalue = 0, OFSZvalue = 0;			/* values to be placed into the offset registers */
+
+	/* Collect 10 samples of X, Y, and Z acceleration. Note that resolution is 3.90625mg/LSB at 13-bits */
+#if defined(FREERTOS_INCLUDED)
+	taskENTER_CRITICAL();
+#endif
+
+	/* Iterate NUM_ACCELERATION_OFFSET_SAMPLES number of times */
+	for(volatile uint8_t idx=0; idx<NUM_ACCELERATION_OFFSET_SAMPLES; idx++)
+	{
+		/* Read Input samples and accumulate input samples in AvgSample variables */
+		__ADXL_READMULTIBYTE_FIFO(&InputSampleX, &InputSampleY, &InputSampleZ);
+		AvgSampleX += ADXL_TwosComplement_13bits(InputSampleX);
+		AvgSampleY += ADXL_TwosComplement_13bits(InputSampleY);
+		AvgSampleZ += ADXL_TwosComplement_13bits(InputSampleZ);
+
+		HAL_Delay(25);
+	}
+
+	/* Final acceleration average, all in 0g base */
+	AvgSampleX = AvgSampleX/NUM_ACCELERATION_OFFSET_SAMPLES;
+	AvgSampleY = AvgSampleY/NUM_ACCELERATION_OFFSET_SAMPLES;
+	AvgSampleZ = AvgSampleZ/NUM_ACCELERATION_OFFSET_SAMPLES - 256;		/* AvgSampleZ is noise in 1g base, and 256 = 1g for full-resolution mode */
+
+#if defined(FREERTOS_INCLUDED)
+	taskEXIT_CRITICAL();
+#endif
+
+	/* Place device is non-measurement mode to write into OFSX, OFSY, and OFSZ registers. Note that
+	 * these registers have a resolution of 15.6mg/LSB at 8-bits.
+	 */
+	Accelerometer_SetMeasurementMode(A_DISABLE);
+
+	/* Calculate offset values */
+	X_offset = -1 * round(AvgSampleX/4);
+	Y_offset = -1 * round(AvgSampleY/4);
+	Z_offset = -1 * round(AvgSampleZ/4);
+
+	/* Calculate raw 8-bit values to be placed in offset registers */
+	OFSXvalue = ADXL_TwosComplement_8bits(X_offset);
+	OFSYvalue = ADXL_TwosComplement_8bits(Y_offset);
+	OFSZvalue = ADXL_TwosComplement_8bits(Z_offset);
+
+	/* Write directly into offset registers */
+	__io_accelerometer_i2cWriteRegister(REG_OFSX_BASE, OFSXvalue, NMAX_I2C_RETX);
+	__io_accelerometer_i2cWriteRegister(REG_OFSY_BASE, OFSYvalue, NMAX_I2C_RETX);
+	__io_accelerometer_i2cWriteRegister(REG_OFSZ_BASE, OFSZvalue, NMAX_I2C_RETX);
+
+	/* Place device in measurement mode again, all changes will be applied afterwards */
+	Accelerometer_SetMeasurementMode(A_ENABLE);
 }
 
 
@@ -627,15 +727,19 @@ void ADXL343_Init(void)
 	ADXL343_FullResolutionMode(A_ENABLE);
 	ADXL_ConfigureAccelerationRange(Range_16g);
 
+#if defined(ENABLE_DATAREADY_INTERRUPTS)
 	/* Configure DATA_READY interrupts, interrupt mappings, thresholds, timing values */
 	Accelerometer_MapInterrupt(DATA_READY, InterruptPin1);
+#endif
 
 	/* Configure FIFO mode, trigger interrupt if using interrupt mode, and sample bits */
 	ADXL343_ConfigureFIFOMode(Buffer_Bypass);
 
+#if defined(ENABLE_DATAREADY_INTERRUPTS)
 	/* Enable Interrupts through the INT_ENABLE register */
 	/* Warning: Enabling interrupts would cause EXTI4 to get triggered immediately before an I2C STOP is generated by STM32 */
-	// Accelerometer_SetInterrupt(DATA_READY, A_ENABLE);
+	Accelerometer_SetInterrupt(DATA_READY, A_ENABLE);
+#endif
 	
 /*--- END OF CUSTOM ADXL343 CONFIGURATION TO MEASURE ACCELERATION FROM FIFO ---*/
 	

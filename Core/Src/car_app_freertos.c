@@ -458,6 +458,7 @@ static void Task_CarMovementCalculations(void *argument)
 
 	/* Initialize accelerometer */
 	ADXL343_Init();
+	ADXL_ConfigureOffsets();
 
 #if defined(ACCELEROMETER_INTERRUPTS)
 

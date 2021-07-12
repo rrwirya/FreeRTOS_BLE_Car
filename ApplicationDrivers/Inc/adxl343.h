@@ -678,7 +678,9 @@ typedef struct
 	void ADXL343_ConfigureFIFOMode(AccelerometerBufferStates xBufferMode);
 	void ADXL_ConfigureAccelerationRange(AccelerometerRange xRange);
 	int32_t ADXL_TwosComplement_13bits(uint16_t value);
+	uint8_t ADXL_TwosComplement_8bits(int8_t input);
 	void ADXL_ReadAcceleration(float *AccelerationX, float *AccelerationY, float *AccelerationZ);
+	void ADXL_ConfigureOffsets(void);
 
 
 	/*--- Initialization ---*/

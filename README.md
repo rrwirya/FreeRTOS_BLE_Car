@@ -60,7 +60,10 @@
 	* Implemented Accelerometer FIFO related functions including `ADXL_ReadAcceleration()`, `ADXL_TwosComplement_13bits()`, `ADXL_ConfigureAccelerationRange()`, and `ADXL343_FullResolutionMode()`
 	* Tested Twos Complement on Online C Compiler. Observed some of the FIFO/Data initializations with a Logic Analyzer
 	* Tested measuring acceleration and calculating velocity every 25ms. Velocity seems to be accumulating even though car is not moving. Acceleration seems to be non-zero even though car is not moving either.
-	
+* July 12, 2021:
+	* Implemented writing into OFSX, OFSY, and OFSZ registers to account for acceleration noise at startup (accelerometer calibration process)
+	* Twos Complement for 8-bits and 13-bits included in ADXL343
+
 	
 ### Errors:
 * BLE FreeRTOS HardFault crash:

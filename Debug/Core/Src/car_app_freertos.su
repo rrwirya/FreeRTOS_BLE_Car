@@ -1,5 +1,5 @@
-car_app_freertos.c:555:13:vTimUpdateOledScreenCallback	0	static
-car_app_freertos.c:544:13:vTimMotorTimeoutCallback	0	static
+car_app_freertos.c:556:13:vTimUpdateOledScreenCallback	0	static
+car_app_freertos.c:545:13:vTimMotorTimeoutCallback	0	static
 car_app_freertos.c:448:13:Task_CarMovementCalculations	56	static
 car_app_freertos.c:394:13:Task_ManageBLEEvents	16	static
 car_app_freertos.c:421:13:Task_BlinkLEDIndicator	24	static
