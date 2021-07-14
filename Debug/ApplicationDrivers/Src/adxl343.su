@@ -21,5 +21,5 @@ adxl343.c:540:6:ADXL_ConfigureAccelerationRange	8	static
 adxl343.c:558:9:ADXL_TwosComplement_13bits	0	static
 adxl343.c:584:9:ADXL_TwosComplement_8bits	0	static
 adxl343.c:602:6:ADXL_ReadAcceleration	24	static
-adxl343.c:625:6:ADXL_ConfigureOffsets	32	static
-adxl343.c:694:6:ADXL343_Init	8	static
+adxl343.c:632:6:ADXL_ConfigureOffsets	32	static
+adxl343.c:703:6:ADXL343_Init	8	static

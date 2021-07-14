@@ -4,7 +4,7 @@
   * @file       : adxl343_io.c
   * @brief      : This file contains HW IO level functions for interacting
   *               with the Analog Devices ADXL343 Accelerometer via I2C/SPI
-  * @author		:
+  * @author		: Reggie W
   ******************************************************************************
   */
 

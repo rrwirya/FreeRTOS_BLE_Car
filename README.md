@@ -63,6 +63,8 @@
 * July 12, 2021:
 	* Implemented writing into OFSX, OFSY, and OFSZ registers to account for acceleration noise at startup (accelerometer calibration process)
 	* Twos Complement for 8-bits and 13-bits included in ADXL343
+* July 13, 2021:
+	* Made velocity calculations 'cleaner' from noisy acceleration readings. Implemented distance lapsed though not accurate.
 
 	
 ### Errors:

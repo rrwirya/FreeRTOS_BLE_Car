@@ -44,6 +44,12 @@ extern "C" {
 
 #define ADXL343_ACTIVITY_INACTIVITY
 
+/* By default, ADXL343 APIs will return mm/(s^2) when attempting to read acceleration values */
+// #define ACCELERATION_M_SEC_SQUARED
+#if !defined(ACCELERATION_CM_SEC_SQUARED) && !defined(ACCELERATION_M_SEC_SQUARED)
+	#define ACCELERATION_CM_SEC_SQUARED
+#endif
+
 
 /*-------------------------  Device Status/Settings --------------------------*/
 	/*--- Activity/Inactivity event configuration ---*/

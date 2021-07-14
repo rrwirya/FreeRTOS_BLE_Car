@@ -11,7 +11,7 @@
 
 
 /* Includes --------------------------------------------------------------------------------------*/
- #include <math.h>
+#include <math.h>
 #include "stm32f4xx_it.h"			/* Including only for FreeRTOS Task Notification Bitmask */
 #include "car_app_freertos.h"
 #include "FreeRTOS.h"
@@ -72,16 +72,14 @@
 	//static TaskHandle_t sh_TaskI2CEvents;
 
 	/*--- Private variables related to Task Car Calculations/Measurements ---*/
-	// static uint32_t s_CarLocalDistanceCovered = 0;		/* units in m */
-	static __IO float s_CarOldVelocityX = 0;				/* units in m/s */
-	static __IO float s_CarOldVelocityY = 0;				/* units in m/s */
-	static __IO float s_CarOldVelocityZ = 0;				/* units in m/s */
-	static __IO float s_CarVelocityX = 0;					/* units in m/s */
-	static __IO float s_CarVelocityY = 0;					/* units in m/s */
-	static __IO float s_CarVelocityZ = 0;					/* units in m/s */
-	static float s_CarAccelerationX = 0;					/* units in m/(s^2) */
-	static float s_CarAccelerationY = 0;					/* units in m/(s^2) */
-	static float s_CarAccelerationZ = 0;					/* units in m/(s^2) */
+	static __IO float s_CarLocalDistanceCovered = 0;		/* units in cm */
+	static __IO int32_t s_CarVelocityResultant = 0;			/* units in cm/s, always positive */
+	static __IO int32_t s_CarVelocityX = 0;					/* units in cm/s */
+	static __IO int32_t s_CarVelocityY = 0;					/* units in cm/s */
+	static __IO int32_t s_CarVelocityZ = 0;					/* units in cm/s */
+	static float s_CarAccelerationX = 0;					/* units in cm/(s^2) */
+	static float s_CarAccelerationY = 0;					/* units in cm/(s^2) */
+	static float s_CarAccelerationZ = 0;					/* units in cm/(s^2) */
 
 
 /* Private function prototypes -------------------------------------------------------------------*/
@@ -447,6 +445,12 @@ static void Task_BlinkLEDIndicator(void *argument)
  */
 static void Task_CarMovementCalculations(void *argument)
 {
+	/* Variable declarations */
+	__IO int32_t CarOldVelocityX = 0;				/* units in cm/s */
+	__IO int32_t CarOldVelocityY = 0;				/* units in cm/s */
+	__IO int32_t CarOldVelocityZ = 0;				/* units in cm/s */
+	TickType_t TimeDiff = 0, TimeNow = 0, TimeBefore = 0;
+	float TimeDiff_seconds = 0;
 
 #if defined(ACCELEROMETER_INTERRUPTS)
 	uint32_t NotificationValue = 0;
@@ -461,6 +465,10 @@ static void Task_CarMovementCalculations(void *argument)
 	ADXL_ConfigureOffsets();
 
 #if defined(ACCELEROMETER_INTERRUPTS)
+
+	/**
+	 * This segment of code needs to be fixed. ADXL343 interrupts not triggering as expected.
+	 */
 
 	while(1)
 	{
@@ -478,10 +486,10 @@ static void Task_CarMovementCalculations(void *argument)
 			DataReadyCounter++;
 
 			/* Measure velocity, and update old velocity afterwards with new duplicate */
-			// s_CarVelocity += (s_CarAcceleration * FREQUENCY_S_CALCULATION);
+			s_CarVelocity += (s_CarAcceleration * FREQUENCY_S_CALCULATION);
 
 			/* Measure distance covered/lapsed */
-			// s_CarLocalDistanceCovered += (s_CarVelocity * FREQUENCY_S_CALCULATION) + (0.5 * s_CarAcceleration * pow(FREQUENCY_S_CALCULATION,2));
+			s_CarLocalDistanceCovered += (s_CarVelocity * FREQUENCY_S_CALCULATION) + (0.5 * s_CarAcceleration * pow(FREQUENCY_S_CALCULATION,2));
 		}
 	}
 
@@ -501,17 +509,31 @@ static void Task_CarMovementCalculations(void *argument)
 		/* Read accelerations axis x and y from ADXL343 accelerometer connected through I2C/SMBus */
 		ADXL_ReadAcceleration(&s_CarAccelerationX, &s_CarAccelerationY, &s_CarAccelerationZ);
 
+		/* Update deltaT (time difference) parameter */
+		TimeNow = xTaskGetTickCount();
+		TimeDiff = TimeNow - TimeBefore;
+		TimeDiff_seconds = TimeDiff/1000.0f;
+		TimeBefore = TimeNow;
+
 		taskEXIT_CRITICAL();
 
-		/* Calculate velocity */
-		s_CarVelocityX = s_CarOldVelocityX + (s_CarAccelerationX * FREQUENCY_S_CALCULATION);
-		s_CarVelocityY = s_CarOldVelocityY + (s_CarAccelerationY * FREQUENCY_S_CALCULATION);
-		s_CarVelocityZ = s_CarOldVelocityZ + (s_CarAccelerationZ * FREQUENCY_S_CALCULATION);
+		/* Calculate velocity in cm/s. Velocity will be negative if movement is in negative direction/orientation.
+		 * round() used to remove noise from acceleration readings.
+		 */
+		s_CarVelocityX = CarOldVelocityX + (round(s_CarAccelerationX) * FREQUENCY_S_CALCULATION);
+		s_CarVelocityY = CarOldVelocityY + (round(s_CarAccelerationY) * FREQUENCY_S_CALCULATION);
+		s_CarVelocityZ = CarOldVelocityZ + (round(s_CarAccelerationZ) * FREQUENCY_S_CALCULATION);
+
+		/* Calculate resultant velocity and acceleration considering x and y directions only */
+		s_CarVelocityResultant = sqrt(pow(s_CarVelocityX, 2) + pow(s_CarVelocityY, 2));
 
 		/* Update old velocity values to be used in next iteration/measurement */
-		s_CarOldVelocityX = s_CarVelocityX;
-		s_CarOldVelocityY = s_CarVelocityY;
-		s_CarOldVelocityZ = s_CarVelocityZ;
+		CarOldVelocityX = s_CarVelocityX;
+		CarOldVelocityY = s_CarVelocityY;
+		CarOldVelocityZ = s_CarVelocityZ;
+
+		/* Measure distance covered/lapsed. TimeDiff will be in seconds unit. */
+		s_CarLocalDistanceCovered += (float)s_CarVelocityResultant * FREQUENCY_S_CALCULATION;
 	}
 
 #endif

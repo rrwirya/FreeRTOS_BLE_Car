@@ -597,7 +597,7 @@ uint8_t ADXL_TwosComplement_8bits(int8_t input)
 
 
 /**
- * @brief	Returns all axes acceleration in float variable in units of m/(s^2)
+ * @brief	Returns all axes acceleration in float variable in units of m/(s^2) or cm/(s^2)
  */
 void ADXL_ReadAcceleration(float *AccelerationX, float *AccelerationY, float *AccelerationZ)
 {
@@ -611,9 +611,15 @@ void ADXL_ReadAcceleration(float *AccelerationX, float *AccelerationY, float *Ac
 	 * Conversion from raw values to normal interpretation, and that value is multiplied with 3.90625mg/LSB
 	 * resolution, or more accurately, 256LSB/g
 	 */
+#if defined(ACCELERATION_M_SEC_SQUARED)
 	*AccelerationX = (3.90625f * (float)(ADXL_TwosComplement_13bits(RawAccelX))/1000.0f);
 	*AccelerationY = (3.90625f * (float)(ADXL_TwosComplement_13bits(RawAccelY))/1000.0f);
 	*AccelerationZ = (3.90625f * (float)(ADXL_TwosComplement_13bits(RawAccelZ))/1000.0f);
+#elif defined(ACCELERATION_CM_SEC_SQUARED)
+	*AccelerationX = (3.90625f * (float)(ADXL_TwosComplement_13bits(RawAccelX))/10.0f);
+	*AccelerationY = (3.90625f * (float)(ADXL_TwosComplement_13bits(RawAccelY))/10.0f);
+	*AccelerationZ = (3.90625f * (float)(ADXL_TwosComplement_13bits(RawAccelZ))/10.0f);
+#endif
 }
 
 
@@ -621,6 +627,7 @@ void ADXL_ReadAcceleration(float *AccelerationX, float *AccelerationY, float *Ac
  * @brief	Configures all offset register (acceleration calibration) so that data read from
  * 			DATA registers will take offset into account. (This includes taking +1g from Z
  * 			axis acceleration due to gravity into DATAZ0 and DATAZ1 registers).
+ * @note	Refer to page 28 out of 36 of the ADXL343 Datasheet, section "Offset Calibration"
  */
 void ADXL_ConfigureOffsets(void)
 {
@@ -650,7 +657,9 @@ void ADXL_ConfigureOffsets(void)
 	/* Final acceleration average, all in 0g base */
 	AvgSampleX = AvgSampleX/NUM_ACCELERATION_OFFSET_SAMPLES;
 	AvgSampleY = AvgSampleY/NUM_ACCELERATION_OFFSET_SAMPLES;
-	AvgSampleZ = AvgSampleZ/NUM_ACCELERATION_OFFSET_SAMPLES - 256;		/* AvgSampleZ is noise in 1g base, and 256 = 1g for full-resolution mode */
+	AvgSampleZ = AvgSampleZ/NUM_ACCELERATION_OFFSET_SAMPLES;
+
+	/* Can reduce AvgSampleZ with 256 so that DATAZ registers will not account +1g from gravity into results */
 
 #if defined(FREERTOS_INCLUDED)
 	taskEXIT_CRITICAL();
